@@ -4,32 +4,32 @@
 
 <h3>Backend</h3>
 
-<h4>What is <em>NODEjs</em></h4>
+<h4>What is <em>NODEjs</em>?</h4>
 
 a *cat* meow
 
-<h4>Why <em>NODEjs</em></h4>? 
+<h4>Why <em>NODEjs</em>?</h4> 
 
 a *dog* bark
 
 <img src="https://img.devrant.com/devrant/rant/r_2083076_7utnR.jpg" width="150")
 
-<h4>What is <em>ExpressJS</em></h4>
+<h4>What is <em>ExpressJS</em>?</h4>
 
 an *elephant* trumpet
 
-<h4>Why <em>ExpressJS</em></h4>? 
+<h4>Why <em>ExpressJS</em>?</h4> 
 
 a *donkey* bray
 
  
 <h3>Frontend</h3>
 
-<h4>What is <em>IONIC</em></h4>? 
+<h4>What is <em>IONIC</em>?</h4>
 
 Website : https://ionicframework.com/
 
-<h4>Why <em>IONIC</em></h4>? 
+<h4>Why <em>IONIC</em>?</h4>
 
 <p>
 Thanks to IONIC we can build a mobile website by packaging it into a Cordova app.  
@@ -47,11 +47,11 @@ Facilitate integration with Cordova and its plugins.
 Offer a set of "pro" (but not free) tools.
 </p>
 
-<h4>What is <em>Cordova</em></h4>? 
+<h4>What is <em>Cordova</em>?</h4>
 
 Website : https://cordova.apache.org/
 
-<h4>Why <em>Cordova</em></h4>? 
+<h4>Why <em>Cordova</em>?</h4>
 
 
 
