@@ -66,8 +66,15 @@ a *donkey* bray
 <h3>Frontend</h3>
 
 <h4>What is <em>IONIC</em>?</h4>
-
 Website : https://ionicframework.com/
+<p>
+ Ionic Framework is an open source UI toolkit for building performant, high-quality mobile and desktop apps using web technologies (HTML, CSS, and JavaScript).
+
+<strong>Ionic Framework is focused on the frontend user experience, or UI interaction of an app (controls, interactions, gestures, animations)</strong>. It’s easy to learn, and integrates nicely with other libraries or frameworks, such as Angular, or can be used standalone without a frontend framework using a simple script include.
+
+Currently, Ionic Framework has official integrations with Angular and React, and support for Vue is in development.
+</p>
+
 
 <h4>Why <em>IONIC</em>?</h4>
 
