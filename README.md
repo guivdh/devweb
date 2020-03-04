@@ -11,6 +11,7 @@ a *cat* meow
 <h4>Why <em>NODEjs</em>?</h4> 
 
 a *dog* bark
+![NODEJS](https://img.devrant.com/devrant/rant/r_2083076_7utnR.jpg)
 
 
 
@@ -22,7 +23,7 @@ an *elephant* trumpet
 
 a *donkey* bray
 
-<h4>Which <em>database</em> should we use?</h4> :man_shrugging
+<h4>Which <em>database</em> should we use?</h4>
 
 <p>
 <strong>MySQL</strong>: An open source, multi-threaded, and easy to use SQL database.
