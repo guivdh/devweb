@@ -12,7 +12,7 @@ a *cat* meow
 
 a *dog* bark
 
-<img src="https://img.devrant.com/devrant/rant/r_2083076_7utnR.jpg" width="150")
+
 
 <h4>What is <em>ExpressJS</em>?</h4>
 
@@ -22,6 +22,45 @@ an *elephant* trumpet
 
 a *donkey* bray
 
+<h4>Which <em>database</em> should we use?</h4> :man_shrugging
+
+<p>
+<strong>MySQL</strong>: An open source, multi-threaded, and easy to use SQL database.
+
+<strong>PostgreSQL</strong>: A powerful, open source object-based, relational-database that is highly customizable.
+
+<strong>Redis</strong>: An open source, low maintenance, key/value store that is used for data caching in mobile applications.
+
+<strong>MongoDB</strong>: A schemaless, JSON document database which is known for its flexibility and scalability.
+
+<strong>Memcached</strong>: A distributed cache system which is multi-threaded, and used primarily for caching objects to speed up applications by alleviating database load.
+
+<strong>MariaDB</strong>: A popular open source relational database which was created by the original developers of MySQL.
+
+<strong>Cassandra</strong>: A free and open source, NoSQL database which is designed to handle a large amount of unstructured data at any scale.
+
+<strong>SQLite</strong>: Embedded database, common usage is to provide local data storage capabilities on mobile phones.
+
+<strong>InfluxDB</strong>: An open source, fast and time series database which is written in Go.
+
+<strong>RethinkDB</strong>: An open source, and document-oriented database which stores data in JSON format and sync in real time with the application.
+
+<strong>Riak DB</strong>: A distributed NoSQL database, which offers high availability, fault tolerance and data resiliency as its core feature.
+
+<strong>CouchDB</strong>: A document-oriented NoSQL database which uses JSON to store data and javascript as its main query language.
+
+<strong>Couchbase</strong>: A full Stack NoSQL database that supports offline sync, full CRUD, and query capabilities and runs locally on the device.
+
+<strong>ArangoDB</strong>: An open source NoSQL database which is known for its multi-model, graph and geo algorithm features.
+
+</p>
+
+
+<h4>Why <em>NODEjs</em>?</h4> 
+
+
+ <p>Because NPM is a great package manager</p>:stuck_out_tongue_winking_eye:
+ 
  
 <h3>Frontend</h3>
 
@@ -72,6 +111,8 @@ Website : https://cordova.apache.org/
 <li>https://cordova.apache.org/#getstarted</li>
 
 <li>https://ionicframework.com/resources/articles/capacitor-vs-cordova-modern-hybrid-app-development</li>
+
+<li>https://www.simform.com/mobile-app-developers-database-selection/</li>
 
 </ul>
 
