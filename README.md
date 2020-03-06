@@ -77,7 +77,7 @@ Faciliter l'intégration avec Cordova et ses plugins.
 Offrir un ensemble d'outils "pro" (mais pas gratuits).
 </p>
 
-<h4>Pourquoi <em>Cordova</em>?</h4>
+<h4>Pourquoi <em>Capacitor</em>?</h4>
 
 Site web: https://cordova.apache.org/
 
