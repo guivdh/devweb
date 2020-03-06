@@ -79,9 +79,55 @@ Offrir un ensemble d'outils "pro" (mais pas gratuits).
 
 <h4>Pourquoi <em>Capacitor</em>?</h4>
 
-Site web: https://cordova.apache.org/
+Site web: https://capacitor.ionicframework.com/
+
+<p>
+ <strong>Capacitor</strong> fournit un ensemble cohérent d'API orientées web qui permettent à une application de rester aussi proche que possible des normes web, tout en permettant l'accés aux riches fonctionnalités natives des appareils sur les plateformes qui les supportent. L'ajout de fonctionnalités natives est facile grâce à une simple API de plugin pour Swift sur iOS, Java sur Android et JavaScript pour le web.
+</p>
 
 
+<h5>Avantages</h5>
+
+<ul>
+ <li>
+ Crée des applications web qui fonctionnent aussi bien sur iOS, Android, Electron et que les applications web progressives.
+ </li>
+ <li>
+ Permet l'accès au SDK natif complet sur chaque plateforme, et déploiement facile dans les App Stores (et sur le web !).
+ </li>
+  <li>
+  La construction des applications se faisant avec des technologies web standardisées, on assure son fonctionneront pour des décennies.
+ </li>
+ <li>
+  L'ajout de fonctionnalités natives personnalisées est facile grâce à une simple API de plugin, on peut aussi utiliser les plugins Cordova existants.
+ </li>
+ <li>
+ Capacitor est optimisé pour le framework Ionic. 
+ </li>
+ <li>
+ Capacitor est entièrement open source (MIT) et est maintenu par Ionic et sa communauté. 
+ </li>
+</ul>
+
+<h5>Inconvénients</h5>
+
+<ul>
+ <li>
+  Apparu en 2018, Capacitor est encore jeune. Certains bugs n'ont donc pas encore été découvert ce qui pourrait bloquer notre avancement.
+ </li>
+ <li>
+Comme indiqué sur leur repo Github : 
+
+```
+
+Avertissement : Notre feuille de route est susceptible d'être modifiée à tout moment et ne comporte aucune garantie de date précise
+
+2020 et au-delà : Le projet de Capacitor est désormais stable. La maintenance est en cours (y compris la prise en charge des nouvelles versions de systèmes d'exploitation mobiles, des bugs, etc.) À l'avenir, la plupart des nouvelles fonctionnalités seront mises en œuvre sous forme de plugins. Pour connaître les dernières mises à jour, suivez les nouvelles versions ici ou les étapes importantes ici.
+
+```
+ </li>
+ 
+</ul>
 <h2>Sources</h2>
 
 <ul>
