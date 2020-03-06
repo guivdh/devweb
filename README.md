@@ -1,105 +1,85 @@
-<h1>devweb</h1>
+<h1><strong>DEVWEB</strong></h1>
 
 <h2>Technologies</h2>
 
 <h3>Backend</h3>
 
-<h4>What is <em>NODEjs</em>?</h4>
+<h4>Pourquoi <em>NODEjs</em>?</h4> 
 
-a *cat* meow
-
-<h4>Why <em>NODEjs</em>?</h4> 
-
-a *dog* bark
 ![NODEJS](https://img.devrant.com/devrant/rant/r_2083076_7utnR.jpg)
 
+<h5>Avantages</h5>
+
+<h5>Inconvénients</h5>
+
+<h4>Pourquoi <em>ExpressJS</em>?</h4> 
 
 
-<h4>What is <em>ExpressJS</em>?</h4>
-
-an *elephant* trumpet
-
-<h4>Why <em>ExpressJS</em>?</h4> 
-
-a *donkey* bray
-
-<h4>Which <em>database</em> should we use?</h4>
+<h4>Quelle <em>base de données</em> allons-nous utiliser?</h4>
 
 <p>
-<kbd>MySQL</kbd>: An open source, multi-threaded, and easy to use SQL database.
+<kbd>MySQL</kbd> : Une base de données SQL open source, multithread et facile à utiliser.
 
-<kbd>PostgreSQL</kbd>: A powerful, open source object-based, relational-database that is highly customizable.
+<kbd>PostgreSQL</kbd> : Une puissante base de données relationnelle open source, basée sur des objets, qui est hautement personnalisable.
 
-<kbd>Redis</kbd>: An open source, low maintenance, key/value store that is used for data caching in mobile applications.
+<kbd>Redis</kbd> : Un magasin de clés/valeurs open source et à faible maintenance qui est utilisé pour la mise en cache de données dans les applications mobiles.
 
-<kbd>MongoDB</kbd>: A schemaless, JSON document database which is known for its flexibility and scalability.
+<kbd>MongoDB</kbd> : Une base de données documentaire JSON sans schéma, connue pour sa flexibilité et son évolutivité.
 
-<kbd>Memcached</kbd>: A distributed cache system which is multi-threaded, and used primarily for caching objects to speed up applications by alleviating database load.
+<kbd>Memcached</kbd> : Un système de cache distribué qui est multi-thread, et utilisé principalement pour mettre en cache des objets afin d'accélérer les applications en allégeant la charge de la base de données.
 
-<kbd>MariaDB</kbd>: A popular open source relational database which was created by the original developers of MySQL.
+<kbd>MariaDB</kbd> : Une base de données relationnelle open source populaire qui a été créée par les premiers développeurs de MySQL.
 
-<kbd>Cassandra</kbd>: A free and open source, NoSQL database which is designed to handle a large amount of unstructured data at any scale.
+<kbd>Cassandra</kbd> : Une base de données NoSQL libre et open source, conçue pour gérer une grande quantité de données non structurées à toute échelle.
 
-<kbd>SQLite</kbd>: Embedded database, common usage is to provide local data storage capabilities on mobile phones.
+<kbd>SQLite</kbd> : Base de données embarquée, dont l'usage courant est de fournir des capacités de stockage de données locales sur les téléphones portables.
 
-<kbd>InfluxDB</kbd>: An open source, fast and time series database which is written in Go.
+<kbd>InfluxDB</kbd> : Une base de données open source, rapide et de séries chronologiques, écrite en Go.
 
-<kbd>RethinkDB</kbd>: An open source, and document-oriented database which stores data in JSON format and sync in real time with the application.
+<kbd>RethinkDB</kbd> : Une base de données open source, orientée document, qui stocke des données au format JSON et se synchronise en temps réel avec l'application.
 
-<kbd>Riak DB</kbd>: A distributed NoSQL database, which offers high availability, fault tolerance and data resiliency as its core feature.
+<kbd>Riak DB</kbd> : Une base de données NoSQL distribuée, dont la caractéristique principale est la haute disponibilité, la tolérance aux pannes et la résilience des données.
 
-<kbd>CouchDB</kbd>: A document-oriented NoSQL database which uses JSON to store data and javascript as its main query language.
+<kbd>CouchDB</kbd> : Une base de données NoSQL orientée document qui utilise JSON pour stocker les données et le javascript comme principal langage d'interrogation.
 
-<kbd>Couchbase</kbd>: A full Stack NoSQL database that supports offline sync, full CRUD, and query capabilities and runs locally on the device.
+<kbd>Couchbase</kbd> : Une base de données NoSQL complète qui prend en charge la synchronisation hors ligne, le CRUD complet et les capacités de requête et s'exécute localement sur l'appareil.
 
-<kbd>ArangoDB</kbd>: An open source NoSQL database which is known for its multi-model, graph and geo algorithm features.
+<kbd>ArangoDB</kbd> : Une base de données NoSQL open source qui est connue pour ses fonctionnalités multi-modèles, graphes et géo algorithmes.
 
 </p>
 
-
-<h4>Why <em>NODEjs</em>?</h4> 
-
-
- <p>Because NPM is a great package manager</p>:stuck_out_tongue_winking_eye:
- 
  
 <h3>Frontend</h3>
 
-<h4>What is <em>IONIC</em>?</h4>
-Website : https://ionicframework.com/
+<h4>Pourquoi avoir choisi <em>IONIC</em>?</h4>
+
+Site web : https://ionicframework.com/
 <p>
- Ionic Framework is an open source UI toolkit for building performant, high-quality mobile and desktop apps using web technologies (HTML, CSS, and JavaScript).
+Ionic Framework est un ensemble d'outils d'interface utilisateur Open-Source permettant de créer des applications mobiles et de bureau performantes et de haute qualité à l'aide de technologies web (HTML, CSS et JavaScript).
 
-<kbd>Ionic Framework is focused on the frontend user experience, or UI interaction of an app (controls, interactions, gestures, animations)</kbd>. It’s easy to learn, and integrates nicely with other libraries or frameworks, such as Angular, or can be used standalone without a frontend framework using a simple script include.
+<kbd>Ionic est axé sur l'expérience utilisateur frontale et l'interaction UI d'une application (contrôles, interactions, gestes, animations)</kbd>. Il est facile à apprendre, et s'intègre parfaitement avec d'autres bibliothèques ou frameworks, comme Angular, ou peut être utilisé de manière autonome sans framework frontal en utilisant un simple script inclus.
 
-Currently, Ionic Framework has official integrations with Angular and React, and support for Vue is in development.
+Actuellement, Ionic Framework a des intégrations officielles avec Angular et React, et le soutien pour Vue est en cours de développement.
+</p>
+<p>
+Grâce à IONIC, nous pouvons créer un site web mobile en l'intégrant dans une application Cordova.  
+
+Plateformes actuellement supportées: <kbd>iOS 8.0+, Android 4.4+, UWP apps</kbd>
+
+L'objectif de Ionic est de faciliter ce processus de plusieurs manières :
+
+En utilisant les derniers outils de développement.
+
+Fournir un cadre graphique (pour la mise en page mais aussi la navigation dans l'application).
+
+Faciliter l'intégration avec Cordova et ses plugins.
+
+Offrir un ensemble d'outils "pro" (mais pas gratuits).
 </p>
 
+<h4>Pourquoi <em>Cordova</em>?</h4>
 
-<h4>Why <em>IONIC</em>?</h4>
-
-<p>
-Thanks to IONIC we can build a mobile website by packaging it into a Cordova app.  
-
-Current supported platforms: <kbd>iOS 8.0+, Android 4.4+, UWP apps</kbd>
-
-Ionic's goal is to facilitate this process in several ways:
-
-Using the latest development tools.
-
-Provide a graphical framework (for the layout but also the navigation in the app).
-
-Facilitate integration with Cordova and its plugins.
-
-Offer a set of "pro" (but not free) tools.
-</p>
-
-<h4>What is <em>Cordova</em>?</h4>
-
-Website : https://cordova.apache.org/
-
-<h4>Why <em>Cordova</em>?</h4>
-
+Site web: https://cordova.apache.org/
 
 
 <h2>Sources</h2>
