@@ -51,7 +51,7 @@
  
 <h3>Frontend</h3>
 
-<a href="https://www.figma.com/proto/HIoSou87Z4wpMC424l11PT/APPLI-Mobile?node-id=36%3A328&scaling=scale-down" target="_blank">Maquette de l'application</a> 
+<a href="https://www.figma.com/proto/HIoSou87Z4wpMC424l11PT/APPLI-Mobile?node-id=8%3A108&scaling=scale-down" target="_blank">Maquette de l'application</a> 
 
 
 <h4>Pourquoi avoir choisi <em>IONIC</em>?</h4>
