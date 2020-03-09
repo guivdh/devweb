@@ -2,23 +2,22 @@
 
 const app = express();
 
-app.use((req, res, next) => {
-    console.log("Requête reçue!");
-    next();
+app.use('/api/stuff', (req, res, next) => {
+    const stuff = [
+        {
+            _id: '1',
+            date: '21/02/1552',
+            heure: '20:00',
+            participants: 'Pierre, Jacques',
+        },
+        {
+            _id: '2',
+            date: '24/04/1552',
+            heure: '10:00',
+            participants: 'Julien, Loic',
+        },
+    ];
+    res.status(200).json(stuff);
 });
-
-app.use((req, res, next)=>{
-    res.status(201);
-    next();
-})
-
-app.use((req, res, next) => {
-    res.json({ message: 'Votre requête a bien été reçue !'});
-    next();
-});
-
-app.use((req,res)=>{
-    console.log("Réponse envoyée avec succès!")
-})
 
 module.exports = app;
