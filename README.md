@@ -98,7 +98,7 @@ La sécurité de l'application pour les fonctionnalités native ne sont pas tout
 </p>
 
 
-<h4>Pourquoi <em>Capacitor</em>?</h4>
+<h4>Alternative à Ionic-Cordova --><em>Ionic-Capacitor</em> : </h4>
 
 Site web: https://capacitor.ionicframework.com/
 
@@ -168,6 +168,7 @@ Avertissement : Notre feuille de route est susceptible d'être modifiée à tout
 <li>https://ionicframework.com/resources/articles/capacitor-vs-cordova-modern-hybrid-app-development</li>
 
 <li>https://www.simform.com/mobile-app-developers-database-selection/</li>
+<li>https://www.netguru.com/blog/why-you-should-migrate-your-app-from-ionic-cordova-or-phonegap-to-react-native</li>
 
 </ul>
 
