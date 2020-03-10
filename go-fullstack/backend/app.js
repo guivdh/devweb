@@ -1,4 +1,20 @@
 ﻿const express = require('express');
+const bodyParser = require('body-parser');
+var mysql = require('mysql');
+
+var mysql = require('mysql');
+
+var con = mysql.createConnection({
+    host: "localhost",
+    port: "3308",
+    user: "root",
+    password: ""
+});
+
+con.connect(function(err) {
+    if (err) throw err;
+    console.log("Connected!");
+});
 
 const app = express();
 
@@ -7,6 +23,15 @@ app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content, Accept, Content-Type, Authorization');
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, PATCH, OPTIONS');
     next();
+});
+
+app.use(bodyParser.json());
+
+app.post('/api/stuff', (req, res, next) => {
+    console.log(req.body);
+    res.status(201).json({
+        message: 'Objet créé !'
+    });
 });
 
 app.use('/api/stuff', (req, res, next) => {
