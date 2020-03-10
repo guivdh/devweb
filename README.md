@@ -64,8 +64,15 @@ Ionic Framework est un ensemble d'outils d'interface utilisateur Open-Source per
 
 Actuellement, Ionic Framework a des intégrations officielles avec Angular et React, et le soutien pour Vue est en cours de développement.
 </p>
+
+<h5>Avantages</h5>
+
 <p>
 Grâce à IONIC, nous pouvons créer un site web mobile en l'intégrant dans une application Cordova.  
+
+On peut aussi créer une application mobile sans connaître les caractéristiques spécifiques de la plate-forme, utiliser un large éventail de composants - des blocs de construction qui s'adaptent à la plateforme afin que l'application puisse imiter la plateforme native.
+
+Pour intégrer les fonctionnalités spécifiques de la plateforme, comme Bluetooth ou l'appareil photo, Ionic fourni des plug-in  - cela facilite l'ajout de fonctionnalités natives à votre application mobile Ionic.
 
 Plateformes actuellement supportées: <kbd>iOS 8.0+, Android 4.4+, UWP apps</kbd>
 
@@ -80,7 +87,18 @@ Faciliter l'intégration avec Cordova et ses plugins.
 Offrir un ensemble d'outils "pro" (mais pas gratuits).
 </p>
 
-<h4>Pourquoi <em>Capacitor</em>?</h4>
+<h5>Inconvénients</h5>
+
+<p>
+L'inconvénient le plus important est la performance - Ionic fonctionne dans un WebView, ce qui rend les applications Ionic relativement lentes.
+
+Deuxièmement, bien que les composants de Ionic s'adaptent en fonction de la plate-forme, un travail supplémentaire est parfois nécessaire pour donner une impression plus native.
+
+La sécurité de l'application pour les fonctionnalités native ne sont pas toutes prises en charge par les plugins. Il se peut qu'on doive écrire le code pour les différentes plateformes. Le débogage est moyennement compliqué.
+</p>
+
+
+<h4>Alternative à Ionic-Cordova --><em>Ionic-Capacitor</em> : </h4>
 
 Site web: https://capacitor.ionicframework.com/
 
@@ -150,6 +168,7 @@ Avertissement : Notre feuille de route est susceptible d'être modifiée à tout
 <li>https://ionicframework.com/resources/articles/capacitor-vs-cordova-modern-hybrid-app-development</li>
 
 <li>https://www.simform.com/mobile-app-developers-database-selection/</li>
+<li>https://www.netguru.com/blog/why-you-should-migrate-your-app-from-ionic-cordova-or-phonegap-to-react-native</li>
 
 </ul>
 
