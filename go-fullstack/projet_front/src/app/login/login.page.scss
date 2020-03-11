@@ -23,7 +23,11 @@ ion-col {
 ion-button {
     font-weight: 300;
 }
+ion-input{
+    color: #DAA520;
+    background-color: white;
 
+}
 @media (min-width: 240px) and (max-width: 768px) {
     ion-grid {
         background: #000000;
