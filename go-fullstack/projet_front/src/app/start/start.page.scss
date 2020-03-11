@@ -1,4 +1,4 @@
-app-login {
+app-start {
     
 }
 
@@ -24,15 +24,23 @@ ion-button {
     font-weight: 300;
 }
 
-@media (min-width: 240px) and (max-width: 768px) {
+@media (min-width: 240px) {
     ion-grid {
-        background: #000000;
+        background: $white-color;
     }
     ion-col {
         border: none;
     }
-}
 h4 {
     color: #DAA520;
     text-align: center;
+}
+#gauche{
+    float: left;
+}
+#droite{
+}
+#bouton{
+        display: flex;
+}
 }
