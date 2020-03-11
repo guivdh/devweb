@@ -1,12 +1,12 @@
 ﻿const express = require('express');
 const bodyParser = require('body-parser');
 var mysql = require('mysql');
+/*const Thing = require('./models/Thing');*/
 
-var mysql = require('mysql');
 
 var con = mysql.createConnection({
     host: "localhost",
-    port: "3308",
+    port: "3306",
     user: "root",
     password: ""
 });
