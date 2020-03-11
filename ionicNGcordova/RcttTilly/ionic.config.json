@@ -1,0 +1,7 @@
+{
+  "name": "RcttTilly",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}
