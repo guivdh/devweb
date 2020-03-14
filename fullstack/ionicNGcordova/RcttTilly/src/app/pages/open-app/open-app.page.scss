@@ -1,0 +1,84 @@
+
+$tillyGold:#AC943B;
+$tillyGrey:rgb(163, 161, 154);
+$tillyDark: rgb(27, 21, 0);
+$tillyLight: rgb(247, 246, 244);
+
+
+.logoTilly {
+    
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    width: 22rem;
+    height: 25rem;
+}
+
+
+.logoTT{
+    height: 55%;
+}
+.nameClub{
+    height: 5%;
+}
+.regiConnect{
+    height: 30%;
+}
+
+.nameTilly{
+    font-weight: 900;
+    color: $tillyGold ;
+
+}
+
+
+
+
+.btn{
+    width:20rem;
+    height: 5rem;
+    
+    font-family: Ropa Sans regular;
+    font-size:1.5rem;
+    font-weight: 900;
+
+    text-transform: uppercase;    
+    border-radius: 10px;
+
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    text-align: center;
+    padding: 0.5rem;
+    border:0.5rem;
+    box-shadow: 0 0.5rem $tillyGrey;
+}
+
+
+
+
+.connectbtn{
+    background-color: $tillyLight;
+    color: $tillyDark ;
+}
+.connectbtn:hover {
+    background-color: darken($color: $tillyLight, $amount: 5);
+}
+.connectbtn:active {
+    background-color: darken($color: $tillyLight, $amount: 2.5);
+    box-shadow: 0 0.1rem $tillyGold;
+}
+
+
+.registerbtn{
+    background-color: $tillyGold;
+    color: $tillyLight ;
+}
+
+.registerbtn:hover {
+background-color: darken($color: $tillyGold, $amount: 5);
+}
+  
+.registerbtn:active {
+background-color: darken($color: $tillyGold, $amount: 2.5);
+box-shadow: 0 0.1rem $tillyLight;
+}
+
