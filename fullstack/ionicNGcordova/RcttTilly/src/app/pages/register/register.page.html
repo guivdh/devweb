@@ -1,21 +1,44 @@
 <ion-grid>
 	<ion-row>
-		<ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
+		<ion-col align-self-center size-md="6"  size-xs="12">
 			<div text-center>
-				<h4>SE CONNECTER</h4>
+				<h4>S'enregistrer</h4>
 			</div>
 			<div padding>
-				<ion-item>
-					<ion-input type="text" placeholder="Adresse mail"></ion-input>
-				</ion-item>
+				<form [formGroup]="registerForm">
+					<ion-row>
+						<ion-col>
+							<ion-item>
+								<ion-label position="floating">Nom</ion-label>
+                 				<ion-input type="text" formControlName="Nom" placeholder="Nom"></ion-input>
+							</ion-item>
+						</ion-col>
+						<ion-col>
+							<ion-item>
+								<ion-label position="floating">Prenom</ion-label>
+                 				<ion-input type="text" formControlName="Prenom" placeholder="Prenom"></ion-input>
+							</ion-item>
+						</ion-col>
+						<ion-col>
+							<ion-item>
+								<ion-label position="floating">Matricule</ion-label>
+								<ion-input type="text" class="text" formControlName="Matricule" placeholder="Matricule" required></ion-input>
+							</ion-item>
+						</ion-col>	
+					</ion-row>
+					<ion-item lines="full">
+						<ion-label position="floating">Adresse mail</ion-label>
+						<ion-input type="email" formControlName="mail" placeholder="Adresse mail" required></ion-input>
+					</ion-item>
 
-				<ion-item>
-					<ion-input type="password" placeholder="mot de passe"></ion-input>
-				</ion-item>
-			</div>
-
-			<div padding>
- 			 <button id="connect" expand="block" routerLink="/connection" routerDirection="root" fill="outline">Se connecter</button>
+					<ion-item lines="full">
+						<ion-label position="floating">Mot de passe</ion-label>
+						<ion-input type="password" formControlName="password" placeholder="Mot de passe" required></ion-input>
+					</ion-item>
+					<ion-item>
+						<button id="connect" expand="block" routerLink="/connection" routerDirection="root" fill="outline">Se connecter</button>
+					</ion-item>
+				</form>
 			</div>
 		</ion-col>
 	</ion-row>
