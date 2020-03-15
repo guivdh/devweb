@@ -16,7 +16,12 @@ import { ComponentsModule } from './components/components.module';
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule],
+  imports: [BrowserModule, 
+    IonicModule.forRoot({
+      rippleEffect: false,
+      mode: 'md'
+    }),
+    AppRoutingModule],
   providers: [
     StatusBar,
     SplashScreen,
