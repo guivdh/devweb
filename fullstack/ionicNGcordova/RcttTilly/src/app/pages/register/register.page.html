@@ -1,45 +1,66 @@
-<ion-grid>
-	<ion-row>
-		<ion-col align-self-center size-md="6"  size-xs="12">
-			<div text-center>
-				<h4>S'enregistrer</h4>
-			</div>
-			<div padding>
-				<form [formGroup]="registerForm">
-					<ion-row>
-						<ion-col>
-							<ion-item>
-								<ion-label position="floating">Nom</ion-label>
-                 				<ion-input type="text" formControlName="Nom" placeholder="Nom"></ion-input>
-							</ion-item>
-						</ion-col>
-						<ion-col>
-							<ion-item>
-								<ion-label position="floating">Prenom</ion-label>
-                 				<ion-input type="text" formControlName="Prenom" placeholder="Prenom"></ion-input>
-							</ion-item>
-						</ion-col>
-						<ion-col>
-							<ion-item>
-								<ion-label position="floating">Matricule</ion-label>
-								<ion-input type="text" class="text" formControlName="Matricule" placeholder="Matricule" required></ion-input>
-							</ion-item>
-						</ion-col>	
-					</ion-row>
-					<ion-item lines="full">
-						<ion-label position="floating">Adresse mail</ion-label>
-						<ion-input type="email" formControlName="mail" placeholder="Adresse mail" required></ion-input>
-					</ion-item>
+<ion-header>
+	<ion-toolbar>
+	  <ion-buttons slot="start">
+		<ion-back-button></ion-back-button>
+	  </ion-buttons>
+	  	<div class="text-center">
+			<ion-title class="titleRegi">S'enregistrer</ion-title>
+		</div>
+	</ion-toolbar>
+  </ion-header>
 
-					<ion-item lines="full">
-						<ion-label position="floating">Mot de passe</ion-label>
-						<ion-input type="password" formControlName="password" placeholder="Mot de passe" required></ion-input>
-					</ion-item>
-					<ion-item>
-						<button id="connect" expand="block" routerLink="/connection" routerDirection="root" fill="outline">Se connecter</button>
-					</ion-item>
-				</form>
-			</div>
-		</ion-col>
-	</ion-row>
-</ion-grid>
+<ion-content>
+		
+	<div class="forms">
+		<form  class="form-horizontal" [formGroup]="registerForm">
+				<ion-row>
+					<ion-col>
+						<ion-item class="input">
+							<ion-label position="floating">Nom</ion-label>
+							<ion-input type="text" formControlName="Nom" placeholder="Votre nom"></ion-input>
+						</ion-item>
+					</ion-col>
+					<ion-col >
+						<ion-item class="input"> 
+							<ion-label position="floating">Prenom</ion-label>
+							<ion-input type="text" formControlName="Prenom" placeholder="Votre prénom"></ion-input>
+						</ion-item>
+					</ion-col>
+					<ion-col >
+						<ion-item class="input">
+							<ion-label position="floating">Matricule</ion-label>
+							<ion-input type="text" class="text" formControlName="Matricule" placeholder="Votre matricule" required></ion-input>
+						</ion-item>
+					</ion-col>	
+				</ion-row>
+				<ion-item  class="input">
+					<ion-label position="floating">Adresse mail</ion-label>
+					<ion-input type="email" formControlName="mail"  placeholder="Votre adresse mail"required></ion-input>
+				</ion-item>
+				<ion-item class="input">
+					<ion-label position="floating">Mot de passe</ion-label>
+					<ion-input type="password" formControlName="password" placeholder="Votre mot de passe" required></ion-input>
+				</ion-item>
+				<ion-item class="input">
+					<ion-label position="floating">Vérification du mot de passe</ion-label>
+					<ion-input type="password" formControlName="password" placeholder="Retapez le mot de passe" required></ion-input>
+				</ion-item>
+
+		</form>
+	</div>
+
+	<div class="text-center" >
+		<button  class="btnFollow" id="connect" expand="block" 
+		routerLink="/connection" routerDirection="root" fill="outline">
+		Continuer
+		</button>
+
+		<p class="info">En vous inscrivant, vous acceptez les conditions d'utilisation et 
+		la Politique de confidentialité de RCTT Tilly APP.
+		</p>
+	</div>
+	
+</ion-content>
+
+	
+
