@@ -3,7 +3,11 @@ $tillyGold:#AC943B;
 $tillyGrey:rgb(163, 161, 154);
 $tillyDark: rgb(27, 21, 0);
 $tillyLight: rgb(247, 246, 244);
+$tillyMarineBlue: #010041;
+$tillySkyBlue:#2789ca;
 
+
+$animate: all 0.2s ease-in-out;
 
 .logoTilly {
     
@@ -26,6 +30,7 @@ $tillyLight: rgb(247, 246, 244);
 
 .nameTilly{
     font-weight: 900;
+    font-family: 'Trebuchet MS', sans-serif, sans-serif;
     color: $tillyGold ;
 
 }
@@ -37,48 +42,34 @@ $tillyLight: rgb(247, 246, 244);
     width:20rem;
     height: 5rem;
     
-    font-family: Ropa Sans regular;
+    font-family: 'Trebuchet MS', sans-serif, sans-serif;
     font-size:1.5rem;
-    font-weight: 900;
-
+    font-weight: 1000;
+    letter-spacing: 0.2em;
     text-transform: uppercase;    
-    border-radius: 10px;
-
+    
+    border-radius: 5px;
     margin-top: 1rem;
     margin-bottom: 1rem;
     text-align: center;
     padding: 0.5rem;
     border:0.5rem;
-    box-shadow: 0 0.5rem $tillyGrey;
+        
 }
 
 
 
-
-.connectbtn{
+.registerbtn, .connectbtn{
     background-color: $tillyLight;
     color: $tillyDark ;
 }
-.connectbtn:hover {
-    background-color: darken($color: $tillyLight, $amount: 5);
-}
-.connectbtn:active {
-    background-color: darken($color: $tillyLight, $amount: 2.5);
-    box-shadow: 0 0.1rem $tillyGold;
-}
-
-
-.registerbtn{
+.registerbtn:hover, .connectbtn:hover{
     background-color: $tillyGold;
     color: $tillyLight ;
-}
+    transition: $animate;
+    transition-duration: 0.5s;
+    border-radius: 35px;
 
-.registerbtn:hover {
-background-color: darken($color: $tillyGold, $amount: 5);
-}
-  
-.registerbtn:active {
-background-color: darken($color: $tillyGold, $amount: 2.5);
-box-shadow: 0 0.1rem $tillyLight;
+
 }
 
