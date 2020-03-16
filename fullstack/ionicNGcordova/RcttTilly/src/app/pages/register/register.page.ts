@@ -30,13 +30,21 @@ export class RegisterPage implements OnInit {
       ])),
       password: new FormControl('', Validators.compose([
         Validators.required,
-        Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])[a-zA-Z0-9]+$'),
+        Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!-_@#$%^&*])[a-zA-Z0-9!-_@#$%^&*]+$'),
         Validators.minLength(8)
       ])),
       mail: new FormControl('', Validators.compose([
         Validators.required,
         Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')
-      ]))
+      ])),
+      confirmpassword: new FormControl('', Validators.compose([
+        Validators.required,
+        Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!-_@#$%^&*])[a-zA-Z0-9!-_@#$%^&*]+$'),
+        Validators.minLength(8)
+      ])),
+    },
+    {
+      validators: this.password.bind(this)
     });
   }
 
@@ -47,6 +55,12 @@ export class RegisterPage implements OnInit {
   }
 
   ngOnInit(): void {
+  }
+
+  password(formGroup: FormGroup) {
+    const { value: password } = formGroup.get('password');
+    const { value: confirmPassword } = formGroup.get('confirmpassword');
+    return password === confirmPassword ? null : { passwordNotMatch: true };
   }
 
 }
