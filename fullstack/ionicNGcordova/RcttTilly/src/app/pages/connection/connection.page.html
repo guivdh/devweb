@@ -1,58 +1,41 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-back-button></ion-back-button>
-    </ion-buttons>
-    <ion-title>Se connecter</ion-title>
-  </ion-toolbar>
-</ion-header>
+	<ion-toolbar>
+	  <ion-buttons slot="start">
+		<ion-back-button></ion-back-button>
+	  </ion-buttons>
+	  	<div class="text-center">
+			<ion-title class="titleConnect">Se connecter</ion-title>
+		</div>
+	</ion-toolbar>
+  </ion-header>
 
 <ion-content>
-  <form class="form-horizontal">
-    <ion-item lines="full">
-      <ion-label position="floating">Adresse mail</ion-label>
-      <ion-input type="text" required></ion-input>
-    </ion-item>
 
-    <ion-item lines="full">
-      <ion-label position="floating">Mot de passe</ion-label>
-      <ion-input type="password" required></ion-input>
-    </ion-item>
+  <div class="forms">
+		<form  class="form-horizontal" [formGroup]="connectForm">
+				<ion-item  class="input">
+					<ion-label position="floating">Adresse mail</ion-label>
+					<ion-input type="email" formControlName="mail"  placeholder="Votre adresse mail" required></ion-input>
+				</ion-item>
+				<ion-item class="input">
+					<ion-label position="floating">Mot de passe</ion-label>
+					<ion-input type="password" formControlName="password" placeholder="Votre mot de passe" required></ion-input>
+				</ion-item>
 
-    <ion-row>
-      <ion-col>
-        <button id="connect" expand="block" routerLink="/register" routerDirection="root" fill="outline">S'enregistrer</button>
+		</form>
+	</div>
 
-        <a [routerLink]="['/forgot-password']" class="small-text">Mot de passe oublié?</a>
-      </ion-col>
-    </ion-row>
-  </form>
 
-  <form class="form-horizontal" >
-    <div class="form-group">
-      <label class="control-label col-sm-2" for="email">Adresse mail</label>
-      <div class="col-sm-10">
-        <input type="email" class="form-control" id="email">
-      </div>
-    </div>
-    <div class="form-group">
-      <label class="control-label col-sm-2" for="pwd">Mot de passe</label>
-      <div class="col-sm-10">
-        <input type="password" class="form-control" id="pwd">
-      </div>
-    </div>
-    <div class="form-group">
-      <div class="col-sm-offset-2 col-sm-10">
-        <div class="checkbox">
-          <label><input type="checkbox"> Se souvenir de moi</label>
-        </div>
-      </div>
-    </div>
-    <div class="form-group">
-      <div class="col-sm-offset-2 col-sm-10">
-        <button type="submit" class="btn btn-default">Submit</button>
-      </div>
-    </div>
-  </form>
-  
+
+  <div class="text-center" >
+		<button  class="btnFollow" id="connect" expand="block" 
+		routerLink="/tabs" routerDirection="root" fill="outline">
+		Continuer
+    </button>
+
+  </div>
+  <div class="text-center">
+    <a  [routerLink]="['/forgot-password']" class="small-text">Mot de passe oublié?</a>
+  </div>
+
 </ion-content>
