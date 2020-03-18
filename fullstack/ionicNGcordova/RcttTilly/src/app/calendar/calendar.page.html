@@ -1,11 +1,32 @@
 <app-header></app-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Calendrier</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <div class="text-center">
+    <ion-title >
+        <p class="updateFR">Dernière mise à jour : 
+          <span class="updatedHour"> {{ currentDate.toLocaleString() }}</span>
+        </p>
+    </ion-title>
+  </div>
 
-  <app-explore-container name="calendar page"></app-explore-container>
+
+  <div >
+    <ion-title class="viewedMonth">
+      {{ currentMonth }}
+    </ion-title>
+  </div>
+
+  <calendar id="tillyCalendar"
+  class="calendar"
+  locale="fr-FR"
+  calendarMode="month" 
+  startHour="0"
+  endHour="24"
+  step="30"
+  startingDayWeek="1"
+  [currentDate]="currentDate"
+  (onTitleChanged)="onViewTitleChanged($event)"
+  >
+</calendar>
+
 </ion-content>
