@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators,FormControl } from "@angular/forms";
 
+import {AngularFireAuth} from '@angular/fire/auth'
+import {auth} from 'firebase/app'
+
+import { Router } from '@angular/router'
 
 @Component({
   selector: 'app-register',
@@ -12,7 +16,7 @@ export class RegisterPage implements OnInit {
 
   public registerForm: FormGroup;
 
-  constructor(public formBuilder: FormBuilder) { 
+  constructor(public formBuilder: FormBuilder,public afAuth: AngularFireAuth, public router: Router) { 
     this.registerForm = this.formBuilder.group({
       Nom: new FormControl('', Validators.compose([
         Validators.required,
@@ -61,6 +65,18 @@ export class RegisterPage implements OnInit {
     const { value: password } = formGroup.get('password');
     const { value: confirmPassword } = formGroup.get('confirmpassword');
     return password === confirmPassword ? null : { passwordNotMatch: true };
+  }
+
+
+  async register(){
+
+    try{
+      const res = await this.afAuth.auth.createUserWithEmailAndPassword(this.registerForm.value.mail, this.registerForm.value.password);
+      console.log(res);
+      this.router.navigate(['/connection']);
+    } catch(err){
+      console.dir(err);
+    }
   }
 
 }
