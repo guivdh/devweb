@@ -1,5 +1,8 @@
 import { Component, ViewChild } from '@angular/core';
 import { CalendarComponent } from 'ionic2-calendar/calendar';
+
+import { AngularFireDatabase } from '@angular/fire/database';
+
 @Component({
   selector: 'app-calendar',
   templateUrl: 'calendar.page.html',
@@ -7,17 +10,102 @@ import { CalendarComponent } from 'ionic2-calendar/calendar';
 })
 export class calendarPage {
 
-  constructor() {}
+  eventSource=[];
+  viewTitle: string;
+  selectedDay=new Date();
+
+  constructor( public afDB: AngularFireDatabase) {
+
+    this.loadEvent();
+    console.log(this.allEvents);
+
+  }
   
   
-  currentDate = new Date();
+
+
+  
   currentMonth: string;
 
+  showAddEvent: boolean;
+  newEvent = {
+    title: '',
+    description: '',
+    startTime: '',
+    endTime: ''
+  };
+
+
+  calendar={
+    locale: "fr-FR",
+    mode: "month",
+    currentDate: this.selectedDay    
+  }
+
+  minDate = new Date().toISOString();
+  allEvents = [];
 
   @ViewChild(CalendarComponent, {static: false}) tillyCalendar: CalendarComponent;
+
 
   onViewTitleChanged(title: string) {
     this.currentMonth = title;
   }
+  onTimeSelected(ev: any) {
+/*     this.selectedDay=ev.selectedTime;
+ */
+
+
+    const selected = new Date(ev.selectedTime);
+    this.newEvent.startTime = selected.toISOString();
+    selected.setHours(selected.getHours() + 1);
+    this.newEvent.endTime = (selected.toISOString());
+  }
+
+  async onEventSelected(event: any) {
+    console.log('Event: ' + JSON.stringify(event));
+  }
+  
+  showHideForm() {
+    this.showAddEvent = !this.showAddEvent;
+    this.newEvent = {
+      title: '',
+      description: '',
+      startTime: new Date().toISOString(),
+      endTime: new Date().toISOString()
+    };
+  }
+
+
+  addEvent() {
+    this.afDB.list('Events').push({
+      title: this.newEvent.title,
+      startTime:  this.newEvent.startTime,
+      endTime: this.newEvent.endTime,
+      description: this.newEvent.description
+    });
+    this.showHideForm();
+  }
+
+
+  loadEvent() {
+    this.afDB.list('Events').snapshotChanges(['child_added']).subscribe(actions => {
+      this.allEvents = [];
+      actions.forEach(action => {
+        console.log('action: ' + action.payload.exportVal().title);
+        this.allEvents.push({
+          title: action.payload.exportVal().title,
+          startTime:  new Date(action.payload.exportVal().startTime),
+          endTime: new Date(action.payload.exportVal().endTime),
+          description: action.payload.exportVal().description,
+        });
+        this.tillyCalendar.loadEvents();
+      });
+    });
+  }
+
+ 
+
+
 
 }

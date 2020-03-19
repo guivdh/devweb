@@ -8,10 +8,20 @@ import { ExploreContainerComponentModule } from '../explore-container/explore-co
 import { ComponentsModule } from '../components/components.module'
 
 import { NgCalendarModule  } from 'ionic2-calendar';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireDatabaseModule } from '@angular/fire/database';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+import { AngularFireStorageModule } from '@angular/fire/storage';
+
+
 
 import { registerLocaleData } from '@angular/common';
 import localeFr from '@angular/common/locales/fr';
 registerLocaleData(localeFr, 'fr');
+
+import config from '../fb'
+
+
 
 @NgModule({
   imports: [
@@ -21,7 +31,11 @@ registerLocaleData(localeFr, 'fr');
     ExploreContainerComponentModule,
     RouterModule.forChild([{ path: '', component: calendarPage }]),
     ComponentsModule,
-    NgCalendarModule
+    NgCalendarModule,
+    AngularFireModule.initializeApp(config),
+    AngularFireDatabaseModule,
+    AngularFireAuthModule,
+    AngularFireStorageModule
   ],
   declarations: [calendarPage]
 })

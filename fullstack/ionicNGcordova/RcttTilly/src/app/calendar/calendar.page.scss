@@ -6,6 +6,9 @@ ion-content ion-toolbar {
 .viewedMonth{
 
 color: $tillyGold;
+
+text-transform: uppercase;
+font-size: xx-large;
 }
 
 .updatedHour{
@@ -19,14 +22,10 @@ color: $tillyGold;
   color: $tillyLight;
 }
 
-.calendar{
 
-background-color: $tillyLight;
 
-}
-
-/* .monthview-primary-with-event { background-color: #FF5722!important; }
- */
+.monthview-primary-with-event { background-color: #FF5722!important; }
+ 
  .monthview-selected{ 
   background-color: $tillyLight !important;
   color: $tillyBlack !important;
