@@ -7,6 +7,15 @@ import { IonicModule } from '@ionic/angular';
 import { ConnectionPageRoutingModule } from './connection-routing.module';
 
 import { ConnectionPage } from './connection.page';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireDatabaseModule } from '@angular/fire/database';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+import { AngularFireStorageModule } from '@angular/fire/storage';
+
+import config  from '../../fb'
+
+
+
 
 @NgModule({
   imports: [
@@ -14,7 +23,11 @@ import { ConnectionPage } from './connection.page';
     FormsModule,
     ReactiveFormsModule,
     IonicModule,
-    ConnectionPageRoutingModule
+    ConnectionPageRoutingModule,
+    AngularFireAuthModule,
+    AngularFireStorageModule,
+    AngularFireDatabaseModule,
+    AngularFireModule.initializeApp(config)
   ],
   declarations: [ConnectionPage]
 })
