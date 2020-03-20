@@ -3,6 +3,13 @@ import { CalendarComponent } from 'ionic2-calendar/calendar';
 
 import { AngularFireDatabase } from '@angular/fire/database';
 
+import { ModalController } from '@ionic/angular';
+import { EventPage } from '../pages/event/event.page';
+
+import { Observable } from 'rxjs';
+import 'firebase/database';
+
+
 @Component({
   selector: 'app-calendar',
   templateUrl: 'calendar.page.html',
@@ -10,11 +17,13 @@ import { AngularFireDatabase } from '@angular/fire/database';
 })
 export class calendarPage {
 
+  events: Observable<any[]>;
+
   eventSource=[];
   viewTitle: string;
   selectedDay=new Date();
 
-  constructor( public afDB: AngularFireDatabase) {
+  constructor( public afDB: AngularFireDatabase,  public modalController: ModalController) {
 
     this.loadEvent();
     console.log(this.allEvents);
@@ -64,6 +73,11 @@ export class calendarPage {
 
   async onEventSelected(event: any) {
     console.log('Event: ' + JSON.stringify(event));
+    const modal = await this.modalController.create({
+      component: EventPage,
+      componentProps: event
+    });
+    return await modal.present();
   }
   
   showHideForm() {
@@ -89,7 +103,11 @@ export class calendarPage {
 
 
   loadEvent() {
-    this.afDB.list('Events').snapshotChanges(['child_added']).subscribe(actions => {
+
+    this.events = this.afDB.list('Events').valueChanges();
+    console.log(this.events);
+
+    /* this.afDB.list('Events').snapshotChanges(['child_added']).subscribe(actions => {
       this.allEvents = [];
       actions.forEach(action => {
         console.log('action: ' + action.payload.exportVal().title);
@@ -101,7 +119,7 @@ export class calendarPage {
         });
         this.tillyCalendar.loadEvents();
       });
-    });
+    }); */
   }
 
  

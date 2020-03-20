@@ -13,6 +13,7 @@ import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 
+import { AngularFirestoreModule } from '@angular/fire/firestore';
 
 
 import { registerLocaleData } from '@angular/common';
@@ -35,7 +36,8 @@ import config from '../fb'
     AngularFireModule.initializeApp(config),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
-    AngularFireStorageModule
+    AngularFireStorageModule,
+    AngularFirestoreModule
   ],
   declarations: [calendarPage]
 })
