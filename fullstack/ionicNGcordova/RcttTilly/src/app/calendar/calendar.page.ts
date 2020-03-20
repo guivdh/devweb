@@ -6,8 +6,8 @@ import { AngularFireDatabase } from '@angular/fire/database';
 import { ModalController } from '@ionic/angular';
 import { EventPage } from '../pages/event/event.page';
 
-import { Observable } from 'rxjs';
-import 'firebase/database';
+/* import { Observable } from 'rxjs';
+import 'firebase/database'; */
 
 
 @Component({
@@ -17,7 +17,6 @@ import 'firebase/database';
 })
 export class calendarPage {
 
-  events: Observable<any[]>;
 
   eventSource=[];
   viewTitle: string;
@@ -26,7 +25,7 @@ export class calendarPage {
   constructor( public afDB: AngularFireDatabase,  public modalController: ModalController) {
 
     this.loadEvent();
-    console.log(this.allEvents);
+    console.log(this.eventSource);
 
   }
   
@@ -52,7 +51,6 @@ export class calendarPage {
   }
 
   minDate = new Date().toISOString();
-  allEvents = [];
 
   @ViewChild(CalendarComponent, {static: false}) tillyCalendar: CalendarComponent;
 
@@ -104,14 +102,14 @@ export class calendarPage {
 
   loadEvent() {
 
-    this.events = this.afDB.list('Events').valueChanges();
-    console.log(this.events);
+ 
 
-    /* this.afDB.list('Events').snapshotChanges(['child_added']).subscribe(actions => {
-      this.allEvents = [];
+ this.afDB.list('Events').snapshotChanges(['child_added']).subscribe(actions => {
+      this.eventSource = [];
+
       actions.forEach(action => {
         console.log('action: ' + action.payload.exportVal().title);
-        this.allEvents.push({
+        this.eventSource.push({
           title: action.payload.exportVal().title,
           startTime:  new Date(action.payload.exportVal().startTime),
           endTime: new Date(action.payload.exportVal().endTime),
@@ -119,7 +117,8 @@ export class calendarPage {
         });
         this.tillyCalendar.loadEvents();
       });
-    }); */
+    });
+     
   }
 
  
