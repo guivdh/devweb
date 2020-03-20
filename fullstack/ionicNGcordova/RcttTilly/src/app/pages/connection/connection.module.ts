@@ -13,6 +13,8 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 
 import config  from '../../fb'
+import { UserService } from '../../user.service'
+import { AngularFirestore } from '@angular/fire/firestore'
 
 
 
@@ -29,6 +31,11 @@ import config  from '../../fb'
     AngularFireDatabaseModule,
     AngularFireModule.initializeApp(config)
   ],
-  declarations: [ConnectionPage]
+  declarations: [ConnectionPage],
+  providers: [
+    UserService,
+    AngularFirestore
+
+  ]
 })
 export class ConnectionPageModule {}

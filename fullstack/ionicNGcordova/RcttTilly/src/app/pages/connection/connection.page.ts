@@ -5,7 +5,7 @@ import {AngularFireAuth} from '@angular/fire/auth'
 import {auth} from 'firebase/app'
 
 import { Router } from '@angular/router'
-
+import { UserService } from '../../user.service'
 
 @Component({
   selector: 'app-connection',
@@ -14,9 +14,10 @@ import { Router } from '@angular/router'
 })
 export class ConnectionPage implements OnInit {
 
+  username:string="";
+  password:string="";
   public connectForm: FormGroup;
-
-  constructor(public formBuilder: FormBuilder, public afAuth: AngularFireAuth, public router: Router) { 
+  constructor(public formBuilder: FormBuilder, public afAuth: AngularFireAuth, public router: Router,public user: UserService) { 
 
 
     this.connectForm = this.formBuilder.group({
@@ -44,11 +45,18 @@ export class ConnectionPage implements OnInit {
 
 
   async connect(){
-
+    const{username=this.connectForm.value.mail,password=this.connectForm.value.password}=this
     try{
       const res = await this.afAuth.auth.signInWithEmailAndPassword(this.connectForm.value.mail, this.connectForm.value.password);
+      
+      if(res.user){
+        this.user.setUser({
+          username,
+          uid: res.user.uid
+        })
+        this.router.navigate(['/tabs']);
+      }
       console.log(res);
-      this.router.navigate(['/tabs']);
 
     } catch(err){
       console.dir(err);

@@ -6,6 +6,11 @@ import {auth} from 'firebase/app'
 
 import { Router } from '@angular/router'
 
+import { UserService } from '../../user.service'
+import { AngularFirestore } from '@angular/fire/firestore'
+import { AlertController } from '@ionic/angular';
+
+
 @Component({
   selector: 'app-register',
   templateUrl: './register.page.html',
@@ -14,41 +19,53 @@ import { Router } from '@angular/router'
 
 export class RegisterPage implements OnInit {
 
+
+  username:string="";
+  password:string="";
+  
   public registerForm: FormGroup;
 
-  constructor(public formBuilder: FormBuilder,public afAuth: AngularFireAuth, public router: Router) { 
+  constructor(
+    public formBuilder: FormBuilder,
+    public afAuth: AngularFireAuth, 
+    public router: Router,
+    public afStore: AngularFirestore,
+    public user: UserService,
+    public alertController: AlertController
+    ) 
+    { 
     this.registerForm = this.formBuilder.group({
-      Nom: new FormControl('', Validators.compose([
+      NomFc: new FormControl('', Validators.compose([
         Validators.required,
         Validators.pattern('^[a-zA-Z- ]+$')
       ])),
-      Prenom: new FormControl('', Validators.compose([
+      PrenomFc: new FormControl('', Validators.compose([
         Validators.required,
         Validators.pattern('^[a-zA-Z- ]+$')
       ])),
-      Matricule: new FormControl('', Validators.compose([
+      MatriculeFc: new FormControl('', Validators.compose([
         Validators.required,
         Validators.pattern('^[0-9]+$'),
         Validators.maxLength(6),
         Validators.minLength(6)
       ])),
-      password: new FormControl('', Validators.compose([
+      passwordFc: new FormControl('', Validators.compose([
         Validators.required,
         Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!-_@#$%^&*])[a-zA-Z0-9!-_@#$%^&*]+$'),
         Validators.minLength(8)
       ])),
-      mail: new FormControl('', Validators.compose([
+      mailFc: new FormControl('', Validators.compose([
         Validators.required,
         Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')
       ])),
-      confirmpassword: new FormControl('', Validators.compose([
+      confirmpasswordFc: new FormControl('', Validators.compose([
         Validators.required,
         Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!-_@#$%^&*])[a-zA-Z0-9!-_@#$%^&*]+$'),
         Validators.minLength(8)
       ])),
     },
     {
-      validators: this.password.bind(this)
+      validators: this.passwordFc.bind(this)
     });
   }
 
@@ -61,19 +78,46 @@ export class RegisterPage implements OnInit {
   ngOnInit(): void {
   }
 
-  password(formGroup: FormGroup) {
-    const { value: password } = formGroup.get('password');
-    const { value: confirmPassword } = formGroup.get('confirmpassword');
+  passwordFc(formGroup: FormGroup) {
+    const { value: password } = formGroup.get('passwordFc');
+    const { value: confirmPassword } = formGroup.get('confirmpasswordFc');
     return password === confirmPassword ? null : { passwordNotMatch: true };
   }
 
 
-  async register(){
+  async presentAlert(title: string, content:string){
 
+    const alert= await this.alertController.create({
+
+      header: title,
+      message: content,
+      buttons: ["OK"]
+
+    })
+
+    await alert.present();
+  }
+
+
+  async register(){
+    const{username=this.registerForm.value.mail,password=this.registerForm.value.password}=this
     try{
-      const res = await this.afAuth.auth.createUserWithEmailAndPassword(this.registerForm.value.mail, this.registerForm.value.password);
+      const res = await this.afAuth.auth.createUserWithEmailAndPassword(username, password);
       console.log(res);
+
+      this.afStore.doc(`users/${res.user.uid}`).set({
+
+        username
+      })
+
+      this.user.setUser({
+        username,
+        uid: res.user.uid
+      })
+
+      this.presentAlert("Succès","Vous êtes enregistré");
       this.router.navigate(['/connection']);
+
     } catch(err){
       console.dir(err);
     }
