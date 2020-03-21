@@ -1,25 +1,10 @@
 <h1><strong>DEVWEB</strong></h1>
 
+<h2>Sujet</h2>
+
+<p>Application d'un club de sport.</p> 
+
 <h2>Technologies</h2>
-
-<h3>Backend</h3>
-
-<h4>Pourquoi <em>NODEjs</em>?</h4> 
-
-![NODEJS](https://media-exp1.licdn.com/dms/image/C5622AQHaOkCjkIynnA/feedshare-shrink_1280/0?e=1586995200&v=beta&t=6Z-S6CTu2Tz2s1SxKceS5o7l6GsoKxTmtZkercizJX4)
-
-<h5>Avantages</h5>
-
-<h5>Inconvénients</h5>
-
-<h4>Pourquoi <em>ExpressJS</em>?</h4> 
-
-
-<h4>Quelle <em>base de données</em> allons-nous utiliser?</h4>
-
-<p>
-Guillaume s'en fout il préfère MYSQL.
-</p>
 
 <h4>Schémas de la base de données</h4>
 
