@@ -1,4 +1,4 @@
-import { IonicModule } from '@ionic/angular';
+import { IonicModule, NavParams } from '@ionic/angular';
 import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -23,7 +23,6 @@ registerLocaleData(localeFr, 'fr');
 import config from '../fb'
 
 
-
 @NgModule({
   imports: [
     IonicModule,
@@ -37,8 +36,10 @@ import config from '../fb'
     AngularFireDatabaseModule,
     AngularFireAuthModule,
     AngularFireStorageModule,
-    AngularFirestoreModule
+    AngularFirestoreModule,
   ],
-  declarations: [calendarPage]
+  declarations: [
+    calendarPage
+  ]
 })
 export class calendarPageModule {}

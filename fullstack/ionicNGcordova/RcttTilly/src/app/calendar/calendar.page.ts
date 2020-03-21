@@ -6,8 +6,9 @@ import { AngularFireDatabase } from '@angular/fire/database';
 import { ModalController } from '@ionic/angular';
 import { EventPage } from '../pages/event/event.page';
 
-/* import { Observable } from 'rxjs';
-import 'firebase/database'; */
+import { Router } from '@angular/router'
+
+import 'firebase/database'; 
 
 
 @Component({
@@ -22,9 +23,9 @@ export class calendarPage {
   viewTitle: string;
   selectedDay=new Date();
 
-  constructor( public afDB: AngularFireDatabase,  public modalController: ModalController) {
+  constructor(private router: Router, public afDB: AngularFireDatabase,  public modalController: ModalController) {
 
-    this.loadEvent();
+    this.loadEvents();
     console.log(this.eventSource);
 
   }
@@ -59,10 +60,6 @@ export class calendarPage {
     this.currentMonth = title;
   }
   onTimeSelected(ev: any) {
-/*     this.selectedDay=ev.selectedTime;
- */
-
-
     const selected = new Date(ev.selectedTime);
     this.newEvent.startTime = selected.toISOString();
     selected.setHours(selected.getHours() + 1);
@@ -70,12 +67,22 @@ export class calendarPage {
   }
 
   async onEventSelected(event: any) {
-    console.log('Event: ' + JSON.stringify(event));
-    const modal = await this.modalController.create({
-      component: EventPage,
-      componentProps: event
-    });
-    return await modal.present();
+
+    let eventObj={
+      'title': event.title, 
+    'description': event.description,
+    'startTime': event.startTime,
+    'endTime':event.endTime
+    }
+
+    let eventObjToString = JSON.stringify(eventObj);
+
+    console.log('Event: ' + eventObjToString);
+
+    this.router.navigate([
+    'event',eventObjToString
+   ]);
+
   }
   
   showHideForm() {
@@ -100,22 +107,26 @@ export class calendarPage {
   }
 
 
-  loadEvent() {
+  loadEvents() {
 
  
 
  this.afDB.list('Events').snapshotChanges(['child_added']).subscribe(actions => {
       this.eventSource = [];
-
+ 
       actions.forEach(action => {
+
         console.log('action: ' + action.payload.exportVal().title);
+
         this.eventSource.push({
           title: action.payload.exportVal().title,
           startTime:  new Date(action.payload.exportVal().startTime),
           endTime: new Date(action.payload.exportVal().endTime),
           description: action.payload.exportVal().description,
         });
+
         this.tillyCalendar.loadEvents();
+
       });
     });
      

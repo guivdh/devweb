@@ -1,10 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-
-
-import { ModalController } from '@ionic/angular';
-import { NavParams } from '@ionic/angular';
+import { Component, Input, OnInit } from '@angular/core';
+import {Location} from '@angular/common';
 import { formatDate } from '@angular/common';
 
+import { ActivatedRoute } from '@angular/router'
 @Component({
   selector: 'app-event',
   templateUrl: './event.page.html',
@@ -12,25 +10,40 @@ import { formatDate } from '@angular/common';
 })
 export class EventPage implements OnInit {
 
+
+  eventObjRcv;
+  stringToObj;
+
   title: string;
-  decsription: string;
-  start: string;
-  end: string;
+  description: string;
+  startTime: string;
+  endTime: string;
 
-  constructor(public modalController: ModalController,
-    public navParams: NavParams) 
+  constructor(private _location: Location, public activateRoute:  ActivatedRoute)
     {
-      this.title = navParams.get('title');
-      this.decsription = navParams.get('description');
-      this.start = formatDate(navParams.get('startTime'), 'medium', 'fr-FR');
-      this.end = formatDate(navParams.get('endTime'), 'medium', 'fr-FR');
+     
      }
-
   ngOnInit() {
+    this.eventObjRcv = this.activateRoute.snapshot.paramMap.get('eventObj');
+
+    console.log(this.eventObjRcv);
+    //we need to reverse json stringify 
+    //that we have done in onEventSelected--> and read it as an object
+    this.stringToObj=JSON.parse(this.eventObjRcv);
+    this.title = this.stringToObj.title;
+    this.description =this.stringToObj.description;
+
+    this.startTime = formatDate(this.stringToObj.startTime, 'medium', 'fr');
+    
+    this.endTime = formatDate(this.stringToObj.endTime, 'medium', 'fr');
+ 
+
   }
 
 
-  close() {
-    this.modalController.dismiss();
-  }
+
+
+   close() {
+    this._location.back();
+  } 
 }
