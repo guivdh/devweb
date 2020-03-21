@@ -3,6 +3,14 @@ ion-content ion-toolbar {
   --background: translucent;
 }
 
+
+.labelEv{
+  color: $tillyLight;
+}
+::placeholder {
+  color: red;
+}
+
 .viewedMonth{
 
 color: $tillyGold;
@@ -14,7 +22,7 @@ font-size: xx-large;
 .updatedHour{
   
   color: $tillySkyBlue;
-  font-size: large;
+  font-size: medium;
 }
 .updateFR{
   
