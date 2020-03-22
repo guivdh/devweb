@@ -7,19 +7,19 @@
   <div *ngIf="showAddEvent" class="ion-padding">
     <ion-item>
       <ion-label class="labelEv"><b>Titre:</b></ion-label>
-      <ion-input type="text" placeholder="Titre" [(ngModel)]="newEvent.title"></ion-input>
+      <ion-input class="inputEv" type="text" placeholder="Titre" [(ngModel)]="newEvent.title"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label class="labelEv"><b>Description:</b></ion-label>
-      <ion-input type="text" placeholder="Description" [(ngModel)]="newEvent.description"></ion-input>
+      <ion-input class="inputEv" type="text" placeholder="Description" [(ngModel)]="newEvent.description"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label class="labelEv"><b>Début</b></ion-label>
-      <ion-datetime doneText="OK" cancelText="Annuler" i18n displayFormat="DD/MM/YYYY HH:mm" pickerFormat="D MMM HH:mm" [(ngModel)]="newEvent.startTime" [min]="minDate"></ion-datetime>
+      <ion-datetime class="dateInputEv" doneText="OK" cancelText="Annuler" i18n displayFormat="DD/MM/YYYY HH:mm" pickerFormat="D MMM HH:mm" [(ngModel)]="newEvent.startTime" [min]="minDate"></ion-datetime>
     </ion-item>
     <ion-item>
       <ion-label class="labelEv"><b>Fin</b></ion-label>
-      <ion-datetime doneText="OK" cancelText="Annuler" displayFormat="DD/MM/YYYY HH:mm" pickerFormat="D MMM HH:mm" [(ngModel)]="newEvent.endTime" [min]="minDate"></ion-datetime>
+      <ion-datetime  class="dateInputEv" doneText="OK" cancelText="Annuler" displayFormat="DD/MM/YYYY HH:mm" pickerFormat="D MMM HH:mm" [(ngModel)]="newEvent.endTime" [min]="minDate"></ion-datetime>
     </ion-item>
     <ion-button color="warning" expand="block" (click)="addEvent()">Ajouter</ion-button>
   </div>

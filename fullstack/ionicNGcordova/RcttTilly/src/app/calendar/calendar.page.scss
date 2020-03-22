@@ -4,11 +4,11 @@ ion-content ion-toolbar {
 }
 
 
-.labelEv{
+.labelEv, .dateInputEv{
   color: $tillyLight;
 }
-::placeholder {
-  color: red;
+.inputEv{
+  color: $tillyGrey;
 }
 
 .viewedMonth{
