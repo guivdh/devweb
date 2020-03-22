@@ -7,6 +7,17 @@ import { IonicModule } from '@ionic/angular';
 import { ConnectionPageRoutingModule } from './connection-routing.module';
 
 import { ConnectionPage } from './connection.page';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireDatabaseModule } from '@angular/fire/database';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+import { AngularFireStorageModule } from '@angular/fire/storage';
+
+import config  from '../../fb'
+import { UserService } from '../../user.service'
+import { AngularFirestore } from '@angular/fire/firestore'
+
+
+
 
 @NgModule({
   imports: [
@@ -14,8 +25,17 @@ import { ConnectionPage } from './connection.page';
     FormsModule,
     ReactiveFormsModule,
     IonicModule,
-    ConnectionPageRoutingModule
+    ConnectionPageRoutingModule,
+    AngularFireAuthModule,
+    AngularFireStorageModule,
+    AngularFireDatabaseModule,
+    AngularFireModule.initializeApp(config)
   ],
-  declarations: [ConnectionPage]
+  declarations: [ConnectionPage],
+  providers: [
+    UserService,
+    AngularFirestore
+
+  ]
 })
 export class ConnectionPageModule {}

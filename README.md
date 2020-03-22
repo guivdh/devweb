@@ -1,54 +1,14 @@
 <h1><strong>DEVWEB</strong></h1>
 
+<h2>Sujet</h2>
+
+<p>Application d'un club de sport.</p> 
+
 <h2>Technologies</h2>
 
-<h3>Backend</h3>
+<h4>Schémas de la base de données</h4>
 
-<h4>Pourquoi <em>NODEjs</em>?</h4> 
-
-![NODEJS](https://media-exp1.licdn.com/dms/image/C5622AQHaOkCjkIynnA/feedshare-shrink_1280/0?e=1586995200&v=beta&t=6Z-S6CTu2Tz2s1SxKceS5o7l6GsoKxTmtZkercizJX4)
-
-<h5>Avantages</h5>
-
-<h5>Inconvénients</h5>
-
-<h4>Pourquoi <em>ExpressJS</em>?</h4> 
-
-
-<h4>Quelle <em>base de données</em> allons-nous utiliser?</h4>
-
-<p>
-<kbd>MySQL</kbd> : Une base de données SQL open source, multithread et facile à utiliser.
-
-<kbd>PostgreSQL</kbd> : Une puissante base de données relationnelle open source, basée sur des objets, qui est hautement personnalisable.
-
-<kbd>Redis</kbd> : Un magasin de clés/valeurs open source et à faible maintenance qui est utilisé pour la mise en cache de données dans les applications mobiles.
-
-<kbd>MongoDB</kbd> : Une base de données documentaire JSON sans schéma, connue pour sa flexibilité et son évolutivité.
-
-<kbd>Memcached</kbd> : Un système de cache distribué qui est multi-thread, et utilisé principalement pour mettre en cache des objets afin d'accélérer les applications en allégeant la charge de la base de données.
-
-<kbd>MariaDB</kbd> : Une base de données relationnelle open source populaire qui a été créée par les premiers développeurs de MySQL.
-
-<kbd>Cassandra</kbd> : Une base de données NoSQL libre et open source, conçue pour gérer une grande quantité de données non structurées à toute échelle.
-
-<kbd>SQLite</kbd> : Base de données embarquée, dont l'usage courant est de fournir des capacités de stockage de données locales sur les téléphones portables.
-
-<kbd>InfluxDB</kbd> : Une base de données open source, rapide et de séries chronologiques, écrite en Go.
-
-<kbd>RethinkDB</kbd> : Une base de données open source, orientée document, qui stocke des données au format JSON et se synchronise en temps réel avec l'application.
-
-<kbd>Riak DB</kbd> : Une base de données NoSQL distribuée, dont la caractéristique principale est la haute disponibilité, la tolérance aux pannes et la résilience des données.
-
-<kbd>CouchDB</kbd> : Une base de données NoSQL orientée document qui utilise JSON pour stocker les données et le javascript comme principal langage d'interrogation.
-
-<kbd>Couchbase</kbd> : Une base de données NoSQL complète qui prend en charge la synchronisation hors ligne, le CRUD complet et les capacités de requête et s'exécute localement sur l'appareil.
-
-<kbd>ArangoDB</kbd> : Une base de données NoSQL open source qui est connue pour ses fonctionnalités multi-modèles, graphes et géo algorithmes.
-
-</p>
-
- 
+![NODEJS](rapports/diagrammeDB.png)
 <h3>Frontend</h3>
 
 <a href="https://www.figma.com/proto/HIoSou87Z4wpMC424l11PT/APPLI-Mobile?node-id=8%3A108&scaling=scale-down" target="_blank">Maquette de l'application</a> 

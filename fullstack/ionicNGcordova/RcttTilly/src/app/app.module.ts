@@ -12,16 +12,21 @@ import { AppComponent } from './app.component';
 
 import { ComponentsModule } from './components/components.module';
 
-
+import { EventPageModule } from '../app/pages/event/event.module';
+ 
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
-  imports: [BrowserModule, 
+  imports: [
+    BrowserModule, 
     IonicModule.forRoot({
       rippleEffect: false,
       mode: 'md'
     }),
-    AppRoutingModule],
+    AppRoutingModule,
+    EventPageModule
+  
+  ],
   providers: [
     StatusBar,
     SplashScreen,

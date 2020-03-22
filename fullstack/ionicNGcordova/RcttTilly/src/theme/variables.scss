@@ -1,10 +1,31 @@
 // Ionic Variables and Theming. For more info, please see:
 // http://ionicframework.com/docs/theming/
-
-
+@import '../app/app.component.scss';
 
 /** Ionic CSS Variables **/
 :root {
+  --ion-background-color: #000000;
+  form{
+    ion-item{
+    background-color: #5244526e;
+    }
+  }
+    ion-list{
+       ion-item{
+        
+          border-radius: 5px;
+          background-color: #5244526e;
+          border-color: $tillyLight;
+          color: $tillyLight;
+       
+      }
+    } 
+
+
+ 
+  /* ion-list{
+    background-color: $tillyGrey;
+  } */
   /** primary **/
   --ion-color-primary: #3880ff;
   --ion-color-primary-rgb: 56, 128, 255;
@@ -183,7 +204,7 @@
 
     --ion-toolbar-background: #0d0d0d;
 
-    --ion-item-background: #1c1c1c;
+    --ion-item-background: $tillyGrey;
     --ion-item-background-activated: #313131;
   }
 
@@ -197,7 +218,7 @@
     --ion-background-color: #000000;
     --ion-background-color-rgb: 18,18,18;
 
-    --ion-text-color: #def038;
+    --ion-text-color: #ffffff;
     --ion-text-color-rgb: 255,255,255;
 
     --ion-border-color: #222222;
@@ -222,7 +243,7 @@
     --ion-color-step-900: #e7e7e7;
     --ion-color-step-950: #f3f3f3;
 
-    --ion-item-background: #1A1B1E;
+    --ion-item-background: $tillyGrey;
   }
 
   ion-title.title-large {

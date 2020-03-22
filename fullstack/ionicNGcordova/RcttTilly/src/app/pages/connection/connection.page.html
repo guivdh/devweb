@@ -29,13 +29,16 @@
 
   <div class="text-center" >
 		<button  class="btnFollow" id="connect" expand="block" 
-		routerLink="/tabs" routerDirection="root" fill="outline">
+		routerLink="/tabs" routerDirection="root" fill="outline" (click)="connect()">
 		Continuer
-    </button>
-
+	</button>
+	
   </div>
   <div class="text-center">
-    <a  [routerLink]="['/forgot-password']" class="small-text">Mot de passe oublié?</a>
+	<button  class="btnFrgtPswd" id="connect" expand="block" 
+	routerLink="/forgot-password" routerDirection="root" fill="outline">
+	Mot de passe oublié?
+	</button>
   </div>
 
 </ion-content>

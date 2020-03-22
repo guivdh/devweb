@@ -1,4 +1,4 @@
-import { IonicModule } from '@ionic/angular';
+import { IonicModule, NavParams } from '@ionic/angular';
 import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -6,6 +6,23 @@ import { FormsModule } from '@angular/forms';
 import { calendarPage } from './calendar.page';
 import { ExploreContainerComponentModule } from '../explore-container/explore-container.module';
 import { ComponentsModule } from '../components/components.module'
+
+import { NgCalendarModule  } from 'ionic2-calendar';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireDatabaseModule } from '@angular/fire/database';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+import { AngularFireStorageModule } from '@angular/fire/storage';
+
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+
+
+import { registerLocaleData } from '@angular/common';
+import localeFr from '@angular/common/locales/fr';
+registerLocaleData(localeFr, 'fr');
+
+import config from '../fb'
+
+
 @NgModule({
   imports: [
     IonicModule,
@@ -13,8 +30,16 @@ import { ComponentsModule } from '../components/components.module'
     FormsModule,
     ExploreContainerComponentModule,
     RouterModule.forChild([{ path: '', component: calendarPage }]),
-    ComponentsModule
+    ComponentsModule,
+    NgCalendarModule,
+    AngularFireModule.initializeApp(config),
+    AngularFireDatabaseModule,
+    AngularFireAuthModule,
+    AngularFireStorageModule,
+    AngularFirestoreModule,
   ],
-  declarations: [calendarPage]
+  declarations: [
+    calendarPage
+  ]
 })
 export class calendarPageModule {}

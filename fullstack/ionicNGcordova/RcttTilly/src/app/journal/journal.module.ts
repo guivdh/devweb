@@ -8,6 +8,15 @@ import { ExploreContainerComponentModule } from '../explore-container/explore-co
 import { ComponentsModule } from '../components/components.module';
 
 
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireDatabaseModule } from '@angular/fire/database';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+import { AngularFireStorageModule } from '@angular/fire/storage';
+
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFireDatabase } from '@angular/fire/database';
+import config  from '../fb'
+
 
 @NgModule({
   imports: [
@@ -16,8 +25,16 @@ import { ComponentsModule } from '../components/components.module';
     FormsModule,
     ExploreContainerComponentModule,
     RouterModule.forChild([{ path: '', component: journalPage }]),
-    ComponentsModule
+    ComponentsModule,
+    AngularFireAuthModule,
+    AngularFireStorageModule,
+    AngularFireDatabaseModule,
+    AngularFireModule.initializeApp(config)
   ],
-  declarations: [journalPage]
+  declarations: [journalPage],
+  providers:[
+    AngularFireDatabase,
+
+  ]
 })
 export class journalPageModule {}

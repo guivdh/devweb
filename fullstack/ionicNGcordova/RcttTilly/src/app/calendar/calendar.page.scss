@@ -1,3 +1,70 @@
+@import '../app.component.scss';
 ion-content ion-toolbar {
   --background: translucent;
 }
+
+
+.labelEv{
+  color: $tillyLight;
+}
+::placeholder {
+  color: red;
+}
+
+.viewedMonth{
+
+color: $tillyGold;
+
+text-transform: uppercase;
+font-size: xx-large;
+}
+
+.updatedHour{
+  
+  color: $tillySkyBlue;
+  font-size: medium;
+}
+.updateFR{
+  
+  font-size: small;
+  color: $tillyLight;
+}
+
+
+
+.monthview-primary-with-event { background-color: #FF5722!important; }
+ 
+ .monthview-selected{ 
+  background-color: $tillyLight !important;
+  color: $tillyBlack !important;
+ } 
+
+ .monthview-current{ 
+  background-color: $tillySkyBlue !important;
+  color: $tillyBlack !important;
+ } 
+
+
+ .match{
+  background-color: $tillyGold !important;
+  color: $tillyLight !important;
+ }
+
+ .training{
+
+  background-color: $tillyPurple !important;
+  color: $tillyLight !important;
+
+ }
+
+ .matchPassed{
+  background-color: $tillyGold !important;
+  color: $tillyBlack !important;
+ }
+
+ .trainingPassed{
+
+  background-color: $tillySkyBlue !important;
+  color: $tillyBlack !important;
+
+ }
