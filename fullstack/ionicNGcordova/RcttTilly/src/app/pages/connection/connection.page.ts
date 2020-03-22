@@ -14,7 +14,7 @@ import { UserService } from '../../user.service'
 })
 export class ConnectionPage implements OnInit {
 
-  username:string="";
+  mail:string="";
   password:string="";
   public connectForm: FormGroup;
   constructor(public formBuilder: FormBuilder, public afAuth: AngularFireAuth, public router: Router,public user: UserService) { 
@@ -45,13 +45,13 @@ export class ConnectionPage implements OnInit {
 
 
   async connect(){
-    const{username=this.connectForm.value.mail,password=this.connectForm.value.password}=this
+    const{mail=this.connectForm.value.mail,password=this.connectForm.value.password}=this
     try{
       const res = await this.afAuth.auth.signInWithEmailAndPassword(this.connectForm.value.mail, this.connectForm.value.password);
       
       if(res.user){
         this.user.setUser({
-          username,
+          mail,
           uid: res.user.uid
         })
         this.router.navigate(['/tabs']);

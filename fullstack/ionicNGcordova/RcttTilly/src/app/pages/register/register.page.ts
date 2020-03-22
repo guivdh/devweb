@@ -20,9 +20,14 @@ import { AlertController } from '@ionic/angular';
 export class RegisterPage implements OnInit {
 
 
-  username:string="";
+  mail:string="";
+  firstname: string="";
+  estResponsable: boolean= false;
+  matricule: number = 0;
+  name: string="";
   password:string="";
-  
+
+
   public registerForm: FormGroup;
 
   constructor(
@@ -100,18 +105,38 @@ export class RegisterPage implements OnInit {
 
 
   async register(){
-    const{username=this.registerForm.value.mail,password=this.registerForm.value.password}=this
+
+   var mail = this.registerForm.value.mailFc;
+    var firstname = this.registerForm.value.PrenomFc;
+    var estResponsable = false;
+    var matricule = this.registerForm.value.MatriculeFc;
+    var name = this.registerForm.value.NomFc;
+    var password = this.registerForm.value.passwordFc;
+  
+  
+    /* const{
+      mail=,
+      password=,
+      name =,
+      firstname =this.registerForm.value.PrenomFc,
+      matricule =this.registerForm.value.MatriculeFc,
+
+    }=this */
     try{
-      const res = await this.afAuth.auth.createUserWithEmailAndPassword(username, password);
+      const res = await this.afAuth.auth.createUserWithEmailAndPassword(mail, password);
       console.log(res);
 
       this.afStore.doc(`users/${res.user.uid}`).set({
 
-        username
+        AdresseMail: mail,
+        Firstname: firstname,
+        Name: name,
+        Matricule: matricule,
+        Password: password,
       })
 
       this.user.setUser({
-        username,
+        mail,
         uid: res.user.uid
       })
 

@@ -5,7 +5,7 @@ import { AngularFirestore } from '@angular/fire/firestore';
 
 interface user {
 
-    username: string,
+    mail: string,
     uid: string
 }
 
@@ -34,7 +34,7 @@ export class UserService{
             {
                 const user = this.afAuth.auth.currentUser;
                 this.setUser({
-                    username: user.email,
+                    mail: user.email,
                     uid: user.uid
                 });
                 return user.uid;
