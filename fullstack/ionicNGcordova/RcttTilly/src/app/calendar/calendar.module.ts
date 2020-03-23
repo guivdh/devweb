@@ -36,7 +36,8 @@ import config from '../fb'
     AngularFireDatabaseModule,
     AngularFireAuthModule,
     AngularFireStorageModule,
-    AngularFirestoreModule,
+    AngularFirestoreModule.enablePersistence(),
+
   ],
   declarations: [
     calendarPage

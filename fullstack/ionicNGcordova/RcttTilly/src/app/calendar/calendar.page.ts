@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild,OnInit  } from '@angular/core';
 import { CalendarComponent } from 'ionic2-calendar/calendar';
 
 import { AngularFireDatabase } from '@angular/fire/database';
@@ -6,27 +6,41 @@ import { AngularFireDatabase } from '@angular/fire/database';
 import { ModalController } from '@ionic/angular';
 import { EventPage } from '../pages/event/event.page';
 
-import { Router } from '@angular/router'
+import { ActivatedRoute, Router } from '@angular/router';
 
 import 'firebase/database'; 
 
+import { LoadingController } from '@ionic/angular';
+import { ApiService } from '../api.service';
+import { EventRandom } from '../event';
 
 @Component({
   selector: 'app-calendar',
   templateUrl: 'calendar.page.html',
   styleUrls: ['calendar.page.scss']
 })
-export class calendarPage {
+export class calendarPage implements OnInit {
 
+  ngOnInit() {
+    //this.getEvents();
+  }
+
+  eventsRandom: EventRandom[] = [];
 
   eventSource=[];
   viewTitle: string;
   selectedDay=new Date();
 
-  constructor(private router: Router, public afDB: AngularFireDatabase,  public modalController: ModalController) {
+  constructor(
+    private router: Router,
+    public afDB: AngularFireDatabase,
+    public modalController: ModalController,
+    public api: ApiService,
+    public loadingController: LoadingController,
+    public route: ActivatedRoute
+    ) {
 
-    this.loadEvents();
-    console.log(this.eventSource);
+    this.loadEvent();
 
   }
   
@@ -38,6 +52,7 @@ export class calendarPage {
 
   showAddEvent: boolean;
   newEvent = {
+    _id:'',
     title: '',
     description: '',
     startTime: '',
@@ -69,6 +84,7 @@ export class calendarPage {
   async onEventSelected(event: any) {
 
     let eventObj={
+      '_id': event._id,
       'title': event.title, 
     'description': event.description,
     'startTime': event.startTime,
@@ -88,6 +104,7 @@ export class calendarPage {
   showHideForm() {
     this.showAddEvent = !this.showAddEvent;
     this.newEvent = {
+      _id: '',
       title: '',
       description: '',
       startTime: new Date().toISOString(),
@@ -98,6 +115,8 @@ export class calendarPage {
 
   addEvent() {
     this.afDB.list('Events').push({
+      
+      _id: this.createId(this.newEvent.startTime,this.newEvent.title),
       title: this.newEvent.title,
       startTime:  this.newEvent.startTime,
       endTime: this.newEvent.endTime,
@@ -106,8 +125,19 @@ export class calendarPage {
     this.showHideForm();
   }
 
+  createId(value1, value2){
+    let arr1=value1.split('-');
+    let arr4=arr1[2].slice(0,2);
+    let arr3=arr1[1];
+    let arr2=arr1[0];
+    let arr5=[arr2,arr3,arr4];
 
-  loadEvents() {
+    let strFinal= arr5.join('')+value2.replace(" ","");
+
+    return strFinal;
+  }
+
+  loadEvent() {
 
  
 
@@ -133,7 +163,21 @@ export class calendarPage {
   }
 
  
-
+  async getEvents() {
+    const loading = await this.loadingController.create({
+      message: 'Loading...'
+    });
+    await loading.present();
+    await this.api.getEvents()
+      .subscribe(res => {
+        this.eventsRandom = res;
+        console.log(this.eventsRandom);
+        loading.dismiss();
+      }, err => {
+        console.log(err);
+        loading.dismiss();
+      });
+  }
 
 
 }
