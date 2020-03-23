@@ -74,9 +74,9 @@ app.delete('/utilisateur/:id', (req, res) => {
 
 app.post('/utilisateur', (req, res) => {
     console.log("Requête : " + req.body);
-    con.query( "INSERT INTO utilisateur values (+ sdqs +"`",[req.params.id],(err,rows,fields)=> {
+    con.query( `INSERT INTO utilisateur values (\'${req.body.matricule}\',\'${req.body.nom}\',\'${req.body.prenom}\',\'${req.body.adressemail}\',\'${req.body.motdepasse}\',\'${req.body.estresponsable}\'`,[req.params.id],(err, rows, fields)=> {
         if (!err)
-            res.send('Delete successfully');
+            res.render('index',{title: 'Data Saved', message: 'Data Saved successfully!'});
         else
             console.log(err);
     })

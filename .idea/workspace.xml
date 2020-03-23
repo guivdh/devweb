@@ -12,6 +12,20 @@
       <executable />
     </execution>
   </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand />
+    <select />
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -60,7 +74,7 @@
       <workItem from="1584887904911" duration="4647000" />
       <workItem from="1584957957004" duration="990000" />
       <workItem from="1584958965224" duration="2424000" />
-      <workItem from="1584961564459" duration="8211000" />
+      <workItem from="1584961564459" duration="9719000" />
     </task>
     <servers />
   </component>
@@ -68,6 +82,10 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="552" y="179" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1584974270749">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="552" y="179" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040/-1920.-156.1920.1040@0.0.1920.1040" timestamp="1584974270749" />
     <state x="1096" y="244" key="run.anything.popup" timestamp="1584457532692">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
