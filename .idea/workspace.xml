@@ -30,9 +30,11 @@
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="ts.external.directory.path" value="C:\Users\guillaume\Documents\GitHub\devweb\fullstack\firebase-backend\functions\node_modules\typescript\lib" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\guillaume\Documents\GitHub\devweb\fullstack\firebase-backend" />
       <recent name="C:\Users\guillaume\Documents\GitHub\devweb\fullstack\backend\models" />
       <recent name="C:\Users\guillaume\Documents\GitHub\devweb\fullstack\backend" />
     </key>
@@ -55,7 +57,8 @@
       <workItem from="1584452402456" duration="8889000" />
       <workItem from="1584476126401" duration="1396000" />
       <workItem from="1584518490209" duration="1602000" />
-      <workItem from="1584887904911" duration="2252000" />
+      <workItem from="1584887904911" duration="4647000" />
+      <workItem from="1584957957004" duration="990000" />
     </task>
     <servers />
   </component>
