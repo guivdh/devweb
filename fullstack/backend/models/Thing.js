@@ -1,8 +1,8 @@
 const Sequelize = require('sequelize');
-const sequelize = new Sequelize('sys', 'root', '', {
+const sequelize = new Sequelize('test', 'root', '', {
     host: 'localhost',
-    dialect: 'mysql',
-    port: '3308',
+    dialect: 'mariadb',
+    port: '3306',
 });
 const Thing = sequelize.define("Thing",{
     title: {type: Sequelize.STRING, required: true},

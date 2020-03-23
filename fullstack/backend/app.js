@@ -1,13 +1,14 @@
 ﻿const express = require('express');
 const bodyParser = require('body-parser');
 var mysql = require('mysql');
-const Thing = require('./models/Thing');
+//const Thing = require('./models/Thing');
 
 var con = mysql.createConnection({
     host: "localhost",
     port: "3308",
     user: "root",
-    password: ""
+    password: "",
+    database: "database1",
 });
 
 con.connect(function(err) {
@@ -26,39 +27,59 @@ app.use((req, res, next) => {
 
 app.use(bodyParser.json());
 
-app.post('/api/stuff', (req, res, next) => {
-    delete req.body._id;
-    const thing = new Thing({
-        ...req.body
-    });
-    thing.save()
-        .then(() => res.status(201).json({ message: 'Objet enregistré !'}))
-        .catch(error => res.status(400).json({ error }));
+app.get('/utilisateur', (req, res) => {
+    con.query("INSERT INTO utilisateur",(err,rows,fields)=> {
+        if (!err)
+            res.send(rows);
+        else
+            console.log(err);
+    })
 });
 
-app.put('api/stuff/:id', (req, res, next) => {
-    Thing.update({ _id: 1 }, { price: 10 })
-        .then(() => res.status(200).json({message: 'Objet modifié !'}))
-        .catch(error => res.status(404).json({ error }));
+/*
+* INSERT INTO `database1`.`utilisateur`
+(`Matricule`,
+`Nom`,
+`Prenom`,
+`AdresseMail`,
+`MotDePasse`,
+`EstResponsable`)
+VALUES
+(<{Matricule: }>,
+<{Nom: }>,
+<{Prenom: }>,
+<{AdresseMail: }>,
+<{MotDePasse: }>,
+<{EstResponsable: }>);
+
+* */
+
+app.get('/utilisateur/:id', (req, res) => {
+    con.query("SELECT * FROM utilisateur WHERE matricule = ?",[req.params.id],(err,rows,fields)=> {
+        if (!err)
+            res.send(rows);
+        else
+            console.log(err);
+    })
 });
 
-app.delete('api/stuff/:id', (req, res, next) => {
-    Thing.delete({_id: req.params.id})
-        .then(() => res.status(200).json({message: 'Objet supprimé !'}))
-        .catch(error  => res.status(400).json({error}));
-})
-
-app.get('/api/stuff/:id', (req, res, next) => {
-    Thing.findOne({ _id: req.params.id })
-        .then(thing => res.status(200).json(thing))
-        .catch(error => res.status(404).json({ error }));
+app.delete('/utilisateur/:id', (req, res) => {
+    con.query("DELETE utilisateur WHERE matricule = ?",[req.params.id],(err,rows,fields)=> {
+        if (!err)
+            res.send('Delete successfully');
+        else
+            console.log(err);
+    })
 });
 
-app.use('/api/stuff', (req, res, next) => {
-    Thing.findAll()
-        .then(things => res.status(200).json(things))
-        .catch(error => res.status(400).json({ error }));
+app.post('/utilisateur', (req, res) => {
+    console.log("Requête : " + req.body);
+    con.query( "INSERT INTO utilisateur values (+ sdqs +"`",[req.params.id],(err,rows,fields)=> {
+        if (!err)
+            res.send('Delete successfully');
+        else
+            console.log(err);
+    })
 });
-
 
 module.exports = app;
