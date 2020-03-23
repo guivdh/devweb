@@ -1,0 +1,52 @@
+POST : 
+
+localhost:3000/utilisateur/
+
+méthode request -> POST
+
+Exemple : 
+
+{
+	"Matricule":"H4",
+	"Nom":"Moulin",
+	"Prenom":"bob",
+	"AdresseMail":"b.moulin@gmail.com",
+	"MotDePasse":"1641646",
+	"EstResponsable":"0"
+}
+
+
+GET :
+
+localhost:3000/utilisateur/
+
+méthode get ->
+
+Réponse :
+
+{
+	"Matricule":"H1",
+	"Nom":"Jean",
+	"Prenom":"Pierre",
+	"AdresseMail":"p.jean@gmail.com",
+	"MotDePasse":"123456789",
+	"EstResponsable":0
+}
+
+
+GET utilisateur précis via son matricule:
+
+localhost:3000/utilisateur/H3
+
+méthode get ->
+
+Réponse :
+
+{
+	"Matricule":"H3",
+	"Nom":"Dupont",
+	"Prenom":"Alice",
+	"AdresseMail":"a.dupont@gmail.com",
+	"MotDePasse":"131681",
+	"EstResponsable":0
+}

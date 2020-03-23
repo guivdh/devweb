@@ -28,7 +28,7 @@ app.use((req, res, next) => {
 app.use(bodyParser.json());
 
 app.get('/utilisateur', (req, res) => {
-    con.query("INSERT INTO utilisateur",(err,rows,fields)=> {
+    con.query("SELECT * FROM utilisateur",(err,rows,fields)=> {
         if (!err)
             res.send(rows);
         else
@@ -36,23 +36,7 @@ app.get('/utilisateur', (req, res) => {
     })
 });
 
-/*
-* INSERT INTO `database1`.`utilisateur`
-(`Matricule`,
-`Nom`,
-`Prenom`,
-`AdresseMail`,
-`MotDePasse`,
-`EstResponsable`)
-VALUES
-(<{Matricule: }>,
-<{Nom: }>,
-<{Prenom: }>,
-<{AdresseMail: }>,
-<{MotDePasse: }>,
-<{EstResponsable: }>);
 
-* */
 
 app.get('/utilisateur/:id', (req, res) => {
     con.query("SELECT * FROM utilisateur WHERE matricule = ?",[req.params.id],(err,rows,fields)=> {
@@ -72,14 +56,16 @@ app.delete('/utilisateur/:id', (req, res) => {
     })
 });
 
-app.post('/utilisateur', (req, res) => {
-    console.log("Requête : " + req.body);
-    con.query( `INSERT INTO utilisateur values (\'${req.body.matricule}\',\'${req.body.nom}\',\'${req.body.prenom}\',\'${req.body.adressemail}\',\'${req.body.motdepasse}\',\'${req.body.estresponsable}\'`,[req.params.id],(err, rows, fields)=> {
-        if (!err)
-            res.render('index',{title: 'Data Saved', message: 'Data Saved successfully!'});
-        else
-            console.log(err);
-    })
+//rest api to create a new record into mysql database
+app.post('/utilisateur', function (req, res) {
+    var postData  = req.body;
+    console.log(postData['Matricule']);
+    var sql = "INSERT INTO utilisateur VALUES ("+"'"+postData['Matricule']+"',"+"'"+postData['Nom']+"',"+"'"+postData['Prenom']+"',"+"'"+postData['AdresseMail']+"',"+"'"+postData['MotDePasse']+"',"+"'"+postData['EstResponsable']+"')";
+    console.log(sql);
+    con.query(sql, postData, function (error, results, fields) {
+        if (error) throw error;
+        res.end(JSON.stringify(results));
+    });
 });
 
 module.exports = app;
