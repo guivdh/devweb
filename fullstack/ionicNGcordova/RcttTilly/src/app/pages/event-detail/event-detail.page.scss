@@ -1,6 +1,7 @@
 @import '../../app.component.scss';
 
 
+
 .times{
     color: $tillyGold;
     float: left;
@@ -13,7 +14,7 @@
 }
 
 .titleEv{
-
+    color: $tillyLight;
     font-size: x-large;
     font-weight: bold;
 }
@@ -40,7 +41,7 @@
     
     margin:0px auto;
     font-family: 'Trebuchet MS', sans-serif, sans-serif;
-    font-size:1.5rem;
+    font-size:1rem;
     font-weight: 1000;
     
     border-radius: 5px;
