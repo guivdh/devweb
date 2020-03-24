@@ -18,15 +18,16 @@ import { AngularFireDatabase } from '@angular/fire/database';
 })
 export class EventEditPage implements OnInit {
  
-   event={
+  eventObjRcv;
+  stringToObj;
+
+   event: EventRandom = {
     _id: '',
     title: '',
     startTime: '', 
     endTime: '',
-    description: '', 
-
-   } 
-    
+    description: '' 
+  };
  
    eventEditForm = new FormGroup({
     _id: new FormControl(),
@@ -49,23 +50,49 @@ export class EventEditPage implements OnInit {
     ) { }
 
   ngOnInit() {
-    this.getEvent(this.route.snapshot.params['id']);
+    //this.getEvent(this.route.snapshot.params['id']);
+    this.getEvent();
   }
 
 
 
 
-  getEvent(id: any) {
-    
+  getEvent() {
+    //own api
+//      getEvent(id: any) {
 
-    this.api.getEvent(id).subscribe((data: any) => {
+
+    this.eventObjRcv = this.activateRoute.snapshot.paramMap.get('eventObj');
+
+    console.log(this.eventObjRcv);
+    //we need to reverse json stringify 
+    //that we have done in onEventSelected--> and read it as an object
+    this.stringToObj=JSON.parse(this.eventObjRcv);
+
+    console.log(this.stringToObj);
+
+    this.event._id= this.stringToObj._id;
+
+    this.event.title = this.stringToObj.title;
+    this.event.description =this.stringToObj.description;
+
+/*     
+    Without the name of the day and with the 'useless seconds'
+    this.startTime = formatDate(this.stringToObj.startTime, 'medium', 'fr');   
+    this.endTime = formatDate(this.stringToObj.endTime, 'medium', 'fr');
+ */  
+    this.event.startTime = this.stringToObj.startTime;
+    this.event.endTime = this.stringToObj.endTime;
+
+    //OWN API
+    /* this.api.getEvent(id).subscribe((data: any) => {
 
       this.event._id = data._id;
       this.event.title= data.title;
       this.event.startTime= data.startTime; 
       this.event.endTime= data.endTime;
       this.event.description= data.description;
-    });
+    }); */
   }
 
   updateEvent() {
@@ -73,11 +100,14 @@ export class EventEditPage implements OnInit {
 
       this.afDB.object('Events/' + this.event._id)
         .update({ 
+          _id: this.event._id,
           title: this.event.title,
           startTime:  this.event.startTime,
           endTime: this.event.endTime,
           description: this.event.description,
          });
+
+         this.router.navigate([ 'tabs' ]);
 /*     
  this.afDB.list('Events').update(this.event._id, {
   title: this.event.title,
@@ -90,7 +120,7 @@ export class EventEditPage implements OnInit {
 
 
   //own api
-    let eventEditPassage={
+  /*   let eventEditPassage={
       _id: this.event._id,
       title: this.event.title,
       startTime: this.event.startTime,
@@ -110,7 +140,7 @@ export class EventEditPage implements OnInit {
           console.log(err);
           this.isLoadingResults = false;
         }
-      );
+      ); */
   }
 
 

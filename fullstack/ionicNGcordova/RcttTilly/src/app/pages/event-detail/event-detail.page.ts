@@ -130,7 +130,7 @@ export class EventDetailPage implements OnInit {
   this.afDB.object('Events/' + id).remove()
   .then(_ => console.log('event deleted!'));
 
-      
+  this.close();
 
  
     //with own api
@@ -146,7 +146,26 @@ export class EventDetailPage implements OnInit {
   }
 
   editEvent(id: any) {
-    this.router.navigate([ '/event-edit', id ]);
+    //own api
+    //this.router.navigate([ '/event-edit', id ]);
+    
+
+    let eventObj={
+      '_id': this.event._id,
+      'title': this.event.title, 
+    'description': this.event.description,
+    'startTime': this.event.startTime,
+    'endTime':this.event.endTime
+    }
+
+    let eventObjToString = JSON.stringify(eventObj);
+
+    console.log('Event: ' + eventObjToString);
+
+    this.router.navigate([
+    'event-edit',eventObjToString
+   ]);
+
   }
   
    close() {

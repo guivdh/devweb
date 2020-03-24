@@ -24,8 +24,9 @@
     box-shadow: none;
 }
 
-.labelEv, .dateInputEv{
+.dateInputEv{
     color: $tillyLight;
+    float: left;
   }
   .inputEv{
     color: $tillyGrey;

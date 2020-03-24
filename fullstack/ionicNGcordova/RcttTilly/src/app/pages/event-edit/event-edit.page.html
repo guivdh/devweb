@@ -9,55 +9,55 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<!-- <ion-content>
   
   <div class="spinner-grow text-warning" *ngIf="isLoadingResults"></div>
 
 
   <ion-item>
-    <ion-label class="titleEv text-center" text-wrap>{{ title }}</ion-label>
+    <ion-label class="titleEv text-center" text-wrap>{{ event.title }}</ion-label>
   </ion-item>
 
   <ion-item>
-    <ion-label class="descri" text-wrap><b>Description :</b> {{ description }}</ion-label>
+    <ion-label class="descri" text-wrap><b>Description :</b> {{ event.description }}</ion-label>
   </ion-item>
   <div >
     <ion-item>
-      <ion-label class="times"><b>Début :</b> {{ startTime | date : "EEEE dd/MM/yyyy ' à ' HH:mm":'':'fr' }}</ion-label>
+      <ion-label class="times"><b>Début :</b> {{ event.startTime | date : "EEEE dd/MM/yyyy ' à ' HH:mm":'':'fr' }}</ion-label>
     </ion-item>
     <ion-item>
-      <ion-label class="times"><b>Fin :</b> {{ endTime | date : "EEEE dd/MM/yyyy ' à ' HH:mm":'':'fr' }}</ion-label>
+      <ion-label class="times"><b>Fin :</b> {{ event.endTime | date : "EEEE dd/MM/yyyy ' à ' HH:mm":'':'fr' }}</ion-label>
     </ion-item>
   </div>
-
-
-<!--   
+</ion-content> -->
+<ion-content>
+  
    <div class="spinner-grow text-warning" *ngIf="isLoadingResults"></div>
 
 
   <ion-item>
 
-    <ion-label class="descri text-center" text-wrap>{{ event.title }}</ion-label>
+    <ion-label class="descri text-center" text-wrap><b>Titre :</b></ion-label>
     <ion-input class="inputEv" type="text" placeholder="{{ event.title }}" [(ngModel)]="event.title"></ion-input>
 
   </ion-item>
 
   <ion-item>
 
-    <ion-label class="descri text-center" text-wrap>{{ event.description }}</ion-label>
+    <ion-label class="descri text-center" text-wrap><b>Description :</b></ion-label>
     <ion-input class="inputEv" type="text" placeholder="{{ event.description }}" [(ngModel)]="event.description"></ion-input>
 
   </ion-item>
   <div >
     <ion-item>
 
-      <ion-label class="times text-center"><b>Début:</b> {{ event.startTime | date : "EEEE dd/MM/yyyy ' à ' HH:mm":'':'fr' }}</ion-label>
+      <ion-label class="times"><b>Début :</b></ion-label>
       <ion-datetime class="dateInputEv" doneText="OK" cancelText="Annuler" i18n displayFormat="DD/MM/YYYY HH:mm" pickerFormat="D MMM HH:mm" [(ngModel)]="event.startTime" [min]="minDate"></ion-datetime>
 
     </ion-item>
     <ion-item>
 
-      <ion-label class="times text-center"><b>Fin:</b> {{ event.endTime | date : "EEEE dd/MM/yyyy ' à ' HH:mm":'':'fr'}}</ion-label>
+      <ion-label class="times"><b>Fin :</b></ion-label>
       <ion-datetime  class="dateInputEv" doneText="OK" cancelText="Annuler" displayFormat="DD/MM/YYYY HH:mm" pickerFormat="D MMM HH:mm" [(ngModel)]="event.endTime" [min]="minDate"></ion-datetime>
     
     </ion-item>
@@ -65,4 +65,3 @@
 
   <ion-button color="warning" expand="block" (click)="updateEvent()">Modifier</ion-button>
 </ion-content>
--->

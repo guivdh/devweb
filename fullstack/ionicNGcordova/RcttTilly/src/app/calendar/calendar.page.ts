@@ -119,7 +119,7 @@ export class calendarPage implements OnInit {
 
   addEvent() {
     //firebase
-    this.afDB.list('Events/'+this.createId(this.newEvent.startTime,this.newEvent.title)).push({
+    this.afDB.list('Events').push({
       
       _id: this.createId(this.newEvent.startTime,this.newEvent.title),
       title: this.newEvent.title,
