@@ -47,24 +47,34 @@ app.get('/utilisateur/:id', (req, res) => {
     })
 });
 
-app.delete('/utilisateur/:id', (req, res) => {
-    con.query("DELETE utilisateur WHERE matricule = ?",[req.params.id],(err,rows,fields)=> {
-        if (!err)
-            res.send('Delete successfully');
-        else
-            console.log(err);
-    })
-});
-
 //rest api to create a new record into mysql database
 app.post('/utilisateur', function (req, res) {
     var postData  = req.body;
-    console.log(postData['Matricule']);
     var sql = "INSERT INTO utilisateur VALUES ("+"'"+postData['Matricule']+"',"+"'"+postData['Nom']+"',"+"'"+postData['Prenom']+"',"+"'"+postData['AdresseMail']+"',"+"'"+postData['MotDePasse']+"',"+"'"+postData['EstResponsable']+"')";
     console.log(sql);
     con.query(sql, postData, function (error, results, fields) {
         if (error) throw error;
-        res.end(JSON.stringify(results));
+        res.end("Data saved");
+    });
+});
+
+app.put('/utilisateur', function (req, res) {
+    var postData  = req.body;
+    var sql = "UPDATE utilisateur SET "+postData['colonne']+" = '" + postData["nouvelElement"] + "' WHERE " + postData['colonne']+" = '" + postData["ancientElement"] + "'";
+    console.log(sql);
+    con.query(sql, postData, function (error, results, fields) {
+        if (error) throw error;
+        res.end("Data updated");
+    });
+});
+
+app.delete('/utilisateur', function (req, res) {
+    var postData  = req.body;
+    var sql = "DELETE FROM utilisateur WHERE "+postData['colonne']+" = '" + postData["elementSupprimer"] + "'";
+    console.log(sql);
+    con.query(sql, postData, function (error, results, fields) {
+        if (error) throw error;
+        res.end("Data deleted");
     });
 });
 
