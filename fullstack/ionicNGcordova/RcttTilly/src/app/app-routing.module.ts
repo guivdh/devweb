@@ -31,18 +31,23 @@ const routes: Routes = [
     path: 'event/:eventObj',
     loadChildren: () => import('./pages/event/event.module').then( m => m.EventPageModule)
   },
-/*   { 
-    path: 'event-detail/:id', 
-    loadChildren: () => import('./event-detail/event-detail.module').then(m => m.EventDetailPageModule)
+  {
+    path: 'event-detail/:eventObj',
+    loadChildren: () => import('./pages/event-detail/event-detail.module').then( m => m.EventDetailPageModule)
   },
-  { 
-    path: 'event-add', 
-    loadChildren: () => import('./event-add/event-add.module').then(m => m.EventAddPageModule)
+  {
+    path: 'event-edit/:eventObj',
+    loadChildren: () => import('./pages/event-edit/event-edit.module').then( m => m.EventEditPageModule)
   },
-  { 
-    path: 'event-edit/:id', 
-    loadChildren: () => import('./event-edit/event-edit.module').then(m => m.EventEditPageModule)
+  /* {
+    path: 'event-detail/:id',
+    loadChildren: () => import('./pages/event-detail/event-detail.module').then( m => m.EventDetailPageModule)
+  },
+  {
+    path: 'event-edit/:id',
+    loadChildren: () => import('./pages/event-edit/event-edit.module').then( m => m.EventEditPageModule)
   }, */
+
 ];
 @NgModule({
   imports: [

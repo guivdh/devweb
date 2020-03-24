@@ -14,12 +14,14 @@ import { LoadingController } from '@ionic/angular';
 import { ApiService } from '../api.service';
 import { EventRandom } from '../event';
 
+
 @Component({
   selector: 'app-calendar',
   templateUrl: 'calendar.page.html',
   styleUrls: ['calendar.page.scss']
 })
 export class calendarPage implements OnInit {
+  isLoadingResults: boolean;
 
   ngOnInit() {
     //this.getEvents();
@@ -35,6 +37,7 @@ export class calendarPage implements OnInit {
     private router: Router,
     public afDB: AngularFireDatabase,
     public modalController: ModalController,
+
     public api: ApiService,
     public loadingController: LoadingController,
     public route: ActivatedRoute
@@ -96,9 +99,10 @@ export class calendarPage implements OnInit {
     console.log('Event: ' + eventObjToString);
 
     this.router.navigate([
-    'event',eventObjToString
+    'event-detail',eventObjToString
    ]);
 
+   
   }
   
   showHideForm() {
@@ -114,7 +118,8 @@ export class calendarPage implements OnInit {
 
 
   addEvent() {
-    this.afDB.list('Events').push({
+    //firebase
+    this.afDB.list('Events/'+this.createId(this.newEvent.startTime,this.newEvent.title)).push({
       
       _id: this.createId(this.newEvent.startTime,this.newEvent.title),
       title: this.newEvent.title,
@@ -122,6 +127,21 @@ export class calendarPage implements OnInit {
       endTime: this.newEvent.endTime,
       description: this.newEvent.description
     });
+
+    //own api
+
+/* 
+    this.isLoadingResults = true;
+    this.api.addEvent(this.newEvent)
+      .subscribe((res: any) => {
+          const id = res._id;
+          this.isLoadingResults = false;
+          this.router.navigate(['/product-details', id]);
+        }, (err: any) => {
+          console.log(err);
+          this.isLoadingResults = false;
+        }); */
+
     this.showHideForm();
   }
 
@@ -139,16 +159,16 @@ export class calendarPage implements OnInit {
 
   loadEvent() {
 
- 
 
  this.afDB.list('Events').snapshotChanges(['child_added']).subscribe(actions => {
       this.eventSource = [];
  
       actions.forEach(action => {
 
-        console.log('action: ' + action.payload.exportVal().title);
+        console.log('action: ' + action.payload.key);
 
         this.eventSource.push({
+          _id:action.payload.key,
           title: action.payload.exportVal().title,
           startTime:  new Date(action.payload.exportVal().startTime),
           endTime: new Date(action.payload.exportVal().endTime),

@@ -1,6 +1,6 @@
 import { IonicModule, NavParams } from '@ionic/angular';
 import { RouterModule } from '@angular/router';
-import { NgModule } from '@angular/core';
+import { NgModule, LOCALE_ID } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { calendarPage } from './calendar.page';
@@ -41,6 +41,8 @@ import config from '../fb'
   ],
   declarations: [
     calendarPage
-  ]
+  ],
+  providers: [ { provide: LOCALE_ID, useValue: "fr-FR" }]
+
 })
 export class calendarPageModule {}

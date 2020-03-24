@@ -9,7 +9,7 @@ import { UserRandom } from './user';
 const httpOptions = {
   headers: new HttpHeaders({'Content-Type': 'application/json'})
 };
-const apiUrlEvent = 'http://localhost:3000/evenements';
+const apiUrlEvent = 'http://localhost:3000/evenement';
 
 const apiUrlUser = 'http://localhost:3000/utilisateur';
 
@@ -30,6 +30,53 @@ export class ApiService {
   }
 
 
+  //User CRUD
+
+  getUsers(): Observable<UserRandom[]> {
+    return this.http.get<UserRandom[]>(apiUrlUser)
+      .pipe(
+        tap(UserRandom => console.log('fetched Users')),
+        catchError(this.handleError('getUsers', []))
+      );
+  }
+  
+  getUser(id: any): Observable<UserRandom> {
+    const url = `${apiUrlUser}/${id}`;
+    return this.http.get<UserRandom>(url).pipe(
+      tap(_ => console.log(`fetched User id=${id}`)),
+      catchError(this.handleError<UserRandom>(`getUser id=${id}`))
+    );
+  }
+  
+  addUser(user: UserRandom): Observable<UserRandom> {
+    return this.http.post<UserRandom>(apiUrlUser, user, httpOptions).pipe(
+      tap((prod: UserRandom) => console.log(`added User w/ id=${prod.matricule}`)),
+      catchError(this.handleError<UserRandom>('addUser'))
+    );
+  }
+  
+  updateUser(id: any, user: any): Observable<any> {
+    const url = `${apiUrlUser}/${id}`;
+    return this.http.put(url, user, httpOptions).pipe(
+      tap(_ => console.log(`updated UserRandom id=${id}`)),
+      catchError(this.handleError<any>('updateUser'))
+    );
+  }
+  
+  deleteUser(id: any): Observable<UserRandom> {
+    const url = `${apiUrlUser}/${id}`;
+  
+    return this.http.delete<UserRandom>(url, httpOptions).pipe(
+      tap(_ => console.log(`deleted User id=${id}`)),
+      catchError(this.handleError<UserRandom>('deleteUser'))
+    );
+  }
+
+
+
+
+
+  //Event CRUD
   getEvents(): Observable<EventRandom[]> {
     return this.http.get<EventRandom[]>(apiUrlEvent)
       .pipe(
@@ -75,43 +122,5 @@ export class ApiService {
 
 
 
-  getUsers(): Observable<UserRandom[]> {
-    return this.http.get<UserRandom[]>(apiUrlUser)
-      .pipe(
-        tap(UserRandom => console.log('fetched Users')),
-        catchError(this.handleError('getUsers', []))
-      );
-  }
   
-  getUser(id: any): Observable<UserRandom> {
-    const url = `${apiUrlUser}/${id}`;
-    return this.http.get<UserRandom>(url).pipe(
-      tap(_ => console.log(`fetched User id=${id}`)),
-      catchError(this.handleError<UserRandom>(`getUser id=${id}`))
-    );
-  }
-  
-  addUser(user: UserRandom): Observable<UserRandom> {
-    return this.http.post<UserRandom>(apiUrlUser, user, httpOptions).pipe(
-      tap((prod: UserRandom) => console.log(`added User w/ id=${prod.matricule}`)),
-      catchError(this.handleError<UserRandom>('addUser'))
-    );
-  }
-  
-  updateUser(id: any, user: any): Observable<any> {
-    const url = `${apiUrlUser}/${id}`;
-    return this.http.put(url, user, httpOptions).pipe(
-      tap(_ => console.log(`updated UserRandom id=${id}`)),
-      catchError(this.handleError<any>('updateUser'))
-    );
-  }
-  
-  deleteUser(id: any): Observable<UserRandom> {
-    const url = `${apiUrlUser}/${id}`;
-  
-    return this.http.delete<UserRandom>(url, httpOptions).pipe(
-      tap(_ => console.log(`deleted User id=${id}`)),
-      catchError(this.handleError<UserRandom>('deleteUser'))
-    );
-  }
 }
