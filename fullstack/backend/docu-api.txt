@@ -4,7 +4,7 @@ localhost:3000/utilisateur/
 
 méthode request -> POST
 
-Exemple : 
+Envoie JSON: 
 
 {
 	"Matricule":"H4",
@@ -15,6 +15,7 @@ Exemple :
 	"EstResponsable":"0"
 }
 
+-------------------------------------------------------
 
 GET :
 
@@ -33,6 +34,7 @@ Réponse :
 	"EstResponsable":0
 }
 
+-------------------------------------------------------
 
 GET utilisateur précis via son matricule:
 
@@ -49,4 +51,35 @@ Réponse :
 	"AdresseMail":"a.dupont@gmail.com",
 	"MotDePasse":"131681",
 	"EstResponsable":0
+}
+
+-------------------------------------------------------
+
+PUT (update):
+
+localhost:3000/utilisateur/
+
+méthode put->
+
+Envoie JSON:
+
+{
+	"colonne":"Nom",
+	"ancientElement":"Simon",
+	"nouvelElement":"Albert"
+}
+
+-------------------------------------------------------
+
+DELETE :
+
+localhost:3000/utilisateur/
+
+méthode delete->
+
+Envoie JSON:
+
+{
+	"colonne":"Nom",
+	"elementSupprimer":"Albert"
 }
