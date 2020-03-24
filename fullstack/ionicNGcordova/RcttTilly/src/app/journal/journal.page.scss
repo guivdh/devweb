@@ -1,3 +1,106 @@
 ion-content ion-toolbar {
   --background: translucent;
 }
+@import '../app.component.scss';
+
+$dark:#000000;
+
+.titleRegi{
+  font-family: 'Trebuchet MS', sans-serif, sans-serif;
+  font-size:2.5rem;
+  font-weight: 800;
+  color: $tillyGold;
+}
+
+ion-header{
+  background-color: $dark;
+  height: 10%;
+  text-align: center;
+}
+.info{
+  background-color: $tillyGold;
+  width: 75%;
+  height: 40%;
+  margin-left: 12.5%;
+  border-radius: 20px
+}
+.Match{
+  width:40%;
+  height:90%;
+  float: left;
+  margin:5%;
+  font-family: 'Trebuchet MS', sans-serif, sans-serif;
+  font-size:15px;
+  font-weight: 1000;
+
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  text-align: center;
+  padding: 0.5rem;
+  border-radius: 5px;
+      
+  background-color:$tillyLight ;
+  color: $dark;
+}
+
+.Note{
+  width:40%;
+  height:90%;
+  float: right;
+  margin-right: 5%;
+  font-family: 'Trebuchet MS', sans-serif, sans-serif;
+  font-size:15px;
+  font-weight: 1000;
+  
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  text-align: center;
+  padding: 0.5rem;
+  border-radius: 5px;
+      
+  background-color:$tillyLight ;
+  color: $dark;
+}
+.MatchEntr{
+  background-color: $dark;
+  width: 90%;
+  height: 30%;
+  margin-left: 5%;
+}
+.proEntr{
+  width:40%;
+  height:90%;
+  float: left;
+  margin:5%;
+  font-family: 'Trebuchet MS', sans-serif, sans-serif;
+  font-size:15px;
+  font-weight: 1000;
+
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  text-align: center;
+  padding: 0.5rem;
+  border-radius: 10px;
+      
+  background-color:$tillyLight ;
+  color: $dark;
+}
+
+.proMatch{
+  width:40%;
+  height:90%;
+  float: right;
+  margin-right: 5%;
+  font-family: 'Trebuchet MS', sans-serif, sans-serif;
+  font-size:15px;
+  font-weight: 1000;
+  
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  text-align: center;
+  padding: 0.5rem;
+  border-radius: 10px;
+      
+  background-color:$tillyLight ;
+  color: $dark;
+}

@@ -1,13 +1,28 @@
 <app-header></app-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
+<ion-content>
+  <ion-header>
     <ion-toolbar>
-      <ion-title size="large">Journal</ion-title>
+      <ion-title class="titleRegi">Journal</ion-title>
     </ion-toolbar>
   </ion-header>
 
-  <ion-button (click)="add()" disabled>Ajouter</ion-button>
+  <section class="info">
+    <div class="Match">
+      Matchs
+    </div>
+    <div class="Note">
+      Notes du club
+    </div>
+  </section>
 
-  <app-explore-container name="journal"></app-explore-container>
+  <section class="MatchEntr">
+    <div class="proEntr">
+      prochain entraînement
+    </div>
+    <div class="proMatch">
+      prochains Matchs
+    </div>
+  </section>
 </ion-content>
+
