@@ -1,0 +1,36 @@
+@import '../../app.component.scss';
+
+
+.times{
+    color: $tillyGold;
+    float: left;
+}
+
+.descri{
+
+    color: $tillyLight;
+    float: left;
+}
+
+.titleEv{
+
+    font-size: x-large;
+    font-weight: bold;
+}
+
+
+.item-inner{
+
+    box-shadow: none;
+}
+.buttEdit{
+    color: $tillyDark;
+    background-color: $tillySkyBlue;
+    border-radius: 15px;
+}
+
+.buttDelete{
+    color: $tillyDark;
+    background-color: $tillyRed;
+    border-radius: 15px;
+}

@@ -3,6 +3,10 @@ ion-content ion-toolbar {
   --background: translucent;
 }
 
+small{
+  color: $tillyGold;
+  text-transform: capitalize;
+}
 
 .labelEv, .dateInputEv{
   color: $tillyLight;
@@ -32,7 +36,7 @@ font-size: xx-large;
 
 
 
-.monthview-primary-with-event { background-color: #FF5722!important; }
+.monthview-primary-with-event { background-color: $tillyPurple !important; }
  
  .monthview-selected{ 
   background-color: $tillyLight !important;
