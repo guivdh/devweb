@@ -20,6 +20,7 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 
 import { HttpClientModule } from '@angular/common/http';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 @NgModule({
@@ -36,7 +37,9 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserAnimationsModule,
     DragDropModule,
     ScrollingModule,
-    HttpClientModule
+    HttpClientModule,
+    NgbModule
+
   
   ],
   providers: [

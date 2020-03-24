@@ -19,6 +19,9 @@ import { AngularFireStorageModule } from '@angular/fire/storage';
 
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 
+import { ComponentsModule } from '../../components/components.module';
+
+
 import config from '../../fb'
 
 @NgModule({
@@ -32,16 +35,21 @@ import config from '../../fb'
     AngularFireAuthModule,
     AngularFireStorageModule,
     AngularFirestoreModule.enablePersistence(),
+    ComponentsModule,
   ],
-  declarations: [EventDetailPage],
+  declarations: [
+    EventDetailPage,
+
+    ],
   providers:[
-    NavParams,
+    NavParams, 
+    
   ],
   exports:[
-    EventDetailPage
+    EventDetailPage,
   ],
   entryComponents: [
-    EventDetailPage
+    EventDetailPage,
   ] 
 })
 export class EventDetailPageModule {}

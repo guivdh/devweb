@@ -6,12 +6,12 @@ import { AngularFireDatabase } from '@angular/fire/database';
 import { ModalController } from '@ionic/angular';
 import { EventPage } from '../pages/event/event.page';
 
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, NavigationEnd  } from '@angular/router';
 
 import 'firebase/database'; 
 
 import { LoadingController } from '@ionic/angular';
-import { ApiService } from '../api.service';
+import { ApiService } from '../services/api/api.service';
 import { EventRandom } from '../event';
 
 
@@ -44,7 +44,11 @@ export class calendarPage implements OnInit {
     ) {
 
     this.loadEvent();
-
+    this.router.events.subscribe((ev) => {
+      if (ev instanceof NavigationEnd) { 
+        this.loadEvent();
+      }
+    });
   }
   
   
