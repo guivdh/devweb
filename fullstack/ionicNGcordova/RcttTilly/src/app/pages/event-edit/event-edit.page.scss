@@ -1,0 +1,32 @@
+@import '../../app.component.scss';
+
+
+.times{
+    color: $tillyGold;
+    float: left;
+}
+
+.descri{
+
+    color: $tillyLight;
+    float: left;
+}
+
+.titleEv{
+
+    font-size: x-large;
+    font-weight: bold;
+}
+
+
+.item-inner{
+
+    box-shadow: none;
+}
+
+.labelEv, .dateInputEv{
+    color: $tillyLight;
+  }
+  .inputEv{
+    color: $tillyGrey;
+  }
