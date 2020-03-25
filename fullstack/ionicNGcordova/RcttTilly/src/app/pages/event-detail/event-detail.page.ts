@@ -6,12 +6,12 @@ import { formatDate } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 
 import { AlertController } from '@ionic/angular';
-import { ApiService } from '../../services/api/api.service';
+import { ApiService } from '../../api.service';
 import { EventRandom } from '../../event';
 
 
-import { AngularFireDatabase } from '@angular/fire/database';
 
+import { AngularFireDatabase } from '@angular/fire/database';
 
 @Component({
   selector: 'app-event-detail',
@@ -38,7 +38,6 @@ export class EventDetailPage implements OnInit {
   };
 
   isLoadingResults = false;
-
 
   constructor(
     private _location: Location,
@@ -106,21 +105,15 @@ export class EventDetailPage implements OnInit {
     } */
   }
 
-  async presentAlertConfirm(msg: string, fct) {
+  async presentAlertConfirm(msg: string) {
     const alert = await this.alertController.create({
       header: 'Attention!',
       message: msg,
       buttons: [
         {
-          text: 'Oui',
+          text: 'Ok',
           handler: () => {
-            fct;
-            this.router.navigate(['tabs']);
-          }
-        },
-        {
-          text: 'Non',
-          handler: () => {
+            this.router.navigate(['']);
           }
         }
       ]
@@ -129,40 +122,15 @@ export class EventDetailPage implements OnInit {
     await alert.present();
   }
 
-
-
   async deleteEvent(id: any) {
 
-    const alert = await this.alertController.create({
-      header: 'Suppression de'+this.event.title,
-      message: "Êtes-vous sûr de vouloir supprimer cet évènement?",
-      buttons: [
-        {
-          text: 'Oui',
-          handler: () => {
-            this.afDB.object('Events/' + id).remove()
-            .then(_ => console.log('event deleted!'));
-          
-            this.close();
-          }
-        },
-        {
-          text: 'Non',
-          handler: () => {
-          }
-        }
-      ]
-    });
-  
-    await alert.present();
     //firebase
+    
 
-      
-  
-    
-  
-    
-  
+  this.afDB.object('Events/' + id).remove()
+  .then(_ => console.log('event deleted!'));
+
+  this.close();
 
  
     //with own api
@@ -200,9 +168,6 @@ export class EventDetailPage implements OnInit {
 
   }
   
-
-
-
    close() {
     this._location.back();
   } 

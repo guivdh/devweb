@@ -5,7 +5,7 @@ import {AngularFireAuth} from '@angular/fire/auth'
 import {auth} from 'firebase/app'
 
 import { Router } from '@angular/router'
-import { UserService } from '../../services/user/user.service'
+import { UserService } from '../../user.service'
 
 @Component({
   selector: 'app-connection',

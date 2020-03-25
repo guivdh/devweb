@@ -4,7 +4,7 @@ import {Location} from '@angular/common';
 
 
 import { Router, ActivatedRoute } from '@angular/router';
-import { ApiService } from '../../services/api/api.service';
+import { ApiService } from '../../api.service';
 import { EventRandom } from 'src/app/event';
 
 import { FormGroup, FormControl, Validators } from '@angular/forms'

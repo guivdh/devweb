@@ -1,7 +1,6 @@
 @import '../../app.component.scss';
 
 
-
 .times{
     color: $tillyGold;
     float: left;
@@ -14,7 +13,7 @@
 }
 
 .titleEv{
-    color: $tillyLight;
+
     font-size: x-large;
     font-weight: bold;
 }
@@ -27,38 +26,11 @@
 .buttEdit{
     color: $tillyDark;
     background-color: $tillySkyBlue;
+    border-radius: 15px;
 }
 
 .buttDelete{
     color: $tillyDark;
     background-color: $tillyRed;
-}
-
-
-.buttDelete, .buttEdit{
-    width:10rem;
-    height: 3rem;
-    
-    margin:0px auto;
-    font-family: 'Trebuchet MS', sans-serif, sans-serif;
-    font-size:1rem;
-    font-weight: 1000;
-    
-    border-radius: 5px;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-    text-align: center;
-    padding: 0.5rem;
-    border:0.5rem;
-}
-
-$animate: all 0.2s ease-in-out;
-
-.buttDelete:hover, .buttEdit:hover{
-    background-color: $tillyLight;
-    transition: $animate;
-    transition-duration: 0.5s;
-    border-radius: 35px;
-
-
+    border-radius: 15px;
 }
