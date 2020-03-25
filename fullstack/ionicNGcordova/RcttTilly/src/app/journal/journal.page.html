@@ -8,20 +8,55 @@
   </ion-header>
 
   <section class="info">
-    <div class="Match">
-      Matchs
+    <div id="Match">
+      <ion-button color="dark" class="btn btn-default btn-sm btn-block responsive-width" id="taille">
+        <div>
+          Matchs<br>
+          <p class="gris">saison 2019-2020</p>
+      </div>
+      </ion-button>
     </div>
-    <div class="Note">
-      Notes du club
+    <div id="Note">
+      <ion-button class="btn btn-default btn-sm btn-block responsive-width" color="dark" id="taille">
+        <div>
+          <img src="../../assets/img/rcttTilly.png">
+          <br>
+          <label>Notes du club</label>
+          <p class="gris">X notes non-lues</p>
+        </div> 
+      </ion-button>
     </div>
   </section>
 
   <section class="MatchEntr">
     <div class="proEntr">
-      prochain entraînement
+      <span id="txt">Prochain entraînement</span>
+      <p>Serez-vous présent?</p>
+      <p>Date : </p>
+      <ion-button color="success">
+        oui
+      </ion-button>
+      <ion-button color="danger">
+        non
+      </ion-button>
+      <ion-button color="warning">
+        horaire
+      </ion-button>
     </div>
     <div class="proMatch">
-      prochains Matchs
+      <span id="txt">Prochain Match</span>
+      <p>Serez-vous présent?</p>
+      <p>Date : </p>
+
+      <ion-button color="success">
+        oui
+      </ion-button>
+      <ion-button color="danger">
+        non
+      </ion-button>
+      <ion-button color="warning">
+        horaire
+      </ion-button>
     </div>
   </section>
 </ion-content>
