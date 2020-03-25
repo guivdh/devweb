@@ -13,7 +13,7 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 
 import { AngularFirestore } from '@angular/fire/firestore'
-import { UserService } from '../../user.service'
+import { UserService } from '../../services/user/user.service'
 
 
 import config  from '../../fb'

@@ -6,7 +6,7 @@ import { formatDate } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 
 import { AlertController } from '@ionic/angular';
-import { ApiService } from '../../api.service';
+import { ApiService } from '../../services/api/api.service';
 import { EventRandom } from '../../event';
 
 
@@ -111,9 +111,15 @@ export class EventDetailPage implements OnInit {
       message: msg,
       buttons: [
         {
-          text: 'Ok',
+          text: 'Oui',
           handler: () => {
-            this.router.navigate(['']);
+            this.router.navigate(['tabs']);
+          }
+        },
+        {
+          text: 'Non',
+          handler: () => {
+            
           }
         }
       ]
@@ -125,14 +131,29 @@ export class EventDetailPage implements OnInit {
   async deleteEvent(id: any) {
 
     //firebase
+    const alert = await this.alertController.create({
+      header: 'Suppression de'+this.event.title,
+      message: "Êtes-vous sûr de vouloir supprimer cet évènement?",
+      buttons: [
+        {
+          text: 'Oui',
+          handler: () => {
+            this.afDB.object('Events/' + id).remove()
+            .then(_ => console.log('event deleted!'));
+
+            this.close();
+          }
+        },
+        {
+          text: 'Non',
+          handler: () => {
+          }
+        }
+      ]
+    });
+
+    await alert.present();
     
-
-  this.afDB.object('Events/' + id).remove()
-  .then(_ => console.log('event deleted!'));
-
-  this.close();
-
- 
     //with own api
     /* this.isLoadingResults = true;
     await this.api.deleteEvent(id)

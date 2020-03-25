@@ -6,7 +6,7 @@ import {auth} from 'firebase/app'
 
 import { Router } from '@angular/router'
 
-import { UserService } from '../../user.service'
+import { UserService } from '../../services/user/user.service'
 import { AngularFirestore } from '@angular/fire/firestore'
 import { AlertController } from '@ionic/angular';
 

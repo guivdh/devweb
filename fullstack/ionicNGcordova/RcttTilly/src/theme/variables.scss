@@ -53,6 +53,11 @@ $app-theme: mat-light-theme($app-primary, $app-accent, $app-warn);
       background-color: $tillyPinkGrey;
     }
 
+
+    h2{
+      color: $tillyLight !important;
+
+    }
  
   /* ion-list{
     background-color: $tillyGrey;
