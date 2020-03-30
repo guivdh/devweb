@@ -36,17 +36,28 @@ font-size: xx-large;
 
 
 
-.monthview-primary-with-event { background-color: $tillyPurple !important; }
+.monthview-primary-with-event, .eventDay { 
+  background-color: $tillyPurple !important; 
+  color: $tillyLight;
+}
  
- .monthview-selected{ 
+ .monthview-selected, .selectedDay{ 
   background-color: $tillyLight !important;
   color: $tillyBlack !important;
  } 
 
- .monthview-current{ 
+ .monthview-current, .currDay{ 
   background-color: $tillySkyBlue !important;
   color: $tillyBlack !important;
  } 
+
+ .currDay, .eventDay, .selectedDay{
+
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+
+  border-radius: 0.5rem;
+ }
 
 
  .match{

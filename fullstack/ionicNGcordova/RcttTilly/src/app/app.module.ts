@@ -21,6 +21,7 @@ import { ScrollingModule } from '@angular/cdk/scrolling';
 
 import { HttpClientModule } from '@angular/common/http';
 
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [AppComponent],
@@ -36,7 +37,8 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserAnimationsModule,
     DragDropModule,
     ScrollingModule,
-    HttpClientModule
+    HttpClientModule,
+    NgbModule
   
   ],
   providers: [

@@ -21,6 +21,9 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 
 import config from '../../fb'
 
+
+import { ComponentsModule } from '../../components/components.module';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -32,8 +35,12 @@ import config from '../../fb'
     AngularFireAuthModule,
     AngularFireStorageModule,
     AngularFirestoreModule.enablePersistence(),
+    ComponentsModule,
+
   ],
-  declarations: [EventDetailPage],
+  declarations: [
+    EventDetailPage,
+  ],
   providers:[
     NavParams,
   ],
