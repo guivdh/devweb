@@ -38,12 +38,18 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="WebServerToolWindowFactoryState" value="true" />
+    <property name="WebServerToolWindowPanel.toolwindow.highlight.mappings" value="true" />
+    <property name="WebServerToolWindowPanel.toolwindow.highlight.symlinks" value="true" />
+    <property name="WebServerToolWindowPanel.toolwindow.show.date" value="false" />
+    <property name="WebServerToolWindowPanel.toolwindow.show.permissions" value="false" />
+    <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="web.server" />
     <property name="ts.external.directory.path" value="C:\Users\guillaume\Documents\GitHub\devweb\fullstack\firebase-backend\functions\node_modules\typescript\lib" />
   </component>
   <component name="RecentsManager">
@@ -52,6 +58,18 @@
       <recent name="C:\Users\guillaume\Documents\GitHub\devweb\fullstack\backend\models" />
       <recent name="C:\Users\guillaume\Documents\GitHub\devweb\fullstack\backend" />
     </key>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -77,6 +95,9 @@
       <workItem from="1584961564459" duration="12883000" />
       <workItem from="1584978616877" duration="1473000" />
       <workItem from="1585060110717" duration="4865000" />
+      <workItem from="1585121766548" duration="1220000" />
+      <workItem from="1585489794548" duration="6463000" />
+      <workItem from="1585558313444" duration="23188000" />
     </task>
     <servers />
   </component>
@@ -84,6 +105,14 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="214" y="205" width="1322" height="683" key="#Deployment" timestamp="1585489903961">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="214" y="205" width="1322" height="683" key="#Deployment/0.0.1920.1040/-1920.-156.1920.1040@0.0.1920.1040" timestamp="1585489903961" />
+    <state x="552" y="178" key="#Options" timestamp="1585489923128">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="552" y="178" key="#Options/0.0.1920.1040/-1920.-156.1920.1040@0.0.1920.1040" timestamp="1585489923128" />
     <state x="552" y="179" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1584974270749">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -92,6 +121,18 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="640" y="257" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1920.1040/-1920.-156.1920.1040@0.0.1920.1040" timestamp="1584978518002" />
+    <state x="740" y="274" key="FileChooserDialogImpl" timestamp="1585489861328">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="740" y="274" key="FileChooserDialogImpl/0.0.1920.1040/-1920.-156.1920.1040@0.0.1920.1040" timestamp="1585489861328" />
+    <state x="461" y="162" key="SettingsEditor" timestamp="1585489994351">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="461" y="162" key="SettingsEditor/0.0.1920.1040/-1920.-156.1920.1040@0.0.1920.1040" timestamp="1585489994351" />
+    <state x="712" y="277" key="ftp.server.browser" timestamp="1585489898473">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="712" y="277" key="ftp.server.browser/0.0.1920.1040/-1920.-156.1920.1040@0.0.1920.1040" timestamp="1585489898473" />
     <state x="1096" y="244" key="run.anything.popup" timestamp="1584457532692">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
