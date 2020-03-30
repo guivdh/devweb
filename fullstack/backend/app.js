@@ -1,20 +1,8 @@
-﻿const express = require('express');
+const express = require('express');
 const bodyParser = require('body-parser');
 var mysql = require('mysql');
-//const Thing = require('./models/Thing');
-
-var con = mysql.createConnection({
-    host: "localhost",
-    port: "3308",
-    user: "root",
-    password: "",
-    database: "database1",
-});
-
-con.connect(function(err) {
-    if (err) throw err;
-    console.log("Connected!");
-});
+const fs = require('file-system');
+const utilisateurRoutes = require('./routes/utilisateur')
 
 const app = express();
 
@@ -26,56 +14,24 @@ app.use((req, res, next) => {
 });
 
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
 
-app.get('/utilisateur', (req, res) => {
-    con.query("SELECT * FROM utilisateur",(err,rows,fields)=> {
-        if (!err)
-            res.send(rows);
-        else
-            console.log(err);
-    })
-});
-
-
-
-app.get('/utilisateur/:id', (req, res) => {
-    con.query("SELECT * FROM utilisateur WHERE matricule = ?",[req.params.id],(err,rows,fields)=> {
-        if (!err)
-            res.send(rows);
-        else
-            console.log(err);
-    })
-});
-
-//rest api to create a new record into mysql database
-app.post('/utilisateur', function (req, res) {
-    var postData  = req.body;
-    var sql = "INSERT INTO utilisateur VALUES ("+"'"+postData['Matricule']+"',"+"'"+postData['Nom']+"',"+"'"+postData['Prenom']+"',"+"'"+postData['AdresseMail']+"',"+"'"+postData['MotDePasse']+"',"+"'"+postData['EstResponsable']+"')";
-    console.log(sql);
-    con.query(sql, postData, function (error, results, fields) {
-        if (error) throw error;
-        res.end("Data saved");
+//Page web d'utilisation de l'api
+app.get('/', (req, res) => {
+    res.writeHead(200, {
+        'Content-Type': 'text/html'
+    });
+    fs.readFile('content/index.html', null, function (error, data) {
+        if (error) {
+            res.writeHead(404);
+            res.write('Whoops! File not found!');
+        } else {
+            res.write(data);
+        }
+        res.end();
     });
 });
 
-app.put('/utilisateur', function (req, res) {
-    var postData  = req.body;
-    var sql = "UPDATE utilisateur SET "+postData['colonne']+" = '" + postData["nouvelElement"] + "' WHERE " + postData['colonne']+" = '" + postData["ancientElement"] + "'";
-    console.log(sql);
-    con.query(sql, postData, function (error, results, fields) {
-        if (error) throw error;
-        res.end("Data updated");
-    });
-});
-
-app.delete('/utilisateur', function (req, res) {
-    var postData  = req.body;
-    var sql = "DELETE FROM utilisateur WHERE "+postData['colonne']+" = '" + postData["elementSupprimer"] + "'";
-    console.log(sql);
-    con.query(sql, postData, function (error, results, fields) {
-        if (error) throw error;
-        res.end("Data deleted");
-    });
-});
+app.use('/utilisateur', utilisateurRoutes);
 
 module.exports = app;
