@@ -76,8 +76,8 @@ export class RegisterPage implements OnInit {
 
   onClickSubmit() {
     console.log('Start login with: ' 
-                + this.registerForm.value.mail + ':' 
-                + this.registerForm.value.password);
+                + this.registerForm.value.mailFc + ':' 
+                + this.registerForm.value.passwordFc);
   }
 
   ngOnInit(): void {
