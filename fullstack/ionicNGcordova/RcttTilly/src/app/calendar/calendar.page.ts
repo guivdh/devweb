@@ -3,7 +3,8 @@ import { CalendarComponent } from 'ionic2-calendar/calendar';
 
 import { AngularFireDatabase } from '@angular/fire/database';
 
-import { ModalController } from '@ionic/angular';
+import { ModalController, AlertController } from '@ionic/angular';
+
 import { EventPage } from '../pages/event/event.page';
 
 import { ActivatedRoute, Router, NavigationEnd  } from '@angular/router';
@@ -14,6 +15,8 @@ import { LoadingController } from '@ionic/angular';
 import { ApiService } from '../services/api/api.service';
 import { EventRandom } from '../event';
 
+import { FormGroup, FormBuilder, Validators,FormControl } from "@angular/forms";
+
 
 @Component({
   selector: 'app-calendar',
@@ -22,6 +25,11 @@ import { EventRandom } from '../event';
 })
 export class calendarPage implements OnInit {
   isLoadingResults: boolean;
+  spinCal: boolean=true;
+
+
+  public addEventForm: FormGroup;
+
 
   ngOnInit() {
     //this.getEvents();
@@ -37,11 +45,31 @@ export class calendarPage implements OnInit {
     private router: Router,
     public afDB: AngularFireDatabase,
     public modalController: ModalController,
-
+    public formBuilder: FormBuilder,
     public api: ApiService,
     public loadingController: LoadingController,
-    public route: ActivatedRoute
+    public route: ActivatedRoute,
+    public alertController: AlertController
     ) {
+
+      this.addEventForm = this.formBuilder.group({
+        titleFc: new FormControl('', Validators.compose([
+          Validators.required,
+          Validators.minLength(5)
+        ])),
+        descriptionFc: new FormControl('', Validators.compose([
+          Validators.required,
+          Validators.minLength(5)
+        ])),
+        startFc: new FormControl(new Date().toISOString(), Validators.compose([
+          Validators.required,
+        ])),
+        endFc: new FormControl(new Date().toISOString(), Validators.compose([
+          Validators.required,
+        ])),
+      });
+
+
 
     this.loadEvent();
     
@@ -84,9 +112,9 @@ export class calendarPage implements OnInit {
   }
   onTimeSelected(ev: any) {
     const selected = new Date(ev.selectedTime);
-    this.newEvent.startTime = selected.toISOString();
+    this.addEventForm.value.startFc = selected.toISOString();
     selected.setHours(selected.getHours() + 1);
-    this.newEvent.endTime = (selected.toISOString());
+    this.addEventForm.value.endFc = (selected.toISOString());
   }
 
   async onEventSelected(event: any) {
@@ -119,20 +147,46 @@ export class calendarPage implements OnInit {
       startTime: new Date().toISOString(),
       endTime: new Date().toISOString()
     };
+
+    this.addEventForm = this.formBuilder.group({
+      titleFc: new FormControl('', Validators.compose([
+        Validators.required,
+        Validators.minLength(5)
+      ])),
+      descriptionFc: new FormControl('', Validators.compose([
+        Validators.required,
+        Validators.minLength(5)
+      ])),
+      startFc: new FormControl(new Date().toISOString(), Validators.compose([
+        Validators.required,
+      ])),
+      endFc: new FormControl(new Date().toISOString(), Validators.compose([
+        Validators.required,
+      ])),
+    });
   }
 
 
   addEvent() {
     //firebase
-    this.afDB.list('Events').push({
-      
-      _id: this.createId(this.newEvent.startTime,this.newEvent.title),
-      title: this.newEvent.title,
-      startTime:  this.newEvent.startTime,
-      endTime: this.newEvent.endTime,
-      description: this.newEvent.description
-    });
 
+    if ( this.addEventForm.value.titleFc !=='' && this.addEventForm.value.descriptionFc!==''  ){
+      this.afDB.list('Events').push({
+        
+        _id: this.createId(this.addEventForm.value.startFc,this.addEventForm.value.titleFc),
+        title: this.addEventForm.value.titleFc,
+        startTime:  this.addEventForm.value.startFc,
+        endTime: this.addEventForm.value.endFc,
+        description: this.addEventForm.value.descriptionFc
+      });
+
+      this.showHideForm();
+
+    } 
+    else{
+
+      this.presentAlertPrompt()  
+      }
     //own api
 
 /* 
@@ -146,8 +200,22 @@ export class calendarPage implements OnInit {
           console.log(err);
           this.isLoadingResults = false;
         }); */
+  }
 
-    this.showHideForm();
+  async presentAlertPrompt() {
+    const alert = await this.alertController.create({
+      header: 'Erreur!',
+      message: ` Définissez le titre et/ou la description!`,
+      buttons: [
+        {
+          text: 'Ok',
+          handler: () => {
+            console.log('Confirm Okay');
+          }
+        }
+      ]
+    });
+    await alert.present();
   }
 
   createId(value1, value2){
@@ -185,6 +253,7 @@ export class calendarPage implements OnInit {
       });
     });
      
+    this.spinCal=false;
   }
 
  
@@ -203,6 +272,10 @@ export class calendarPage implements OnInit {
         loading.dismiss();
       });
   }
+
+
+
+  
 
 
 }

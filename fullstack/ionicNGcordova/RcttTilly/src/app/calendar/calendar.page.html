@@ -4,30 +4,29 @@
 
   <!-- to insert data in db-->
   
-  <div *ngIf="showAddEvent" class="ion-padding">
-    <ion-item>
-      <ion-label class="labelEv"><b>Titre:</b></ion-label>
-      <ion-input class="inputEv" type="text" placeholder="Titre" [(ngModel)]="newEvent.title"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label class="labelEv"><b>Description:</b></ion-label>
-      <ion-input class="inputEv" type="text" placeholder="Description" [(ngModel)]="newEvent.description"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label class="labelEv"><b>Début</b></ion-label>
-      <ion-datetime class="dateInputEv" doneText="OK" cancelText="Annuler" i18n displayFormat="DD/MM/YYYY HH:mm" pickerFormat="D MMM HH:mm" [(ngModel)]="newEvent.startTime" [min]="minDate"></ion-datetime>
-    </ion-item>
-    <ion-item>
-      <ion-label class="labelEv"><b>Fin</b></ion-label>
-      <ion-datetime  class="dateInputEv" doneText="OK" cancelText="Annuler" displayFormat="DD/MM/YYYY HH:mm" pickerFormat="D MMM HH:mm" [(ngModel)]="newEvent.endTime" [min]="minDate"></ion-datetime>
-    </ion-item>
-    <ion-button color="warning" expand="block" (click)="addEvent()">Ajouter</ion-button>
+  <div *ngIf="showAddEvent" class="ion-padding forms">
+    <form  class="form-horizontal" [formGroup]="addEventForm">
+      <ion-item>
+        <ion-label class="labelEv"><b>Titre:</b></ion-label>
+        <ion-input class="inputEv" type="text" formControlName="titleFc" placeholder="Titre" ></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label class="labelEv"><b>Description:</b></ion-label>
+        <ion-input class="inputEv" type="text" formControlName="descriptionFc" placeholder="Description"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label class="labelEv"><b>Début</b></ion-label>
+        <ion-datetime class="dateInputEv" doneText="OK" cancelText="Annuler" i18n displayFormat="DD/MM/YYYY HH:mm" pickerFormat="D MMM HH:mm" formControlName="startFc" placeholder="Cliquer pour insérer la date de début" [min]="minDate"></ion-datetime>
+      </ion-item>
+      <ion-item>
+        <ion-label class="labelEv"><b>Fin</b></ion-label>
+        <ion-datetime  class="dateInputEv" doneText="OK" cancelText="Annuler" displayFormat="DD/MM/YYYY HH:mm" pickerFormat="D MMM HH:mm" formControlName="endFc" placeholder="Cliquer pour insérer la date de fin" [min]="minDate"></ion-datetime>
+      </ion-item>
+      <ion-button color="warning" expand="block" (click)="addEvent()">Ajouter</ion-button>
+    </form>
+
   </div>
 
-
-  <div *ngIf="helpRequired" class="ion-padding">
-    
-  </div>
 
 
   <div class="text-center">
@@ -38,8 +37,8 @@
     </ion-title>
 
 
-    <p class="legend">
-      Légende: 
+    <p *ngIf="!showAddEvent" class="legend">
+      Légende:<br> 
       <button class="currDay">
         Jour actuel 
       </button>
