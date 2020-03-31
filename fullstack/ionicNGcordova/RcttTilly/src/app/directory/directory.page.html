@@ -6,13 +6,13 @@
   
 <div class="ng-autocomplete">
   <ng-autocomplete
-    [data]="countries"
+    [data]="titles"
     [searchKeyword]="keyword"
     placeHolder="Titre"
     (selected)='selectEvent($event)'
     (inputChanged)='onChangeSearch($event)'
     (inputFocused)='onFocused($event)'
-    historyIdentifier="countries"
+    historyIdentifier="titles"
     [itemTemplate]="itemTemplate"
     [notFoundTemplate]="notFoundTemplate">
   </ng-autocomplete>

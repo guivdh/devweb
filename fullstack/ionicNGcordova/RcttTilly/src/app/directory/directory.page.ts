@@ -11,54 +11,59 @@ export class directoryPage {
 
 
   keyword = 'name';
-  public countries = [
+  public titles = [
     {
       id: 1,
-      name: 'Albania',
+      name: 'Match - Division2A_N',
     },
     {
       id: 2,
-      name: 'Belgium',
+      name: 'Match - Division1B_P',
     },
     {
       id: 3,
-      name: 'Denmark',
+      name: 'Match - Division3C_P',
     },
     {
       id: 4,
-      name: 'Montenegro',
+      name: 'Match - Division3D_P',
     },
     {
       id: 5,
-      name: 'Turkey',
+      name: 'Match - Division4E_P',
     },
     {
       id: 6,
-      name: 'Ukraine',
+      name: 'Match - Division5F_P',
+
     },
     {
       id: 7,
-      name: 'Macedonia',
+      name: 'Match - Division6G_P',
     },
     {
       id: 8,
-      name: 'Slovenia',
+      name: 'Match - Division7_debutant',
     },
     {
       id: 9,
-      name: 'Georgia',
+      name: 'Entrainement libre',
     },
     {
       id: 10,
-      name: 'India',
+      name: 'Entrainement dirigé',
     },
     {
       id: 11,
-      name: 'Russia',
+      name: 'Souper du club',
     },
     {
       id: 12,
-      name: 'Switzerland',
+      name: 'Réunion - capitaine',
+    },
+    {
+      id: 13,
+      name: 'Réunion - responsable',
     }
   ];
     selectEvent(item) {
