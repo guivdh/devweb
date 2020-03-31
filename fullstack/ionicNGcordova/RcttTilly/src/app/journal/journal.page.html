@@ -29,10 +29,10 @@
       <span id="txt">Prochain entraînement</span>
       <p>Serez-vous présent?</p>
       <p>Date : </p>
-      <ion-button color="success">
+      <ion-button color="success" (click)="SendRepPos()">
         oui
       </ion-button>
-      <ion-button color="danger">
+      <ion-button color="danger" (click)="SendRepNeg()">
         non
       </ion-button>
       <ion-button color="warning">

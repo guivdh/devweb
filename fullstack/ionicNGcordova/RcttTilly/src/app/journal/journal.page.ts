@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-
 import { AngularFireDatabase } from '@angular/fire/database';
 
+import {AngularFirestore} from '@angular/fire/firestore'
 
 @Component({
   selector: 'app-journal',
@@ -10,9 +10,8 @@ import { AngularFireDatabase } from '@angular/fire/database';
 })
 export class journalPage {
 
-  constructor(
-    public afDB: AngularFireDatabase
-  ) {}
+  constructor(public afDB: AngularFireDatabase, public db: AngularFirestore) {
+  }
 
 
   add() {
@@ -25,4 +24,20 @@ export class journalPage {
       Password: 'Azerty1234'
     });
   }
+
+  SendRepPos(){
+    this.db.collection('presence').add({
+      idEvent: '-M2xeQIYjoH3DRBz1z5w',
+      matricule: '025520',
+      response: 'True'
+    });
+  }
+
+  SendRepNeg(){
+    this.db.collection('presence').add({
+      idEvent: '-M2xeQIYjoH3DRBz1z5w',
+      matricule: '025520',
+      response: 'False'
+    });
+}
 }

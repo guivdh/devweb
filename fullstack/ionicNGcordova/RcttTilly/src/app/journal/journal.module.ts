@@ -27,6 +27,7 @@ import config  from '../fb'
     RouterModule.forChild([{ path: '', component: journalPage }]),
     ComponentsModule,
     AngularFireAuthModule,
+    AngularFirestoreModule,
     AngularFireStorageModule,
     AngularFireDatabaseModule,
     AngularFireModule.initializeApp(config)
