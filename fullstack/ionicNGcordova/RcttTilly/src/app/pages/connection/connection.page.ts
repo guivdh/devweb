@@ -50,6 +50,7 @@ export class ConnectionPage implements OnInit {
       const res = await this.afAuth.auth.signInWithEmailAndPassword(this.connectForm.value.mail, this.connectForm.value.password);
       
       if(res.user){
+        console.log(res.user.uid);
         this.user.setUser({
           mail,
           uid: res.user.uid

@@ -21,6 +21,7 @@ import localeFr from '@angular/common/locales/fr';
 registerLocaleData(localeFr, 'fr');
 
 import config from '../fb'
+import { UserService } from '../services/user/user.service';
 
 
 @NgModule({
@@ -41,9 +42,14 @@ import config from '../fb'
 
   ],
   declarations: [
-    calendarPage
+    calendarPage,
+    
+
   ],
-  providers: [ { provide: LOCALE_ID, useValue: "fr-FR" }]
+  providers: [
+    UserService,
+     { provide: LOCALE_ID, useValue: "fr-FR" }
+    ]
 
 })
 export class calendarPageModule {}

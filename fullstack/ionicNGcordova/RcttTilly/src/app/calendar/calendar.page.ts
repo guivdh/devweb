@@ -16,6 +16,7 @@ import { ApiService } from '../services/api/api.service';
 import { EventRandom } from '../event';
 
 import { FormGroup, FormBuilder, Validators,FormControl } from "@angular/forms";
+import { UserService } from '../services/user/user.service';
 
 
 @Component({
@@ -49,7 +50,8 @@ export class calendarPage implements OnInit {
     public api: ApiService,
     public loadingController: LoadingController,
     public route: ActivatedRoute,
-    public alertController: AlertController
+    public alertController: AlertController,
+    public user: UserService
     ) {
 
       this.addEventForm = this.formBuilder.group({
@@ -211,6 +213,8 @@ export class calendarPage implements OnInit {
           text: 'Ok',
           handler: () => {
             console.log('Confirm Okay');
+            console.log(this.user.getUID());
+
           }
         }
       ]
