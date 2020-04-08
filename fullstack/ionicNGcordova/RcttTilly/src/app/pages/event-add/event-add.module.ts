@@ -1,13 +1,13 @@
-import { IonicModule, NavParams } from '@ionic/angular';
-import { RouterModule } from '@angular/router';
 import { NgModule, LOCALE_ID } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule,ReactiveFormsModule } from '@angular/forms';
-import { calendarPage } from './calendar.page';
-import { ExploreContainerComponentModule } from '../explore-container/explore-container.module';
-import { ComponentsModule } from '../components/components.module'
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { NgCalendarModule  } from 'ionic2-calendar';
+import { IonicModule, NavParams } from '@ionic/angular';
+
+import { EventPageRoutingModule } from './event-add-routing.module';
+
+import { EventPage } from './event-add.page';
+
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { AngularFireAuthModule } from '@angular/fire/auth';
@@ -20,41 +20,46 @@ import { registerLocaleData } from '@angular/common';
 import localeFr from '@angular/common/locales/fr';
 registerLocaleData(localeFr, 'fr');
 
-import config from '../fb'
-import { UserService } from '../services/user/user.service';
-import { EventAutoCompletionService, TitleType } from '../services/autoCompletion/event-auto-completion.service';
+import config from '../../fb'
+import { UserService } from '../../services/user/user.service';
+import { EventAutoCompletionService, TitleType } from '../../services/autoCompletion/event-auto-completion.service';
 
 import {AutocompleteLibModule} from 'angular-ng-autocomplete';
+import { ExploreContainerComponentModule } from 'src/app/explore-container/explore-container.module';
+import { RouterModule } from '@angular/router';
+import { ComponentsModule } from 'src/app/components/components.module';
+
 
 
 @NgModule({
   imports: [
-    IonicModule,
     CommonModule,
     FormsModule,
+    IonicModule,
+    EventPageRoutingModule,
     ReactiveFormsModule,
     ExploreContainerComponentModule,
-    RouterModule.forChild([{ path: '', component: calendarPage }]),
+    RouterModule.forChild([{ path: '', component: EventPage }]),
     ComponentsModule,
-    NgCalendarModule,
     AngularFireModule.initializeApp(config),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
     AngularFireStorageModule,
     AngularFirestoreModule.enablePersistence(),
     AutocompleteLibModule
-
   ],
-  declarations: [
-    calendarPage,
-    
-
-  ],
+  declarations: [EventPage],
   providers: [
     UserService,
      { provide: LOCALE_ID, useValue: "fr-FR" },
     EventAutoCompletionService
-    ]
+    ],
+  exports:[
+    EventPage
+  ],
+  entryComponents: [
+    EventPage
+  ] 
 
 })
-export class calendarPageModule {}
+export class EventPageModule {}

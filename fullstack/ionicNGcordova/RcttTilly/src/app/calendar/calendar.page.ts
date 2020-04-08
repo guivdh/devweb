@@ -5,7 +5,7 @@ import { AngularFireDatabase } from '@angular/fire/database';
 
 import { ModalController, AlertController } from '@ionic/angular';
 
-import { EventPage } from '../pages/event/event.page';
+import { EventPage } from '../pages/event-add/event-add.page';
 
 import { ActivatedRoute, Router, NavigationEnd  } from '@angular/router';
 
@@ -17,6 +17,7 @@ import { EventRandom } from '../event';
 
 import { FormGroup, FormBuilder, Validators,FormControl } from "@angular/forms";
 import { UserService } from '../services/user/user.service';
+import { EventAutoCompletionService, TitleType } from '../services/autoCompletion/event-auto-completion.service';
 
 
 @Component({
@@ -51,7 +52,7 @@ export class calendarPage implements OnInit {
     public loadingController: LoadingController,
     public route: ActivatedRoute,
     public alertController: AlertController,
-    public user: UserService
+    public user: UserService,
     ) {
 
       this.addEventForm = this.formBuilder.group({
@@ -74,7 +75,7 @@ export class calendarPage implements OnInit {
 
 
     this.loadEvent();
-    
+
     this.router.events.subscribe((ev) => {
       if (ev instanceof NavigationEnd) { 
         this.loadEvent();
@@ -87,15 +88,6 @@ export class calendarPage implements OnInit {
 
   
   currentMonth: string;
-
-  showAddEvent: boolean;
-  newEvent = {
-    _id:'',
-    title: '',
-    description: '',
-    startTime: '',
-    endTime: ''
-  };
 
 
   calendar={
@@ -140,104 +132,9 @@ export class calendarPage implements OnInit {
    
   }
   
-  showHideForm() {
-    this.showAddEvent = !this.showAddEvent;
-    this.newEvent = {
-      _id: '',
-      title: '',
-      description: '',
-      startTime: new Date().toISOString(),
-      endTime: new Date().toISOString()
-    };
-
-    this.addEventForm = this.formBuilder.group({
-      titleFc: new FormControl('', Validators.compose([
-        Validators.required,
-        Validators.minLength(5)
-      ])),
-      descriptionFc: new FormControl('', Validators.compose([
-        Validators.required,
-        Validators.minLength(5)
-      ])),
-      startFc: new FormControl(new Date().toISOString(), Validators.compose([
-        Validators.required,
-      ])),
-      endFc: new FormControl(new Date().toISOString(), Validators.compose([
-        Validators.required,
-      ])),
-    });
-  }
-
-
-  addEvent() {
-    //firebase
-    console.log(this.addEventForm.value.titleFc.name);
-
-    if ( this.addEventForm.value.titleFc.name !=='' && this.addEventForm.value.descriptionFc!==''  ){
-      this.afDB.list('Events').push({
-        
-        _id: this.createId(this.addEventForm.value.startFc,this.addEventForm.value.titleFc.name),
-        title: this.addEventForm.value.titleFc.name,
-        startTime:  this.addEventForm.value.startFc,
-        endTime: this.addEventForm.value.endFc,
-        description: this.addEventForm.value.descriptionFc
-      });
-
-      this.showHideForm();
-
-    } 
-    else{
-
-      this.presentAlertPrompt(` Définissez le titre et/ou la description!`);
-      }
-    //own api
-
-/* 
-    this.isLoadingResults = true;
-    this.api.addEvent(this.newEvent)
-      .subscribe((res: any) => {
-          const id = res._id;
-          this.isLoadingResults = false;
-          this.router.navigate(['/product-details', id]);
-        }, (err: any) => {
-          console.log(err);
-          this.isLoadingResults = false;
-        }); */
-  }
-
-  async presentAlertPrompt(msg) {
-    const alert = await this.alertController.create({
-      header: 'Erreur!',
-      message: msg,
-      buttons: [
-        {
-          text: 'Ok',
-          handler: () => {
-            console.log('Confirm Okay');
-            console.log(this.user.getUID());
-
-          }
-        }
-      ]
-    });
-    await alert.present();
-  }
-
-  createId(value1, value2){
-    let arr1=value1.split('-');
-    let arr4=arr1[2].slice(0,2);
-    let arr3=arr1[1];
-    let arr2=arr1[0];
-    let arr5=[arr2,arr3,arr4];
-
-    let strFinal= arr5.join('')+value2.replace(" ","");
-
-    return strFinal;
-  }
+  
 
   loadEvent() {
-
-
  this.afDB.list('Events').snapshotChanges(['child_added']).subscribe(actions => {
       this.eventSource = [];
  
@@ -278,93 +175,8 @@ export class calendarPage implements OnInit {
       });
   }
 
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  keyword = 'name';
-  public titles = [
-    {
-      id: 1,
-      name: 'Match - Division2A_N',
-    },
-    {
-      id: 2,
-      name: 'Match - Division1B_P',
-    },
-    {
-      id: 3,
-      name: 'Match - Division3C_P',
-    },
-    {
-      id: 4,
-      name: 'Match - Division3D_P',
-    },
-    {
-      id: 5,
-      name: 'Match - Division4E_P',
-    },
-    {
-      id: 6,
-      name: 'Match - Division5F_P',
-
-    },
-    {
-      id: 7,
-      name: 'Match - Division6G_P',
-    },
-    {
-      id: 8,
-      name: 'Match - Division7_debutant',
-    },
-    {
-      id: 9,
-      name: 'Entrainement libre',
-    },
-    {
-      id: 10,
-      name: 'Entrainement dirigé',
-    },
-    {
-      id: 11,
-      name: 'Souper du club',
-    },
-    {
-      id: 12,
-      name: 'Réunion - capitaine',
-    },
-    {
-      id: 13,
-      name: 'Réunion - responsable',
-    }
-  ];
-
-  selectEvent(item) {
-    // do something with selected item
+  showHideForm() {
+  this.router.navigate(['/event-add']);
   }
-
-  onChangeSearch(search: string) {
-    // fetch remote data from here
-    // And reassign the 'data' which is binded to 'data' property.
-  }
-
-  onFocused(e) {
-    // do something
-  }
-
 
 }

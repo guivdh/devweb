@@ -1,0 +1,39 @@
+@import '../../app.component.scss';
+
+
+ion-content ion-toolbar {
+    --background: translucent;
+  }
+  
+  .ng-autocomplete {
+     width: auto;
+  }
+  .autocomplete-container .input-container input {
+    background-color: #2C262C !important;
+    color: $tillyGold !important;
+  }
+  
+  
+  .autocomplete-container .suggestions-container ul li a {
+    color: $tillyLight !important;
+    background-color: #2C262C;
+  }
+
+  
+  .labelEv, .dateInputEv{
+    color: $tillyLight;
+  }
+  .inputEv{
+    color: $tillyGrey;
+  }
+  
+  .updatedHour{
+    
+    color: $tillySkyBlue;
+    font-size: medium;
+  }
+  .updateFR{
+    
+    font-size: small;
+    color: $tillyLight;
+  }

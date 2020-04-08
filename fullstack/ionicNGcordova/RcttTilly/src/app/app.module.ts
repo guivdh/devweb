@@ -13,7 +13,7 @@ import { AppComponent } from './app.component';
 
 import { ComponentsModule } from './components/components.module';
 
-import { EventPageModule } from '../app/pages/event/event.module';
+import { EventPageModule } from './pages/event-add/event-add.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
  
 import { DragDropModule } from '@angular/cdk/drag-drop';

@@ -2,79 +2,6 @@
 
 <ion-content [fullscreen]="true">
 
-  <!-- to insert data in db-->
-  
-<!--   <div *ngIf="showAddEvent" class="ion-padding forms">
-    <form  class="form-horizontal" [formGroup]="addEventForm">
-      <ion-item>
-        <ion-label class="labelEv"><b>Titre:</b></ion-label>
-        <ion-input class="inputEv" type="text" formControlName="titleFc" placeholder="Titre" ></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-label class="labelEv"><b>Description:</b></ion-label>
-        <ion-input class="inputEv" type="text" formControlName="descriptionFc" placeholder="Description"></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-label class="labelEv"><b>Début</b></ion-label>
-        <ion-datetime class="dateInputEv" doneText="OK" cancelText="Annuler" i18n displayFormat="DD/MM/YYYY HH:mm" pickerFormat="D MMM HH:mm" formControlName="startFc" placeholder="Cliquer pour insérer la date de début" [min]="minDate"></ion-datetime>
-      </ion-item>
-      <ion-item>
-        <ion-label class="labelEv"><b>Fin</b></ion-label>
-        <ion-datetime  class="dateInputEv" doneText="OK" cancelText="Annuler" displayFormat="DD/MM/YYYY HH:mm" pickerFormat="D MMM HH:mm" formControlName="endFc" placeholder="Cliquer pour insérer la date de fin" [min]="minDate"></ion-datetime>
-      </ion-item>
-      <ion-button color="warning" expand="block" (click)="addEvent()">Ajouter</ion-button>
-    </form>
-
-  </div> -->
-
-
-  <div *ngIf="showAddEvent" class="ion-padding forms">
- 
-    <form  class="form-horizontal" [formGroup]="addEventForm">
-
-    <div class="ng-autocomplete inputEv">
-      <ng-autocomplete
-        [data]="titles"
-        [searchKeyword]="keyword"
-        placeHolder="Titre"
-        (selected)='selectEvent($event)'
-        (inputChanged)='onChangeSearch($event)'
-        (inputFocused)='onFocused($event)'
-        historyIdentifier="titles"
-        [itemTemplate]="itemTemplate"
-        [notFoundTemplate]="notFoundTemplate"
-        formControlName="titleFc"
-        >
-      </ng-autocomplete>
-
-      <ng-template #itemTemplate let-item>
-        <a [innerHTML]="item.name"></a>
-      </ng-template>
-
-      <ng-template #notFoundTemplate let-notFound>
-        <div [innerHTML]="notFound" class="notFound"></div>
-      </ng-template>
-    </div>
-
-      <ion-item>
-        <ion-label class="labelEv"><b>Description:</b></ion-label>
-        <ion-input class="inputEv" type="text" formControlName="descriptionFc" placeholder="Description"></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-label class="labelEv"><b>Début</b></ion-label>
-        <ion-datetime class="dateInputEv" doneText="OK" cancelText="Annuler" i18n displayFormat="DD/MM/YYYY HH:mm" pickerFormat="D MMM HH:mm" formControlName="startFc" placeholder="Cliquer pour insérer la date de début" [min]="minDate"></ion-datetime>
-      </ion-item>
-      <ion-item>
-        <ion-label class="labelEv"><b>Fin</b></ion-label>
-        <ion-datetime  class="dateInputEv" doneText="OK" cancelText="Annuler" displayFormat="DD/MM/YYYY HH:mm" pickerFormat="D MMM HH:mm" formControlName="endFc" placeholder="Cliquer pour insérer la date de fin" [min]="minDate"></ion-datetime>
-      </ion-item>
-      <ion-button color="warning" expand="block" (click)="addEvent()">Ajouter</ion-button>
-    </form>
-
-  </div>
-
-
-
   <div class="text-center">
     <ion-title >
         <p class="updateFR">Dernière mise à jour : 
@@ -83,7 +10,7 @@
     </ion-title>
 
 
-    <p *ngIf="!showAddEvent" class="legend">
+    <p class="legend">
       Légende:<br> 
       <button class="currDay">
         Jour actuel 
@@ -98,14 +25,14 @@
   </div>
 
 
-  <div *ngIf="!showAddEvent">
+  <div>
     <ion-title class="viewedMonth">
       {{ currentMonth }}
     </ion-title>
   </div>
 
 
-<calendar *ngIf="!showAddEvent" id="tillyCalendar"
+<calendar id="tillyCalendar"
     [locale]="calendar.locale"
     [eventSource]="eventSource" 
     [calendarMode]="calendar.mode" 
@@ -122,13 +49,10 @@
     >
 </calendar>
 
-
 <ion-fab vertical="bottom" horizontal="end" slot="fixed">
   <ion-fab-button (click)="showHideForm()">
-    <ion-icon *ngIf="!showAddEvent" name="add"></ion-icon>
-    <ion-icon *ngIf="showAddEvent" name="close"></ion-icon>
+    <ion-icon name="add"></ion-icon>
   </ion-fab-button>
 </ion-fab>
-
 
 </ion-content>
