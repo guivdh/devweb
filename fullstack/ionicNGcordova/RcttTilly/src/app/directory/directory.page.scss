@@ -1,3 +1,11 @@
+@import '../app.component.scss';
+
 ion-content ion-toolbar {
   --background: translucent;
+}
+
+
+.notFound{
+
+  color: $tillyRed;
 }

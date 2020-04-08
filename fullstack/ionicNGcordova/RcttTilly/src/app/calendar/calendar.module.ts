@@ -23,6 +23,8 @@ registerLocaleData(localeFr, 'fr');
 import config from '../fb'
 import { UserService } from '../services/user/user.service';
 
+import {AutocompleteLibModule} from 'angular-ng-autocomplete';
+
 
 @NgModule({
   imports: [
@@ -39,6 +41,7 @@ import { UserService } from '../services/user/user.service';
     AngularFireAuthModule,
     AngularFireStorageModule,
     AngularFirestoreModule.enablePersistence(),
+    AutocompleteLibModule
 
   ],
   declarations: [

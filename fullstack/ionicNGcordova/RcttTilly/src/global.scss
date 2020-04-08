@@ -27,3 +27,6 @@
 
 @import "src/app/calendar/calendar.page.scss";
 
+* ::-webkit-scrollbar {
+    display: none;
+  }

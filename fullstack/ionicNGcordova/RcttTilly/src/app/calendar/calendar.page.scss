@@ -3,6 +3,10 @@ ion-content ion-toolbar {
   --background: translucent;
 }
 
+.ng-autocomplete {
+   width: auto;
+}
+
 small{
   color: $tillyGold;
   text-transform: capitalize;
