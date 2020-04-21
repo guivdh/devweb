@@ -187,7 +187,7 @@
             <td>
                 {<br>
                 "AdresseMail": "aaaaa@bbbb.com",<br>
-                "MotDePasse":":)"<br>
+                "MotDePasse":" :) "<br>
                 }
             </td>
         </tr>
@@ -259,6 +259,156 @@
             <td>Supprimer un match</td>
             <td>Oui</td>
             <td><a href="http://51.75.126.62:3000/match">http://51.75.126.62:3000/match</a></td>
+            <td>
+                {<br>
+                "colonne":"Id",<br>
+                "elementSupprimer":"2"<br>
+                }
+            </td>
+        </tr>
+        <tr>
+            <td>Entrainement</td>
+            <td>GET</td>
+            <td>Tous les entrainements</td>
+            <td>Non</td>
+            <td><a href="http://51.75.126.62:3000/entrainement">http://51.75.126.62:3000/entrainement</a></td>
+            <td>
+            </td>
+        </tr>
+        <tr>
+            <td>Entrainement</td>
+            <td>GET</td>
+            <td>Entrainement en fonction de son ID</td>
+            <td>Non</td>
+            <td><a href="http://51.75.126.62:3000/entrainement/1">http://51.75.126.62:3000/entrainement/1</a></td>
+            <td>
+            </td>
+        </tr>
+        <tr>
+            <td>Entrainement</td>
+            <td>POST</td>
+            <td>Créer un entrainement</td>
+            <td>Oui</td>
+            <td><a href="http://51.75.126.62:3000/entrainement">http://51.75.126.62:3000/entrainement</a></td>
+            <td>
+                {<br>
+                "Id": "2",<br>
+                "StartTime":"2020-05-12 9:00:00",<br>
+                "EndTime": "2020-05-12 18:00:00",<br>
+                "Titre": "Match",<br>
+                "Description": "Ceci est un entrainement"<br>
+                }
+            </td>
+        </tr>
+        <tr>
+            <td>Entrainement</td>
+            <td>PUT</td>
+            <td>Modifier un entrainement</td>
+            <td>Oui</td>
+            <td><a href="http://51.75.126.62:3000/entrainement">http://51.75.126.62:3000/entrainement</a></td>
+            <td>
+                {<br>
+                "colonne":"StartTime",<br>
+                "ancientElement":"2020-04-23 10:00:00",<br>
+                "nouvelElement":"2020-04-23 8:00:00"<br>
+                }
+            </td>
+        </tr>
+        <tr>
+            <td>Entrainement</td>
+            <td>PUT</td>
+            <td>Modifier un entrainement</td>
+            <td>Oui</td>
+            <td><a href="http://51.75.126.62:3000/entrainement">http://51.75.126.62:3000/entrainement</a></td>
+            <td>
+                {<br>
+                "colonne":"StartTime",<br>
+                "ancientElement":"2020-04-23 10:00:00",<br>
+                "nouvelElement":"2020-04-23 8:00:00"<br>
+                }
+            </td>
+        </tr>
+        <tr>
+            <td>Entrainement</td>
+            <td>DELETE</td>
+            <td>Supprimer un entrainement</td>
+            <td>Oui</td>
+            <td><a href="http://51.75.126.62:3000/entrainement">http://51.75.126.62:3000/entrainement</a></td>
+            <td>
+                {<br>
+                "colonne":"Id",<br>
+                "elementSupprimer":"2"<br>
+                }
+            </td>
+        </tr>
+        <tr>
+            <td>Event</td>
+            <td>GET</td>
+            <td>Tous les events</td>
+            <td>Non</td>
+            <td><a href="http://51.75.126.62:3000/event">http://51.75.126.62:3000/event</a></td>
+            <td>
+            </td>
+        </tr>
+        <tr>
+            <td>Event</td>
+            <td>GET</td>
+            <td>Event en fonction de son ID</td>
+            <td>Non</td>
+            <td><a href="http://51.75.126.62:3000/event/1">http://51.75.126.62:3000/event/1</a></td>
+            <td>
+            </td>
+        </tr>
+        <tr>
+            <td>Event</td>
+            <td>POST</td>
+            <td>Créer un event</td>
+            <td>Oui</td>
+            <td><a href="http://51.75.126.62:3000/event">http://51.75.126.62:3000/event</a></td>
+            <td>
+                {<br>
+                "Id": "2",<br>
+                "StartTime":"2020-05-12 9:00:00",<br>
+                "EndTime": "2020-05-12 18:00:00",<br>
+                "Titre": "Match",<br>
+                "Description": "Ceci est un event"<br>
+                }
+            </td>
+        </tr>
+        <tr>
+            <td>Event</td>
+            <td>PUT</td>
+            <td>Modifier un event</td>
+            <td>Oui</td>
+            <td><a href="http://51.75.126.62:3000/event">http://51.75.126.62:3000/event</a></td>
+            <td>
+                {<br>
+                "colonne":"StartTime",<br>
+                "ancientElement":"2020-04-23 10:00:00",<br>
+                "nouvelElement":"2020-04-23 8:00:00"<br>
+                }
+            </td>
+        </tr>
+        <tr>
+            <td>Event</td>
+            <td>PUT</td>
+            <td>Modifier un event</td>
+            <td>Oui</td>
+            <td><a href="http://51.75.126.62:3000/event">http://51.75.126.62:3000/event</a></td>
+            <td>
+                {<br>
+                "colonne":"StartTime",<br>
+                "ancientElement":"2020-04-23 10:00:00",<br>
+                "nouvelElement":"2020-04-23 8:00:00"<br>
+                }
+            </td>
+        </tr>
+        <tr>
+            <td>Event</td>
+            <td>DELETE</td>
+            <td>Supprimer un event</td>
+            <td>Oui</td>
+            <td><a href="http://51.75.126.62:3000/event">http://51.75.126.62:3000/event</a></td>
             <td>
                 {<br>
                 "colonne":"Id",<br>

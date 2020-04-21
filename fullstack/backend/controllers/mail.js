@@ -8,7 +8,7 @@ exports.sendMail = (req, res) => {
         secure: true,
         auth: {
             user: 'contact.pingpong.ephec@gmail.com',
-            pass: ''
+            pass: 'Admin@ephec2020'
         }
     });
     let mailOptions = {

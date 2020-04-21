@@ -42,7 +42,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1587474446203</updated>
-      <workItem from="1587474447437" duration="3496000" />
+      <workItem from="1587474447437" duration="6136000" />
     </task>
     <servers />
   </component>
@@ -54,9 +54,17 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="552" y="178" key="#Deployment/0.0.1920.1040/-1920.-156.1920.1040@0.0.1920.1040" timestamp="1587474593810" />
+    <state x="702" y="323" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1587482967029">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="702" y="323" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1040/-1920.-156.1920.1040@0.0.1920.1040" timestamp="1587482967029" />
     <state x="740" y="274" key="FileChooserDialogImpl" timestamp="1587474544898">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="740" y="274" key="FileChooserDialogImpl/0.0.1920.1040/-1920.-156.1920.1040@0.0.1920.1040" timestamp="1587474544898" />
+    <state width="498" height="446" key="SwitcherDM" timestamp="1587483024186">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="498" height="446" key="SwitcherDM/0.0.1920.1040/-1920.-156.1920.1040@0.0.1920.1040" timestamp="1587483024186" />
   </component>
 </project>
