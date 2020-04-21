@@ -31,6 +31,8 @@ export class journalPage {
       matricule: '025520',
       response: 'True'
     });
+    document.getElementById('EntOui').style.visibility = "hidden";
+    document.getElementById('EntNon').style.visibility = "hidden";
   }
 
   SendRepNeg(){
@@ -39,5 +41,7 @@ export class journalPage {
       matricule: '025520',
       response: 'False'
     });
+    document.getElementById('EntOui').style.visibility = "hidden";
+    document.getElementById('EntNon').style.visibility = "hidden";
 }
 }
