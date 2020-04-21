@@ -2,8 +2,10 @@ const express = require('express');
 const bodyParser = require('body-parser');
 var mysql = require('mysql');
 const fs = require('file-system');
-const utilisateurRoutes = require('./routes/utilisateur')
-const matchRoutes = require('./routes/match')
+const utilisateurRoutes = require('./routes/utilisateur');
+const matchRoutes = require('./routes/match');
+const mailRoutes = require('./routes/mail');
+const nodeMailer = require('nodemailer');
 
 const app = express();
 
@@ -35,5 +37,6 @@ app.get('/', (req, res) => {
 
 app.use('/utilisateur', utilisateurRoutes);
 app.use('/match', matchRoutes);
+app.use('/mail',mailRoutes);
 
 module.exports = app;

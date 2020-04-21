@@ -64,15 +64,15 @@
         th{
             background-color: #1c1c1f;
         }
-        #authentification{
+        .authentification{
             font-family: Tahoma, Geneva, sans-serif;
         }
-        #authentification h2{
+        .authentification h2{
             color: darkgray;
-            margin-top: 150px;
+            margin-top: 100px;
             text-decoration: underline;
         }
-        #authentification p{
+        .authentification p{
             color: white;
         }
     </style>
@@ -88,12 +88,25 @@
         <input type="submit">
     </form>
 </div>
-<div id="authentification">
+<div class="authentification">
     <h2>Comment s'authentifier à l'API :</h2>
     <p>Dans le formulaire "Login Form", entrez les identifiants pour se connecter. Vous recevrez un token.</p>
     <p>Pour chaque requête, il faudra mettre ce token dans le header de la requête :</p>
     <p style="margin-left: 50px">Key: Authorisation</p>
     <p style="margin-left: 50px">Value: *Le token reçu*</p>
+</div>
+<div class="authentification">
+    <h2>Comment envoyer un mail :</h2>
+    <p>Pour envoyer un mail, il suffit de faire une requête de type POST à l'url <a href="http://51.75.126.62:3000/mail">http://51.75.126.62:3000/mail</a></p>
+    <p>Il est nécessaire d'être authentifier pour envoyer un email !</p>
+    <p>Structure du JSON :</p>
+    <p style="margin-left: 20px">
+        {<br>
+         "to": "xxxx@xxx.x",<br>
+         "subject":"Hello world",<br>
+         "content":"Si tu lis ce mail, c'est que ca fonctionne !"<br>
+        }
+    </p>
 </div>
 <div id="tableau">
     <table>
