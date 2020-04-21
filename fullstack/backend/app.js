@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 var mysql = require('mysql');
 const fs = require('file-system');
 const utilisateurRoutes = require('./routes/utilisateur')
+const matchRoutes = require('./routes/match')
 
 const app = express();
 
@@ -33,5 +34,6 @@ app.get('/', (req, res) => {
 });
 
 app.use('/utilisateur', utilisateurRoutes);
+app.use('/match', matchRoutes);
 
 module.exports = app;
