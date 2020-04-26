@@ -7,6 +7,9 @@ const matchRoutes = require('./routes/match');
 const mailRoutes = require('./routes/mail');
 const entrainementRoutes = require('./routes/entrainement');
 const eventRoutes = require('./routes/event');
+const presenceEntRoutes = require('./routes/presenceEnt');
+const presenceEventRoutes = require('./routes/presenceEvent');
+const presenceMatchRoutes = require('./routes/presenceMatch');
 const nodeMailer = require('nodemailer');
 
 const app = express();
@@ -42,5 +45,8 @@ app.use('/match', matchRoutes);
 app.use('/mail',mailRoutes);
 app.use('/entrainement',entrainementRoutes);
 app.use('/event',eventRoutes);
+app.use('/presenceEnt',presenceEntRoutes);
+app.use('/presenceEvent',presenceEventRoutes);
+app.use('/presenceMatch',presenceMatchRoutes);
 
 module.exports = app;
