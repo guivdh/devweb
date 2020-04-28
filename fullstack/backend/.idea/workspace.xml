@@ -31,6 +31,7 @@
     <property name="WebServerToolWindowPanel.toolwindow.show.permissions" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="nodejs_package_manager_path" value="npm" />
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -43,7 +44,9 @@
       <option name="presentableId" value="Default" />
       <updated>1587474446203</updated>
       <workItem from="1587474447437" duration="7473000" />
-      <workItem from="1587893922329" duration="3348000" />
+      <workItem from="1587893922329" duration="6706000" />
+      <workItem from="1587974290480" duration="6467000" />
+      <workItem from="1588099421075" duration="8317000" />
     </task>
     <servers />
   </component>
