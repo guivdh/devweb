@@ -1,4 +1,4 @@
-import { TestBed } from '@angular/core/testing';
+/* import { TestBed } from '@angular/core/testing';
 
 import { EventAutoCompletionService } from './event-auto-completion.service';
 
@@ -10,3 +10,4 @@ describe('EventAutoCompletionService', () => {
     expect(service).toBeTruthy();
   });
 });
+ */
