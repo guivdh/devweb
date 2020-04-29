@@ -1,0 +1,68 @@
+@import '../../app.component.scss';
+
+$animate: all 0.2s ease-in-out;
+
+.logoTilly {
+    
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    width: 22rem;
+    height: 25rem;
+}
+
+
+.logoTT{
+    height: 55%;
+}
+.nameClub{
+    height: 5%;
+}
+.regiConnect{
+    height: 30%;
+}
+
+.nameTilly{
+    font-weight: 900;
+    font-family: 'Trebuchet MS', sans-serif, sans-serif;
+    color: $tillyGold ;
+
+}
+
+
+
+
+.btn{
+    width:20rem;
+    height: 5rem;
+    
+    font-family: 'Trebuchet MS', sans-serif, sans-serif;
+    font-size:1.5rem;
+    font-weight: 1000;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;    
+    
+    border-radius: 5px;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    text-align: center;
+    padding: 0.5rem;
+    border:0.5rem;
+        
+}
+
+
+
+.registerbtn, .connectbtn{
+    background-color: $tillyLight;
+    color: $tillyDark ;
+}
+.registerbtn:hover, .connectbtn:hover{
+    background-color: $tillyGold;
+    color: $tillyLight ;
+    transition: $animate;
+    transition-duration: 0.5s;
+    border-radius: 35px;
+
+
+}
+

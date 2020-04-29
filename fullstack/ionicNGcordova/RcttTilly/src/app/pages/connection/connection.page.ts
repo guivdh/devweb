@@ -50,19 +50,16 @@ export class ConnectionPage implements OnInit {
       const res = await this.afAuth.auth.signInWithEmailAndPassword(this.connectForm.value.mail, this.connectForm.value.password);
       
       if(res.user){
-        console.log(res.user.uid);
-        this.user.setUser({
-          mail,
-          uid: res.user.uid
-        })
+        alert(res.user.uid);
+        this.user.getUID();
         this.router.navigate(['/tabs']);
       }
-      console.log(res);
+      alert(" user: "+res.user.uid+" mail: "+res.user.email);
 
     } catch(err){
-      console.dir(err);
+      alert(err);
       if(err.code === "auth/user-not-found"){
-        console.log("User not found");
+        alert("User not found");
       }
     }
   }
