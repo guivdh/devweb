@@ -2,23 +2,18 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Login Form Tutorial</title>
-    <script>
-        function connexion(){
-            var xhr = new XMLHttpRequest();
-            var url = "/test";
-            xhr.open("POST", url, true);
-            xhr.setRequestHeader("Content-Type", "application/json");
-            /*xhr.onreadystatechange = function () {
-                if (xhr.readyState === 4 && xhr.status === 200) {
-                    var json = JSON.parse(xhr.responseText);
-                    console.log(json.email + ", " + json.password);
-                }
-            };*/
-            xhr.send(JSON.stringify({'AdresseMail': document.getElementById('connexion').AdresseMail.value, 'password': document.getElementById('connexion').MotDePasse.value}));
-        }
-    </script>
+    <title>API - Ping Pong</title>
+    <link rel="icon" href="https://w0.pngwave.com/png/215/300/table-tennis-at-the-2015-european-games-ping-pong-logo-table-tennis-png-clip-art.png" type="image/png">
     <style>
+        body{
+            background-color: #222224;
+        }
+        a:link{
+            color: lightblue;
+        }
+        a:visited{
+            color: lightcoral;
+        }
         .login-form {
             width: 300px;
             margin: 0 auto;
@@ -26,7 +21,7 @@
         }
         .login-form h1 {
             text-align: center;
-            color: #4d4d4d;
+            color: darkgray;
             font-size: 24px;
             padding: 20px 0 20px 0;
         }
@@ -48,9 +43,43 @@
             font-weight: bold;
             color: #ffffff;
         }
+        table, td, th {
+            border: 2px solid black;
+            text-align: left;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin-top: 100px;
+            color: lightgray;
+        }
+
+        th, td {
+            padding: 15px;
+        }
+        td{
+            background-color: #37373b;
+        }
+        th{
+            background-color: #1c1c1f;
+        }
+        .authentification{
+            font-family: Tahoma, Geneva, sans-serif;
+        }
+        .authentification h2{
+            color: darkgray;
+            margin-top: 100px;
+            text-decoration: underline;
+        }
+        .authentification p{
+            color: white;
+        }
     </style>
 </head>
 <body>
+<div>
+</div>
 <div class="login-form">
     <h1>Login Form</h1>
     <form id="connexion" action="/utilisateur/login" method="POST">
@@ -58,6 +87,337 @@
         <input type="password" id="MotDePasse" name="MotDePasse" placeholder="Password" required>
         <input type="submit">
     </form>
+</div>
+<div class="authentification">
+    <h2>Comment s'authentifier à l'API :</h2>
+    <p>Dans le formulaire "Login Form", entrez les identifiants pour se connecter. Vous recevrez un token.</p>
+    <p>Pour chaque requête, il faudra mettre ce token dans le header de la requête :</p>
+    <p style="margin-left: 50px">Key: Authorisation</p>
+    <p style="margin-left: 50px">Value: *Le token reçu*</p>
+</div>
+<div class="authentification">
+    <h2>Comment envoyer un mail :</h2>
+    <p>Pour envoyer un mail, il suffit de faire une requête de type POST à l'url <a href="http://51.75.126.62:3000/mail">http://51.75.126.62:3000/mail</a></p>
+    <p>Il est nécessaire d'être authentifier pour envoyer un email !</p>
+    <p>Structure du JSON :</p>
+    <p style="margin-left: 20px">
+        {<br>
+         "to": "xxxx@xxx.x",<br>
+         "subject":"Hello world",<br>
+         "content":"Si tu lis ce mail, c'est que ca fonctionne !"<br>
+        }
+    </p>
+</div>
+<div id="tableau">
+    <table>
+        <tr>
+            <th>Table</th>
+            <th>Type</th>
+            <th>Description</th>
+            <th>Authentification</th>
+            <th>URL</th>
+            <th>JSON</th>
+        </tr>
+        <tr>
+            <td>Utilisateur</td>
+            <td>GET</td>
+            <td>Tous les utilisateurs</td>
+            <td>Oui</td>
+            <td><a href="http://51.75.126.62:3000/utilisateur">http://51.75.126.62:3000/utilisateur</a></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Utilisateur</td>
+            <td>GET</td>
+            <td>Utilisateur en fonction de l'ID</td>
+            <td>Oui</td>
+            <td><a href="http://51.75.126.62:3000/utilisateur/h1">http://51.75.126.62:3000/utilisateur/h3</a></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Utilisateur</td>
+            <td>POST</td>
+            <td>Créer un utilisateur</td>
+            <td>Oui</td>
+            <td><a href="http://51.75.126.62:3000/utilisateur/signup">http://51.75.126.62:3000/utilisateur/signup</a></td>
+            <td>
+                {<br>
+                "Matricule":"H5",<br>
+                "Nom":"aaaaaa",<br>
+                "Prenom": "bbbbbb",<br>
+                "AdresseMail": "aaaaaa.bbb@ccccc.ddd",<br>
+                "MotDePasse":"123456789",<br>
+                "EstResponsable":"1"<br>
+                }
+            </td>
+        </tr>
+        <tr>
+            <td>Utilisateur</td>
+            <td>PUT</td>
+            <td>Modifier un utilisateur</td>
+            <td>Oui</td>
+            <td><a href="http://51.75.126.62:3000/utilisateur">http://51.75.126.62:3000/utilisateur</a></td>
+            <td>
+                {<br>
+                "colonne":"Nom",<br>
+                "ancientElement":"Simon",<br>
+                "nouvelElement":"Albert"<br>
+                }
+            </td>
+        </tr>
+        <tr>
+            <td>Utilisateur</td>
+            <td>DELETE</td>
+            <td>Supprimer un utilisateur</td>
+            <td>Oui</td>
+            <td><a href="http://51.75.126.62:3000/utilisateur">http://51.75.126.62:3000/utilisateur</a></td>
+            <td>
+                {<br>
+                "colonne":"Nom",<br>
+                "elementSupprimer":"Marc"<br>
+                }
+            </td>
+        </tr>
+        <tr>
+            <td>Utilisateur</td>
+            <td>POST</td>
+            <td>S'authentifier à l'API en utilisant l'adresse email et le mot de passe d'un utilisateur</td>
+            <td>Non</td>
+            <td><a href="http://51.75.126.62:3000/utilisateur/login">http://51.75.126.62:3000/utilisateur/login</a></td>
+            <td>
+                {<br>
+                "AdresseMail": "aaaaa@bbbb.com",<br>
+                "MotDePasse":" :) "<br>
+                }
+            </td>
+        </tr>
+        <tr>
+            <td>Match</td>
+            <td>GET</td>
+            <td>Tous les matchs</td>
+            <td>Non</td>
+            <td><a href="http://51.75.126.62:3000/match">http://51.75.126.62:3000/match</a></td>
+            <td>
+            </td>
+        </tr>
+        <tr>
+            <td>Match</td>
+            <td>GET</td>
+            <td>Match en fonction de son ID</td>
+            <td>Non</td>
+            <td><a href="http://51.75.126.62:3000/match/1">http://51.75.126.62:3000/match/1</a></td>
+            <td>
+            </td>
+        </tr>
+        <tr>
+            <td>Match</td>
+            <td>POST</td>
+            <td>Créer un match</td>
+            <td>Oui</td>
+            <td><a href="http://51.75.126.62:3000/match">http://51.75.126.62:3000/match</a></td>
+            <td>
+                {<br>
+                "Id": "2",<br>
+                "StartTime":"2020-05-12 9:00:00",<br>
+                "EndTime": "2020-05-12 18:00:00",<br>
+                "Titre": "Match",<br>
+                "Description": "Ceci est un match"<br>
+                }
+            </td>
+        </tr>
+        <tr>
+            <td>Match</td>
+            <td>PUT</td>
+            <td>Modifier un match</td>
+            <td>Oui</td>
+            <td><a href="http://51.75.126.62:3000/match">http://51.75.126.62:3000/match</a></td>
+            <td>
+                {<br>
+                "colonne":"StartTime",<br>
+                "ancientElement":"2020-04-23 10:00:00",<br>
+                "nouvelElement":"2020-04-23 8:00:00"<br>
+                }
+            </td>
+        </tr>
+        <tr>
+            <td>Match</td>
+            <td>PUT</td>
+            <td>Modifier un match</td>
+            <td>Oui</td>
+            <td><a href="http://51.75.126.62:3000/match">http://51.75.126.62:3000/match</a></td>
+            <td>
+                {<br>
+                "colonne":"StartTime",<br>
+                "ancientElement":"2020-04-23 10:00:00",<br>
+                "nouvelElement":"2020-04-23 8:00:00"<br>
+                }
+            </td>
+        </tr>
+        <tr>
+            <td>Match</td>
+            <td>DELETE</td>
+            <td>Supprimer un match</td>
+            <td>Oui</td>
+            <td><a href="http://51.75.126.62:3000/match">http://51.75.126.62:3000/match</a></td>
+            <td>
+                {<br>
+                "colonne":"Id",<br>
+                "elementSupprimer":"2"<br>
+                }
+            </td>
+        </tr>
+        <tr>
+            <td>Entrainement</td>
+            <td>GET</td>
+            <td>Tous les entrainements</td>
+            <td>Non</td>
+            <td><a href="http://51.75.126.62:3000/entrainement">http://51.75.126.62:3000/entrainement</a></td>
+            <td>
+            </td>
+        </tr>
+        <tr>
+            <td>Entrainement</td>
+            <td>GET</td>
+            <td>Entrainement en fonction de son ID</td>
+            <td>Non</td>
+            <td><a href="http://51.75.126.62:3000/entrainement/1">http://51.75.126.62:3000/entrainement/1</a></td>
+            <td>
+            </td>
+        </tr>
+        <tr>
+            <td>Entrainement</td>
+            <td>POST</td>
+            <td>Créer un entrainement</td>
+            <td>Oui</td>
+            <td><a href="http://51.75.126.62:3000/entrainement">http://51.75.126.62:3000/entrainement</a></td>
+            <td>
+                {<br>
+                "Id": "2",<br>
+                "StartTime":"2020-05-12 9:00:00",<br>
+                "EndTime": "2020-05-12 18:00:00",<br>
+                "Titre": "Match",<br>
+                "Description": "Ceci est un entrainement"<br>
+                }
+            </td>
+        </tr>
+        <tr>
+            <td>Entrainement</td>
+            <td>PUT</td>
+            <td>Modifier un entrainement</td>
+            <td>Oui</td>
+            <td><a href="http://51.75.126.62:3000/entrainement">http://51.75.126.62:3000/entrainement</a></td>
+            <td>
+                {<br>
+                "colonne":"StartTime",<br>
+                "ancientElement":"2020-04-23 10:00:00",<br>
+                "nouvelElement":"2020-04-23 8:00:00"<br>
+                }
+            </td>
+        </tr>
+        <tr>
+            <td>Entrainement</td>
+            <td>PUT</td>
+            <td>Modifier un entrainement</td>
+            <td>Oui</td>
+            <td><a href="http://51.75.126.62:3000/entrainement">http://51.75.126.62:3000/entrainement</a></td>
+            <td>
+                {<br>
+                "colonne":"StartTime",<br>
+                "ancientElement":"2020-04-23 10:00:00",<br>
+                "nouvelElement":"2020-04-23 8:00:00"<br>
+                }
+            </td>
+        </tr>
+        <tr>
+            <td>Entrainement</td>
+            <td>DELETE</td>
+            <td>Supprimer un entrainement</td>
+            <td>Oui</td>
+            <td><a href="http://51.75.126.62:3000/entrainement">http://51.75.126.62:3000/entrainement</a></td>
+            <td>
+                {<br>
+                "colonne":"Id",<br>
+                "elementSupprimer":"2"<br>
+                }
+            </td>
+        </tr>
+        <tr>
+            <td>Event</td>
+            <td>GET</td>
+            <td>Tous les events</td>
+            <td>Non</td>
+            <td><a href="http://51.75.126.62:3000/event">http://51.75.126.62:3000/event</a></td>
+            <td>
+            </td>
+        </tr>
+        <tr>
+            <td>Event</td>
+            <td>GET</td>
+            <td>Event en fonction de son ID</td>
+            <td>Non</td>
+            <td><a href="http://51.75.126.62:3000/event/1">http://51.75.126.62:3000/event/1</a></td>
+            <td>
+            </td>
+        </tr>
+        <tr>
+            <td>Event</td>
+            <td>POST</td>
+            <td>Créer un event</td>
+            <td>Oui</td>
+            <td><a href="http://51.75.126.62:3000/event">http://51.75.126.62:3000/event</a></td>
+            <td>
+                {<br>
+                "Id": "2",<br>
+                "StartTime":"2020-05-12 9:00:00",<br>
+                "EndTime": "2020-05-12 18:00:00",<br>
+                "Titre": "Match",<br>
+                "Description": "Ceci est un event"<br>
+                }
+            </td>
+        </tr>
+        <tr>
+            <td>Event</td>
+            <td>PUT</td>
+            <td>Modifier un event</td>
+            <td>Oui</td>
+            <td><a href="http://51.75.126.62:3000/event">http://51.75.126.62:3000/event</a></td>
+            <td>
+                {<br>
+                "colonne":"StartTime",<br>
+                "ancientElement":"2020-04-23 10:00:00",<br>
+                "nouvelElement":"2020-04-23 8:00:00"<br>
+                }
+            </td>
+        </tr>
+        <tr>
+            <td>Event</td>
+            <td>PUT</td>
+            <td>Modifier un event</td>
+            <td>Oui</td>
+            <td><a href="http://51.75.126.62:3000/event">http://51.75.126.62:3000/event</a></td>
+            <td>
+                {<br>
+                "colonne":"StartTime",<br>
+                "ancientElement":"2020-04-23 10:00:00",<br>
+                "nouvelElement":"2020-04-23 8:00:00"<br>
+                }
+            </td>
+        </tr>
+        <tr>
+            <td>Event</td>
+            <td>DELETE</td>
+            <td>Supprimer un event</td>
+            <td>Oui</td>
+            <td><a href="http://51.75.126.62:3000/event">http://51.75.126.62:3000/event</a></td>
+            <td>
+                {<br>
+                "colonne":"Id",<br>
+                "elementSupprimer":"2"<br>
+                }
+            </td>
+        </tr>
+    </table>
+
 </div>
 </body>
 </html>
