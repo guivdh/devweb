@@ -24,7 +24,7 @@ exports.getPresenceEnt = (req, res) => {
     })
 };
 
-exports.getIdpresenceEnt =  (req, res) => {
+exports.getIdPresenceEnt =  (req, res) => {
     con.query("SELECT * FROM database1.presenceEnt WHERE IdJoueur = ?",[req.params.id],(err,rows,fields)=> {
         if (!err)
             res.send(rows);
@@ -35,7 +35,7 @@ exports.getIdpresenceEnt =  (req, res) => {
 
 exports.createPresenceEnt =  (req, res) => {
     var postData  = req.body;
-    var sql = "INSERT INTO database1.presenceEnt VALUES ("+"'"+postData['IdJoueur']+"',"+"'"+postData['IdEnt']+"',"+"'"+postData['presence']"')";
+    var sql = "INSERT INTO database1.presenceEnt VALUES ("+"'"+postData['IdJoueur']+"',"+"'"+postData['IdEnt']+"',"+"'"+postData['presence']+"')";
     console.log(sql);
     con.query(sql, postData, function (error, results, fields) {
         if (error) throw error;
@@ -43,7 +43,7 @@ exports.createPresenceEnt =  (req, res) => {
     });
 };
 
-exports.deletepresenceEnt =  (req, res) => {
+exports.deletePresenceEnt =  (req, res) => {
     var postData  = req.body;
     var sql = "DELETE FROM database1.presenceEnt WHERE "+postData['colonne']+" = '" + postData["elementSupprimer"] + "'";
     console.log(sql);
@@ -53,7 +53,7 @@ exports.deletepresenceEnt =  (req, res) => {
     });
 };
 
-exports.updatepresenceEnt =  (req, res) => {
+exports.updatePresenceEnt =  (req, res) => {
     var postData  = req.body;
     var sql = "UPDATE database1.presenceEnt SET "+postData['colonne']+" = '" + postData["nouvelElement"] + "' WHERE " + postData['colonne']+" = '" + postData["ancientElement"] + "'";
     console.log(sql);

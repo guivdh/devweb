@@ -1,8 +1,8 @@
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-var mysql = require('mysql');
+const mysql = require('mysql');
 
-var con = mysql.createConnection({
+const con = mysql.createConnection({
     host: "localhost",
     port: "3306",
     user: "root",
@@ -15,10 +15,20 @@ con.connect(function(err) {
     console.log("Connected!");
 });
 
+let idUtlisateur;
+
+function getLastId() {
+    con.query("SELECT max(Matricule) FROM database1.utilisateur;", function (err, res) {
+        idUtilisateur = res[0]["max(Matricule)"];
+        idUtilisateur = parseInt(idUtilisateur.substr(2));
+    });
+}
+
 exports.createUtilisateur = function (req, res) {
     var postData  = req.body;
+    getLastId();
     bcrypt.hash(postData['MotDePasse'], 10, function(err, hash){
-        var sql = "INSERT INTO utilisateur VALUES ("+"'"+postData['Matricule']+"',"+"'"+postData['Nom']+"',"+"'"+postData['Prenom']+"',"+"'"+postData['AdresseMail']+"',"+"'"+hash+"',"+"'"+postData['EstResponsable']+"')";
+        var sql = "INSERT INTO utilisateur VALUES ("+"'HC"+parseFloat(idUtilisateur+1)+"',"+"'"+postData['Nom']+"',"+"'"+postData['Prenom']+"',"+"'"+postData['AdresseMail']+"',"+"'"+hash+"',"+"'"+postData['EstResponsable']+"')";
         console.log(sql);
         con.query(sql, postData, function (error, results, fields) {
             if (error) throw error;

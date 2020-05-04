@@ -24,7 +24,7 @@ exports.getPresenceMatch = (req, res) => {
     })
 };
 
-exports.getIdpresenceMatch =  (req, res) => {
+exports.getIdPresenceMatch =  (req, res) => {
     con.query("SELECT * FROM database1.presenceMatch WHERE IdJoueur = ?",[req.params.id],(err,rows,fields)=> {
         if (!err)
             res.send(rows);
@@ -35,7 +35,7 @@ exports.getIdpresenceMatch =  (req, res) => {
 
 exports.createPresenceMatch =  (req, res) => {
     var postData  = req.body;
-    var sql = "INSERT INTO database1.presenceMatch VALUES ("+"'"+postData['IdJoueur']+"',"+"'"+postData['IdMatch']+"',"+"'"+postData['presence']"')";
+    var sql = "INSERT INTO database1.presenceMatch VALUES ("+"'"+postData['IdJoueur']+"',"+"'"+postData['IdMatch']+"',"+"'"+postData['presence']+"')";
     console.log(sql);
     con.query(sql, postData, function (error, results, fields) {
         if (error) throw error;
@@ -43,7 +43,7 @@ exports.createPresenceMatch =  (req, res) => {
     });
 };
 
-exports.deletepresenceMatch =  (req, res) => {
+exports.deletePresenceMatch =  (req, res) => {
     var postData  = req.body;
     var sql = "DELETE FROM database1.presenceMatch WHERE "+postData['colonne']+" = '" + postData["elementSupprimer"] + "'";
     console.log(sql);
@@ -53,7 +53,7 @@ exports.deletepresenceMatch =  (req, res) => {
     });
 };
 
-exports.updatepresenceMatch =  (req, res) => {
+exports.updatePresenceMatch =  (req, res) => {
     var postData  = req.body;
     var sql = "UPDATE database1.presenceMatch SET "+postData['colonne']+" = '" + postData["nouvelElement"] + "' WHERE " + postData['colonne']+" = '" + postData["ancientElemMatch"] + "'";
     console.log(sql);

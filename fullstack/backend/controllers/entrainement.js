@@ -15,6 +15,17 @@ con.connect(function(err) {
     console.log("Connected!");
 });
 
+let idEntrainement;
+
+function getLastId() {
+    con.query("SELECT max(Id) FROM database1.entrainement;", function (err, res) {
+        idEntrainement = res[0]["max(Id)"];
+        idEntrainement = parseInt(idEntrainement);
+        console.log(idEntrainement)
+    });
+}
+getLastId();
+
 exports.getEntrainement = (req, res) => {
     con.query("SELECT * FROM database1.entrainement",(err,rows,fields)=> {
         if (!err)
@@ -35,7 +46,8 @@ exports.getIdEntrainement =  (req, res) => {
 
 exports.createEntrainement =  (req, res) => {
     var postData  = req.body;
-    var sql = "INSERT INTO database1.entrainement VALUES ("+"'"+postData['Id']+"',"+"'"+postData['StartTime']+"',"+"'"+postData['EndTime']+"',"+"'"+postData['Titre']+"',"+"'"+postData['Description']+"')";
+    getLastId();
+    var sql = "INSERT INTO database1.entrainement VALUES ("+"'"+parseFloat(idEntrainement+1)+"',"+"'"+postData['StartTime']+"',"+"'"+postData['EndTime']+"',"+"'"+postData['Titre']+"',"+"'"+postData['Description']+"')";
     console.log(sql);
     con.query(sql, postData, function (error, results, fields) {
         if (error) throw error;

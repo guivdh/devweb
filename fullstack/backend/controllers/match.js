@@ -12,8 +12,18 @@ var con = mysql.createConnection({
 
 con.connect(function(err) {
     if (err) throw err;
-    console.log("Connected!");
+    //console.log("Connected!");
 });
+
+let idMatch;
+
+function getLastId() {
+    con.query("SELECT max(Id) FROM database1.match;", function (err, res) {
+        idMatch = res[0]["max(Id)"];
+        idMatch = parseInt(idMatch);
+        console.log(idMatch)
+    });
+}
 
 exports.getMatch = (req, res) => {
     con.query("SELECT * FROM database1.match",(err,rows,fields)=> {
@@ -35,7 +45,8 @@ exports.getIdMatch =  (req, res) => {
 
 exports.createMatch =  (req, res) => {
     var postData  = req.body;
-    var sql = "INSERT INTO database1.match VALUES ("+"'"+postData['Id']+"',"+"'"+postData['StartTime']+"',"+"'"+postData['EndTime']+"',"+"'"+postData['Titre']+"',"+"'"+postData['Description']+"')";
+    getLastId();
+    var sql = "INSERT INTO database1.match VALUES ("+"'"+parseFloat(idMatch+1)+"',"+"'"+postData['StartTime']+"',"+"'"+postData['EndTime']+"',"+"'"+postData['Titre']+"',"+"'"+postData['Description']+"')";
     console.log(sql);
     con.query(sql, postData, function (error, results, fields) {
         if (error) throw error;

@@ -241,20 +241,6 @@
         </tr>
         <tr>
             <td>Match</td>
-            <td>PUT</td>
-            <td>Modifier un match</td>
-            <td>Oui</td>
-            <td><a href="http://51.75.126.62:3000/match">http://51.75.126.62:3000/match</a></td>
-            <td>
-                {<br>
-                "colonne":"StartTime",<br>
-                "ancientElement":"2020-04-23 10:00:00",<br>
-                "nouvelElement":"2020-04-23 8:00:00"<br>
-                }
-            </td>
-        </tr>
-        <tr>
-            <td>Match</td>
             <td>DELETE</td>
             <td>Supprimer un match</td>
             <td>Oui</td>
@@ -297,20 +283,6 @@
                 "EndTime": "2020-05-12 18:00:00",<br>
                 "Titre": "Match",<br>
                 "Description": "Ceci est un entrainement"<br>
-                }
-            </td>
-        </tr>
-        <tr>
-            <td>Entrainement</td>
-            <td>PUT</td>
-            <td>Modifier un entrainement</td>
-            <td>Oui</td>
-            <td><a href="http://51.75.126.62:3000/entrainement">http://51.75.126.62:3000/entrainement</a></td>
-            <td>
-                {<br>
-                "colonne":"StartTime",<br>
-                "ancientElement":"2020-04-23 10:00:00",<br>
-                "nouvelElement":"2020-04-23 8:00:00"<br>
                 }
             </td>
         </tr>
@@ -390,19 +362,6 @@
             </td>
         </tr>
         <tr>
-            <td>Event</td>
-            <td>PUT</td>
-            <td>Modifier un event</td>
-            <td>Oui</td>
-            <td><a href="http://51.75.126.62:3000/event">http://51.75.126.62:3000/event</a></td>
-            <td>
-                {<br>
-                "colonne":"StartTime",<br>
-                "ancientElement":"2020-04-23 10:00:00",<br>
-                "nouvelElement":"2020-04-23 8:00:00"<br>
-                }
-            </td>
-        </tr>
         <tr>
             <td>Event</td>
             <td>DELETE</td>
@@ -412,6 +371,183 @@
             <td>
                 {<br>
                 "colonne":"Id",<br>
+                "elementSupprimer":"2"<br>
+                }
+            </td>
+        </tr>
+        <tr>
+            <td>presenceEnt</td>
+            <td>GET</td>
+            <td>Tous les presenceEnt</td>
+            <td>Non</td>
+            <td><a href="http://51.75.126.62:3000/presenceEnt">http://51.75.126.62:3000/presenceEnt</a></td>
+            <td>
+            </td>
+        </tr>
+        <tr>
+            <td>presenceEnt</td>
+            <td>GET</td>
+            <td>PresenceEnt en fonction de l'ID du joueur</td>
+            <td>Non</td>
+            <td><a href="http://51.75.126.62:3000/presenceEnt/1">http://51.75.126.62:3000/presenceEnt/1</a></td>
+            <td>
+            </td>
+        </tr>
+        <tr>
+            <td>presenceEnt</td>
+            <td>POST</td>
+            <td>Créer un presenceEnt</td>
+            <td>Oui</td>
+            <td><a href="http://51.75.126.62:3000/presenceEnt">http://51.75.126.62:3000/presenceEnt</a></td>
+            <td>
+                {<br>
+                "IdJoueur": "2",<br>
+                "IdEnt":"1",<br>
+                "presence": "1",<br>
+                }
+            </td>
+        </tr>
+        <tr>
+            <td>presenceEnt</td>
+            <td>PUT</td>
+            <td>Modifier un presenceEnt</td>
+            <td>Oui</td>
+            <td><a href="http://51.75.126.62:3000/presenceEnt">http://51.75.126.62:3000/presenceEnt</a></td>
+            <td>
+                {<br>
+                "colonne":"IdEnt",<br>
+                "ancientElement":"3",<br>
+                "nouvelElement":"4"<br>
+                }
+            </td>
+        </tr>
+        <tr>
+            <td>presenceEnt</td>
+            <td>DELETE</td>
+            <td>Supprimer un presenceEnt</td>
+            <td>Oui</td>
+            <td><a href="http://51.75.126.62:3000/presenceEnt">http://51.75.126.62:3000/presenceEnt</a></td>
+            <td>
+                {<br>
+                "colonne":"IdJoueur",<br>
+                "elementSupprimer":"2"<br>
+                }
+            </td>
+        </tr>
+        <tr>
+            <td>presenceMatch</td>
+            <td>GET</td>
+            <td>Tous les presenceMatch</td>
+            <td>Non</td>
+            <td><a href="http://51.75.126.62:3000/presenceEnt">http://51.75.126.62:3000/presenceMatch</a></td>
+            <td>
+            </td>
+        </tr>
+        <tr>
+            <td>presenceMatch</td>
+            <td>GET</td>
+            <td>presenceMatch en fonction de l'ID du joueur</td>
+            <td>Non</td>
+            <td><a href="http://51.75.126.62:3000/presenceMatch/1">http://51.75.126.62:3000/presenceMatch/1</a></td>
+            <td>
+            </td>
+        </tr>
+        <tr>
+            <td>presenceMatch</td>
+            <td>POST</td>
+            <td>Créer un presenceMatch</td>
+            <td>Oui</td>
+            <td><a href="http://51.75.126.62:3000/presenceMatch">http://51.75.126.62:3000/presenceMatch</a></td>
+            <td>
+                {<br>
+                "IdJoueur": "2",<br>
+                "IdMatch":"1",<br>
+                "presence": "1",<br>
+                }
+            </td>
+        </tr>
+        <tr>
+            <td>presenceMatch</td>
+            <td>PUT</td>
+            <td>Modifier un presenceMatch</td>
+            <td>Oui</td>
+            <td><a href="http://51.75.126.62:3000/presenceMatch">http://51.75.126.62:3000/presenceMatch</a></td>
+            <td>
+                {<br>
+                "colonne":"IdMatch",<br>
+                "ancientElement":"3",<br>
+                "nouvelElement":"4"<br>
+                }
+            </td>
+        </tr>
+        <tr>
+            <td>presenceMatch</td>
+            <td>DELETE</td>
+            <td>Supprimer un presenceMatch</td>
+            <td>Oui</td>
+            <td><a href="http://51.75.126.62:3000/presenceMatch">http://51.75.126.62:3000/presenceMatch</a></td>
+            <td>
+                {<br>
+                "colonne":"IdJoueur",<br>
+                "elementSupprimer":"2"<br>
+                }
+            </td>
+        </tr>
+        <tr>
+            <td>presenceEvent</td>
+            <td>GET</td>
+            <td>Tous les presenceEvent</td>
+            <td>Non</td>
+            <td><a href="http://51.75.126.62:3000/presenceEvent">http://51.75.126.62:3000/presenceEvent</a></td>
+            <td>
+            </td>
+        </tr>
+        <tr>
+            <td>presenceEvent</td>
+            <td>GET</td>
+            <td>PresenceEnt en fonction de l'ID du joueur</td>
+            <td>Non</td>
+            <td><a href="http://51.75.126.62:3000/presenceEvent/1">http://51.75.126.62:3000/presenceEvent/1</a></td>
+            <td>
+            </td>
+        </tr>
+        <tr>
+            <td>presenceEvent</td>
+            <td>POST</td>
+            <td>Créer un presenceEvent</td>
+            <td>Oui</td>
+            <td><a href="http://51.75.126.62:3000/presenceEvent">http://51.75.126.62:3000/presenceEvent</a></td>
+            <td>
+                {<br>
+                "IdJoueur": "2",<br>
+                "IdEvent":"1",<br>
+                "presence": "1",<br>
+                }
+            </td>
+        </tr>
+        <tr>
+            <td>presenceEvent</td>
+            <td>PUT</td>
+            <td>Modifier un presenceEvent</td>
+            <td>Oui</td>
+            <td><a href="http://51.75.126.62:3000/presenceEvent">http://51.75.126.62:3000/presenceEvent</a></td>
+            <td>
+                {<br>
+                "colonne":"IdEvent",<br>
+                "ancientElement":"3",<br>
+                "nouvelElement":"4"<br>
+                }
+            </td>
+        </tr>
+        <tr>
+            <td>presenceEvent</td>
+            <td>DELETE</td>
+            <td>Supprimer un presenceEvent</td>
+            <td>Oui</td>
+            <td><a href="http://51.75.126.62:3000/presenceEvent">http://51.75.126.62:3000/presenceEvent</a></td>
+            <td>
+                {<br>
+                "colonne":"IdJoueur",<br>
                 "elementSupprimer":"2"<br>
                 }
             </td>
