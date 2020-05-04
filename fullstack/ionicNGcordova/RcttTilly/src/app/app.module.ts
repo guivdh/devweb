@@ -21,16 +21,17 @@ import { ScrollingModule } from '@angular/cdk/scrolling';
 
 import { HttpClientModule } from '@angular/common/http';
 
+import { NativeStorage } from '@ionic-native/native-storage/ngx';
+import { IonicStorageModule  } from '@ionic/storage';
+import { UserService } from './services/user/user.service';
 
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
   imports: [
-    BrowserModule, 
-    IonicModule.forRoot({
-      rippleEffect: false,
-      mode: 'md'
-    }),
+    BrowserModule,
+    IonicStorageModule.forRoot(), 
+    IonicModule.forRoot(),
     AppRoutingModule,
     EventPageModule,
     BrowserAnimationsModule,
@@ -45,7 +46,8 @@ import { HttpClientModule } from '@angular/common/http';
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     ComponentsModule,
-
+    UserService,
+    NativeStorage
   ],
   bootstrap: [AppComponent]
 })

@@ -3,11 +3,17 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { OpenAppPage } from './open-app.page';
 
+
 const routes: Routes = [
   {
     path: '',
     component: OpenAppPage
+  },
+  {
+    path: '/yetConnected',
+    component: OpenAppPage
   }
+  
 ];
 
 @NgModule({

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core'
 import {AngularFireAuth} from '@angular/fire/auth'
 import { AngularFirestore } from '@angular/fire/firestore';
+import { NativeStorage } from '@ionic-native/native-storage/ngx';
 
 
 interface user {
@@ -13,7 +14,11 @@ interface user {
 export class UserService{
 
     private user: user 
-    constructor(private afAuth: AngularFireAuth, private firestore: AngularFirestore ){
+    constructor(
+        private afAuth: AngularFireAuth,
+        private firestore: AngularFirestore,
+        private nativeStorage: NativeStorage,
+        ){
 
 
 
@@ -26,7 +31,28 @@ export class UserService{
 
     }
 
+    save(name,item){
+        this.nativeStorage.setItem(name, item)
+        .then(
+    () => console.log('Item enregistré!'),
+    error => console.error(`Erreur d'enregistrement`, error)
+    );
+    return name
+    }
 
+    async retrieve(name){
+        var useriD
+        await this.nativeStorage.getItem(name)
+        .then( (val)=>{
+            // alert( JSON.stringify(val));
+           // alert(val.id); 
+            useriD=val.id;
+
+        });
+        return useriD
+
+    }
+    
     getUID(){
         if(!this.user){
 
@@ -37,15 +63,25 @@ export class UserService{
                     mail: user.email,
                     uid: user.uid
                 });
+
+                this.save("userTilly",{ id: this.user.uid, mail: this.user.mail }).then(()=>{
+                    alert(this.user.mail+" sauvé")
+                });
                 return user.uid;
             } 
             else{
-                throw new Error("Utilisateur non connecté!")
+                console.error
             } 
+
+            return this.retrieve("userTilly");
+
         }   
         
         else{
             return this.user.uid;
         }
     }
+
+
+    
 }

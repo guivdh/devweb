@@ -29,7 +29,7 @@ export class journalPage {
     this.db.collection('presence').add({
       idEvent: '-M2xeQIYjoH3DRBz1z5w',
       matricule: '025520',
-      response: 'True'
+      response: true
     });
     document.getElementById('EntOui').style.visibility = "hidden";
     document.getElementById('EntNon').style.visibility = "hidden";
@@ -39,7 +39,7 @@ export class journalPage {
     this.db.collection('presence').add({
       idEvent: '-M2xeQIYjoH3DRBz1z5w',
       matricule: '025520',
-      response: 'False'
+      response: false
     });
     document.getElementById('EntOui').style.visibility = "hidden";
     document.getElementById('EntNon').style.visibility = "hidden";
