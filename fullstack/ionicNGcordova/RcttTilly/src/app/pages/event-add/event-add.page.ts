@@ -65,7 +65,7 @@ export class EventPage implements OnInit {
 
  resetForm() {
 
-    console.log(this.titlesEvent);
+    //console.log(this.titlesEvent);
     this.newEvent = {
       _id: '',
       title: '',
@@ -96,7 +96,7 @@ export class EventPage implements OnInit {
   }
   addEvent() {
     //firebase
-    console.log(this.addEventForm.value.titleFc.name);
+    //console.log(this.addEventForm.value.titleFc.name);
 
     if ( this.addEventForm.value.titleFc.name !=='' && this.addEventForm.value.descriptionFc!==''  ){
       this.afDB.list('Events').push({
@@ -113,7 +113,8 @@ export class EventPage implements OnInit {
     } 
     else{
 
-      this.presentAlertPrompt(` Définissez le titre et/ou la description!`);
+       this.presentAlertPrompt(` Définissez le titre et/ou la description!`);
+       return ` Définissez le titre et/ou la description!`;
       }
     //own api
 

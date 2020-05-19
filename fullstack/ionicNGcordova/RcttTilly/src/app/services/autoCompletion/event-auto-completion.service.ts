@@ -105,7 +105,7 @@ export class EventAutoCompletionService {
         this.eventTitle=[];
       this.afDB.list('Events').snapshotChanges(['child_added']).subscribe(actions => {
            actions.forEach(action => {
-             console.log('action: ' + action.payload.key);
+             //console.log('action: ' + action.payload.key);
 
              this.eventTitle.push({
                id: 1,
@@ -113,7 +113,7 @@ export class EventAutoCompletionService {
              });
          
            });
-           console.log('sdsd: ' + this.eventTitle);
+           //console.log('sdsd: ' + this.eventTitle);
 
          });
 

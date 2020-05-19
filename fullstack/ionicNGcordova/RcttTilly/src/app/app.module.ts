@@ -38,7 +38,7 @@ import { UserService } from './services/user/user.service';
     DragDropModule,
     ScrollingModule,
     HttpClientModule,
-    
+    ComponentsModule
   
   ],
   providers: [
