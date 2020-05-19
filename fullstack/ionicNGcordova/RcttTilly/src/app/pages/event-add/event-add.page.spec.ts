@@ -4,7 +4,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 
 import { HeaderComponent } from '../../components/header/header.component';
 import { ComponentsModule } from '../../components/components.module';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule, FormControl, Validators } from '@angular/forms';
 
 
 import {AutocompleteLibModule} from 'angular-ng-autocomplete';
@@ -98,6 +98,7 @@ describe('EventPage', () => {
         HttpClientModule,
         AngularFireAuthModule,
         AngularFirestoreModule,
+        FormsModule
       ],
       providers: [
         Location,
@@ -115,17 +116,64 @@ describe('EventPage', () => {
     fixture = TestBed.createComponent(EventPage);
     router.initialNavigation();
 
-
-
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
 
   it('should be created', () => {
     expect(component).toBeTruthy();
+    expect(component.keyword).toBe('name');
 
   });
 
+  it('should be defined', () => {
+
+
+    expect(component.addEventForm).toBeDefined();
+    expect(component.addEventForm.value.titleFc).toBeDefined();
+    expect(component.addEventForm.value.startFc).toBeDefined();
+    expect(component.addEventForm.value.endFc).toBeDefined();
+    expect(component.addEventForm.value.descriptionFc).toBeDefined();
+
+
+  });
+  it('should be equal to', () => {
+  
+    expect(component.keyword).toBe('name');
+
+  });
+
+
+  it('should return that this will not work with empty title or description...', () => {
+  
+    component.addEventForm.value.titleFc=" ";
+    component.addEventForm.value.startFc="2020-03-30T18:30:50.780Z";
+    component.addEventForm.value.endFc="2020-03-31T15:00:52.142+02:00";
+    component.addEventForm.value.descriptionFc="Contre Luttre";
+    
+    expect(component.addEvent).toMatch(' Définissez le titre et/ou la description!');
+  });
+
+  it('should return that this will not work with empty description...', () => {
+  
+    component.addEventForm.value.titleFc="Match";
+    component.addEventForm.value.startFc="2020-03-30T18:30:50.780Z";
+    component.addEventForm.value.endFc="2020-03-31T15:00:52.142+02:00";
+    component.addEventForm.value.descriptionFc=" ";
+    
+    expect(component.addEvent).toMatch(' Définissez le titre et/ou la description!');
+  });
+
+  it('should receives the titles name from the db', () => {
+  
+    let titles=component.getTitles();
+    
+    expect(titles).not.toBe(null);
+
+    
+    //expect(titles).toEqual(jasmine.arrayContaining([{title: 'Souper rencontre'}]));
+
+  });
 
 
  /*  it('redirects you to /tabs/calendar', fakeAsync(() => { 
