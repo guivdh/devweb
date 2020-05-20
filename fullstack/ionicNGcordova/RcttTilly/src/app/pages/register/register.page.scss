@@ -1,4 +1,5 @@
 @import '../../app.component.scss';
+@import '../connection/connection.page.scss';
 
 $dark:#000000;
 ion-input{
@@ -75,7 +76,7 @@ $animate: all 0.2s ease-in-out;
 }
 
 
-.info{
+.infoInscri{
 
     color:$tillyLight;
 }

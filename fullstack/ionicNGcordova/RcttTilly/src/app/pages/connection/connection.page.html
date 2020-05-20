@@ -1,8 +1,10 @@
 <ion-header>
 	<ion-toolbar>
-	  <ion-buttons slot="start">
-		<ion-back-button></ion-back-button>
-	  </ion-buttons>
+	  	<ion-buttons slot="start">
+			<ion-button ng-controller="BackButton as back" (click)="backClicked()">
+				Retour
+		  	</ion-button>
+		</ion-buttons>
 	  	<div class="text-center">
 			<ion-title class="titleConnect">Se connecter</ion-title>
 		</div>
@@ -25,6 +27,9 @@
 		</form>
 	</div>
 
+	<div *ngIf="info">
+		<p class="info text-center"><span>{{info}}</span></p>
+  	</div>
 
 
   <div class="text-center" >

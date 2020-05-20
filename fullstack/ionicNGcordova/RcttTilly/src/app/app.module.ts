@@ -24,6 +24,18 @@ import { HttpClientModule } from '@angular/common/http';
 import { NativeStorage } from '@ionic-native/native-storage/ngx';
 import { IonicStorageModule  } from '@ionic/storage';
 import { UserService } from './services/user/user.service';
+import { Network } from '@ionic-native/network/ngx';
+
+
+import config  from './fb'
+import { AngularFirestore } from '@angular/fire/firestore'
+
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireDatabaseModule } from '@angular/fire/database';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+import { AngularFireStorageModule } from '@angular/fire/storage';
+
+
 
 @NgModule({
   declarations: [AppComponent],
@@ -38,7 +50,11 @@ import { UserService } from './services/user/user.service';
     DragDropModule,
     ScrollingModule,
     HttpClientModule,
-    
+    ComponentsModule,
+    AngularFireAuthModule,
+    AngularFireStorageModule,
+    AngularFireDatabaseModule,
+    AngularFireModule.initializeApp(config),
   
   ],
   providers: [
@@ -47,7 +63,9 @@ import { UserService } from './services/user/user.service';
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     ComponentsModule,
     UserService,
-    NativeStorage
+    NativeStorage,
+    Network,
+    AngularFirestore
   ],
   bootstrap: [AppComponent]
 })

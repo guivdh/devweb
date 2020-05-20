@@ -140,7 +140,7 @@ export class calendarPage implements OnInit {
  
       actions.forEach(action => {
 
-        console.log('action: ' + action.payload.key);
+        //console.log('action: ' + action.payload.key);
 
         this.eventSource.push({
           _id:action.payload.key,

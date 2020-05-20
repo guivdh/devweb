@@ -1,8 +1,10 @@
 <ion-header>
 	<ion-toolbar>
-	  <ion-buttons slot="start">
-		<ion-back-button></ion-back-button>
-	  </ion-buttons>
+	  	<ion-buttons slot="start">
+			<ion-button ng-controller="BackButton as back" (click)="backClicked()">
+				Retour
+		  	</ion-button>
+		</ion-buttons>
 	  	<div class="text-center">
 			<ion-title class="titleRegi">S'enregistrer</ion-title>
 		</div>
@@ -49,13 +51,19 @@
 		</form>
 	</div>
 
+	
+	<div *ngIf="info">
+		<p class="info text-center"><span>{{info}}</span></p>
+	  </div>
+	  
+
 	<div class="text-center" >
 		<button  class="btnFollow" id="connect" expand="block" 
 		 routerDirection="root" fill="outline" (click)="register()">
 		Continuer
 		</button>
 
-		<p class="info">En vous inscrivant, vous acceptez les conditions d'utilisation et 
+		<p class="infoInscri">En vous inscrivant, vous acceptez les conditions d'utilisation et 
 		la Politique de confidentialité de RCTT Tilly APP.
 		</p>
 	</div>

@@ -1,5 +1,7 @@
 @import '../../app.component.scss';
 
+$fontFamily:'Trebuchet MS', sans-serif, sans-serif;
+
 $dark:#000000;
 ion-input{
     color: $tillyLight;
@@ -17,7 +19,7 @@ ion-footer{
 
 
 .titleConnect{
-    font-family: 'Trebuchet MS', sans-serif, sans-serif;
+    font-family: $fontFamily;
     font-size:2.5rem;
     font-weight: 800;
     color: $tillyGold;
@@ -36,7 +38,27 @@ ion-footer{
     border-bottom-right-radius: 20px;
 }
 
+/** 
+    Thanks to  Daniel Riemer
+    https://codepen.io/zitrusfrisch/pen/fjbal
+*/
+.info{
+    text-transform: uppercase;
+	letter-spacing: .5em;
+	width: auto;
+	margin: 0.5rem;
+  span {
 
+  	font: 700 1em/1 $fontFamily;
+  	letter-spacing: 0;
+  	padding: .25em 0 .325em;
+	  display: block;
+	  margin: 0 auto;
+      text-shadow: 0 0 80px rgba(255,255,255,.5);
+      
+      color: $tillyRed;
+  }
+}
 
 .btnFollow{
     width:10rem;
