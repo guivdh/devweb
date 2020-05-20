@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import {AngularFireAuth} from '@angular/fire/auth'
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-forgot-password',
@@ -13,7 +14,7 @@ export class ForgotPasswordPage implements OnInit {
 
   constructor(
     public formBuilder: FormBuilder,
-    
+    public router: Router,
     public afAuth: AngularFireAuth,
     ) { 
     this.connectForm = this.formBuilder.group({
@@ -40,7 +41,9 @@ export class ForgotPasswordPage implements OnInit {
    */ 
   resetPasswordInit() { 
     return this.afAuth.auth.sendPasswordResetEmail(
-      this.connectForm.value.mail, 
-      { url: 'http://localhost:4200/auth' }); 
+      this.connectForm.value.mail).then(()=>{
+        alert(`Vous pouvez maintenant réinitialiser votre mot de passe en allant sur le lien du mail qui vient de vous être envoyé!`);
+        this.router.navigate(['/connection']);
+      }); 
     } 
 }
