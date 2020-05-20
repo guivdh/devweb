@@ -6,6 +6,10 @@ import {auth} from 'firebase/app'
 
 import { Router } from '@angular/router'
 import { UserService } from '../../services/user/user.service'
+import {Location} from '@angular/common';
+
+
+import { NetworkService, ConnectionStatus} from '../../services/network/network.service';
 
 @Component({
   selector: 'app-connection',
@@ -16,8 +20,18 @@ export class ConnectionPage implements OnInit {
 
   mail:string="";
   password:string="";
+  info:string;
+  netStatus=this.networkService.getCurrentNetworkStatus();
+
   public connectForm: FormGroup;
-  constructor(public formBuilder: FormBuilder, public afAuth: AngularFireAuth, public router: Router,public user: UserService) { 
+  constructor(
+    public formBuilder: FormBuilder, 
+    public afAuth: AngularFireAuth,
+    public router: Router,
+    public user: UserService,
+    private _location: Location,
+    private networkService: NetworkService
+    ) { 
 
 
     this.connectForm = this.formBuilder.group({
@@ -43,6 +57,9 @@ export class ConnectionPage implements OnInit {
   }
 
 
+  backClicked() {
+    this._location.back();
+  }
 
   async connect(){
     const{mail=this.connectForm.value.mail,password=this.connectForm.value.password}=this
@@ -50,17 +67,49 @@ export class ConnectionPage implements OnInit {
       const res = await this.afAuth.auth.signInWithEmailAndPassword(this.connectForm.value.mail, this.connectForm.value.password);
       
       if(res.user){
-        alert(res.user.uid);
+        //alert(res.user.uid);
         this.user.getUID();
+
+        this.user.setUser({
+          mail,
+          uid: res.user.uid,
+        });
+  
         this.router.navigate(['/tabs']);
       }
-      alert(" user: "+res.user.uid+" mail: "+res.user.email);
+      //alert(" user: "+res.user.uid+" mail: "+res.user.email);
 
     } catch(err){
-      alert(err);
+      console.dir(err);
+
+
+      console.log(this.netStatus)
+
+      console.log(err.code)
+      
+
       if(err.code === "auth/user-not-found"){
-        alert("User not found");
+        console.log("Utilisateur introuvable");
+        this.info="Utilisateur introuvable";
       }
+      else if(err.code === "auth/invalid-email"){
+        console.log("Adresse mail invalide");
+        this.info="Adresse mail invalide";
+
+      }
+      else if (err.code === "auth/wrong-password"){
+        console.log("Mot de passe invalide");
+        this.info="Mot de passe invalide";
+
+      }
+
+      else{
+        console.log("Pas de connexion internet!");
+        this.info="Pas de connexion internet!";
+      }
+      
+
+      
     }
   }
 }

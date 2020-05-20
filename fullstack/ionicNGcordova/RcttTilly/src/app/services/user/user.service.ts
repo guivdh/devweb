@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core'
 import {AngularFireAuth} from '@angular/fire/auth'
 import { AngularFirestore } from '@angular/fire/firestore';
 import { NativeStorage } from '@ionic-native/native-storage/ngx';
+import { AlertController } from '@ionic/angular';
 
 
 interface user {
@@ -18,6 +19,8 @@ export class UserService{
         private afAuth: AngularFireAuth,
         private firestore: AngularFirestore,
         private nativeStorage: NativeStorage,
+        public alertController: AlertController
+
         ){
 
 
@@ -31,12 +34,12 @@ export class UserService{
 
     }
 
-    save(name,item){
-        this.nativeStorage.setItem(name, item)
-        .then(
-    () => console.log('Item enregistré!'),
+    async save(name,item){
+        await this.nativeStorage.setItem(name, item)
+        /* .then(
+    () => alert('Item enregistré!'),
     error => console.error(`Erreur d'enregistrement`, error)
-    );
+    ) */;
     return name
     }
 
@@ -44,44 +47,51 @@ export class UserService{
         var useriD
         await this.nativeStorage.getItem(name)
         .then( (val)=>{
-            // alert( JSON.stringify(val));
-           // alert(val.id); 
+            /* alert( JSON.stringify(val));
+            alert(val.id); */
             useriD=val.id;
 
         });
         return useriD
 
     }
-    
-    getUID(){
+
+
+    async getUID(){
         if(!this.user){
 
             if(this.afAuth.auth.currentUser)
             {
-                const user = this.afAuth.auth.currentUser;
+                const userAuth = this.afAuth.auth.currentUser;
                 this.setUser({
-                    mail: user.email,
-                    uid: user.uid
+                    mail: userAuth.email,
+                    uid: userAuth.uid
                 });
-
-                this.save("userTilly",{ id: this.user.uid, mail: this.user.mail }).then(()=>{
+                await this.save("user",{ id: this.user.uid, mail: this.user.mail })/* .then(()=>{
                     alert(this.user.mail+" sauvé")
-                });
-                return user.uid;
+                }) */;
+            
+                return userAuth.uid;
             } 
             else{
                 console.error
-            } 
-
+               alert("Utilisateur non connecté!");
+            }
+            
             return this.retrieve("userTilly");
 
         }   
         
-        else{
-            return this.user.uid;
+        else if (this.user){
+
+             if (this.user.uid!==undefined && this.user.uid!== " " && this.user.uid.length>20){
+                return this.user.uid;
+
+            } 
+             else{
+                 alert("Ich bin malade")
+               return this.retrieve("user");
+            }   
         }
     }
-
-
-    
 }

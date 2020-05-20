@@ -10,6 +10,7 @@ import { UserService } from '../../services/user/user.service'
 import { AngularFirestore } from '@angular/fire/firestore'
 import { AlertController } from '@ionic/angular';
 
+import {Location} from '@angular/common';
 
 @Component({
   selector: 'app-register',
@@ -26,6 +27,7 @@ export class RegisterPage implements OnInit {
   matricule: number = 0;
   name: string="";
   password:string="";
+  info:string;
 
 
   public registerForm: FormGroup;
@@ -36,7 +38,9 @@ export class RegisterPage implements OnInit {
     public router: Router,
     public afStore: AngularFirestore,
     public user: UserService,
-    public alertController: AlertController
+    public alertController: AlertController,
+    private _location: Location,
+
     ) 
     { 
     this.registerForm = this.formBuilder.group({
@@ -103,7 +107,9 @@ export class RegisterPage implements OnInit {
     await alert.present();
   }
 
-
+  backClicked() {
+    this._location.back();
+  }
   async register(){
 
    var mail = this.registerForm.value.mailFc;
@@ -145,6 +151,30 @@ export class RegisterPage implements OnInit {
 
     } catch(err){
       console.dir(err);
+
+      if(err.code === "auth/email-already-in-use"){
+        console.log("Utilisateur introuvable");
+        this.info="Utilisateur introuvable";
+      }
+      else if(err.code === "auth/invalid-email"){
+        console.log("Adresse mail invalide");
+        this.info="Adresse mail invalide";
+
+      }
+      else if (err.code === "auth/weak-password"){
+        console.log("Mot de passe invalide");
+        this.info="Mot de passe invalide, il doit contenir au moins 1 majuscule et un chiffre et faire au moins 8 caractères";
+
+      }
+
+      else{
+        console.log("Pas de connexion internet!");
+        this.info="Pas de connexion internet!";
+      }
+
+
+
+
     }
   }
 
