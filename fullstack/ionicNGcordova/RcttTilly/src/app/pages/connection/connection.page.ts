@@ -9,7 +9,6 @@ import { UserService } from '../../services/user/user.service'
 import {Location} from '@angular/common';
 
 
-import { NetworkService, ConnectionStatus} from '../../services/network/network.service';
 
 @Component({
   selector: 'app-connection',
@@ -21,7 +20,6 @@ export class ConnectionPage implements OnInit {
   mail:string="";
   password:string="";
   info:string;
-  netStatus=this.networkService.getCurrentNetworkStatus();
 
   public connectForm: FormGroup;
   constructor(
@@ -30,7 +28,6 @@ export class ConnectionPage implements OnInit {
     public router: Router,
     public user: UserService,
     private _location: Location,
-    private networkService: NetworkService
     ) { 
 
 
@@ -81,10 +78,6 @@ export class ConnectionPage implements OnInit {
 
     } catch(err){
       console.dir(err);
-
-
-      console.log(this.netStatus)
-
       console.log(err.code)
       
 
