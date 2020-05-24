@@ -66,12 +66,12 @@ export class EventDetailPage implements OnInit {
 
     this.eventObjRcv = this.activateRoute.snapshot.paramMap.get('eventObj');
 
-    console.log(this.eventObjRcv);
+    //console.log(this.eventObjRcv);
     //we need to reverse json stringify 
     //that we have done in onEventSelected--> and read it as an object
     this.stringToObj=JSON.parse(this.eventObjRcv);
 
-    console.log(this.stringToObj);
+    //console.log(this.stringToObj);
 
     this.event._id= this.stringToObj._id;
 
@@ -181,7 +181,7 @@ export class EventDetailPage implements OnInit {
 
     let eventObjToString = JSON.stringify(eventObj);
 
-    console.log('Event: ' + eventObjToString);
+    //console.log('Event: ' + eventObjToString);
 
     this.router.navigate([
     'event-edit',eventObjToString

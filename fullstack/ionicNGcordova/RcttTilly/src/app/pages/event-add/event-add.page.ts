@@ -141,7 +141,7 @@ export class EventPage implements OnInit {
           text: 'Ok',
           handler: () => {
             console.log('Confirm Okay');
-            console.log(this.user.getUID());
+            //console.log(this.user.getUID());
 
           }
         }
