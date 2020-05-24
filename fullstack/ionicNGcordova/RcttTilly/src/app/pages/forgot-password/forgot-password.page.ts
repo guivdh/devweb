@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import {AngularFireAuth} from '@angular/fire/auth'
 import { Router } from '@angular/router';
+import {Location} from '@angular/common';
 
 @Component({
   selector: 'app-forgot-password',
@@ -16,6 +17,8 @@ export class ForgotPasswordPage implements OnInit {
     public formBuilder: FormBuilder,
     public router: Router,
     public afAuth: AngularFireAuth,
+    private _location: Location,
+
     ) { 
     this.connectForm = this.formBuilder.group({
       mail: new FormControl('', Validators.compose([
@@ -33,7 +36,9 @@ export class ForgotPasswordPage implements OnInit {
   ngOnInit() {
   }
 
-
+  backClicked() {
+    this._location.back();
+  }
 
   /** 
    * Initiate the password reset process for this user 
