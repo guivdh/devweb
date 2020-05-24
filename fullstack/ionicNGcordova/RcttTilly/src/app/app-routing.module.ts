@@ -39,6 +39,10 @@ const routes: Routes = [
     path: 'event-edit/:eventObj',
     loadChildren: () => import('./pages/event-edit/event-edit.module').then( m => m.EventEditPageModule)
   },
+  {
+    path: 'user-profil',
+    loadChildren: () => import('./pages/user-profil/user-profil.module').then( m => m.UserProfilPageModule)
+  },
   /* {
     path: 'event-detail/:id',
     loadChildren: () => import('./pages/event-detail/event-detail.module').then( m => m.EventDetailPageModule)

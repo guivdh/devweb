@@ -7,7 +7,6 @@
 
 <ion-content>
   
-    <ion-content [fullscreen]="true">
       <ion-refresher slot="fixed" (ionRefresh)="refresh($event)">
         <ion-refresher-content></ion-refresher-content>
       </ion-refresher>
@@ -35,5 +34,11 @@
 
 
   
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="showHideProfil()"color="success" >
+      <ion-icon name="person"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
   
 </ion-content>
+

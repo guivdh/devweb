@@ -4,6 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import { ApiService, Responsible } from '../services/api/api.service';
 import { AngularFirestoreCollection, AngularFirestore } from '@angular/fire/firestore';
 import { map } from 'rxjs/operators';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -16,7 +17,7 @@ export class directoryPage  {
   responsibles: any;
   constructor(
     private data: ApiService,
-
+    private router: Router
     ) {
 
     this.getResponsibles();
@@ -53,4 +54,9 @@ export class directoryPage  {
 
     });
   }
+
+
+  showHideProfil() {
+    this.router.navigate(['/user-profil']);
+    }
 }
