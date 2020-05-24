@@ -20,7 +20,6 @@ import {Location} from '@angular/common';
 
 export class RegisterPage implements OnInit {
 
-
   mail:string="";
   firstname: string="";
   estResponsable: boolean= false;
@@ -28,7 +27,7 @@ export class RegisterPage implements OnInit {
   name: string="";
   password:string="";
   info:string;
-
+  errorToggle=false;
 
   public registerForm: FormGroup;
 
@@ -78,11 +77,6 @@ export class RegisterPage implements OnInit {
     });
   }
 
-  onClickSubmit() {
-    console.log('Start login with: ' 
-                + this.registerForm.value.mailFc + ':' 
-                + this.registerForm.value.passwordFc);
-  }
 
   ngOnInit(): void {
   }
@@ -90,7 +84,23 @@ export class RegisterPage implements OnInit {
   passwordFc(formGroup: FormGroup) {
     const { value: password } = formGroup.get('passwordFc');
     const { value: confirmPassword } = formGroup.get('confirmpasswordFc');
-    return password === confirmPassword ? null : { passwordNotMatch: true };
+
+
+    if(password !== confirmPassword  && confirmPassword.length > 7 ){
+
+      this.info="Échec de la vérification de mot de passe !"
+    }
+
+    else if(password === confirmPassword  && confirmPassword.length > 7 ){
+
+      this.info=""
+    }
+
+
+    return password === confirmPassword ? null : { 
+      passwordNotMatch: true 
+  };
+
   }
 
 
@@ -112,6 +122,8 @@ export class RegisterPage implements OnInit {
   }
   async register(){
 
+    if (this.registerForm.valid){
+
    var mail = this.registerForm.value.mailFc;
     var firstname = this.registerForm.value.PrenomFc;
     var estResponsable = false;
@@ -130,7 +142,7 @@ export class RegisterPage implements OnInit {
     }=this */
     try{
       const res = await this.afAuth.auth.createUserWithEmailAndPassword(mail, password);
-      console.log(res);
+      //console.log(res);
 
       this.afStore.doc(`users/${res.user.uid}`).set({
 
@@ -138,23 +150,51 @@ export class RegisterPage implements OnInit {
         Firstname: firstname,
         Name: name,
         Matricule: matricule,
-        Password: password,
-      })
+      }).catch( (error) =>  {
 
-      this.user.setUser({
-        mail,
-        uid: res.user.uid
-      })
+        console.log(error.code);
+        console.log(error);
 
-      this.presentAlert("Succès","Vous êtes enregistré");
-      this.router.navigate(['/connection']);
+        alert("Vous n'êtes pas membre du club !")
 
+        this.router.navigate(['/home']);
+
+
+        if(error.code=="permission-denied"){
+
+
+          this.errorToggle=true;
+          console.log(this.errorToggle);
+
+        }        
+      });
+
+      if (this.errorToggle===true){
+        
+        alert("Vous n'êtes pas membre du club !")
+
+        this.router.navigate(['/home']);
+
+      }
+      else if(this.errorToggle === false) {
+        console.log(this.errorToggle);
+
+        this.user.setUser({
+          mail,
+          uid: res.user.uid
+        })
+  
+        this.presentAlert("Succès","Vous êtes enregistré");
+        this.router.navigate(['/connection']);
+  
+      }
+      
     } catch(err){
       console.dir(err);
 
       if(err.code === "auth/email-already-in-use"){
-        console.log("Utilisateur introuvable");
-        this.info="Utilisateur introuvable";
+        console.log("Utilisateur déjà existant");
+        this.info="Utilisateur déjà existant";
       }
       else if(err.code === "auth/invalid-email"){
         console.log("Adresse mail invalide");
@@ -176,6 +216,19 @@ export class RegisterPage implements OnInit {
 
 
     }
+    
+    }
+    else{
+  alert("Vérifiez la validité des données insérées!" )
   }
+    }
+
+
+
+  async sendEmailVerification() {
+    await this.afAuth.auth.currentUser.sendEmailVerification()
+    this.router.navigate(['/verify-email']);
+  }
+
 
 }

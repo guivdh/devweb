@@ -13,7 +13,7 @@
 
 <ion-content>
 		
-	<div class="forms">
+	<div class="forms" id="formID">
 		<form  class="form-horizontal" [formGroup]="registerForm">
 				<ion-row>
 					<ion-col>
@@ -52,13 +52,15 @@
 	</div>
 
 	
+	
 	<div *ngIf="info">
 		<p class="info text-center"><span>{{info}}</span></p>
 	  </div>
 	  
+	  
 
-	<div class="text-center" >
-		<button  class="btnFollow" id="connect" expand="block" 
+	<div class="text-center"  >
+		<button [disabled]="!registerForm.valid" class="btnFollow" id="connect" expand="block" 
 		 routerDirection="root" fill="outline" (click)="register()">
 		Continuer
 		</button>
@@ -66,6 +68,30 @@
 		<p class="infoInscri">En vous inscrivant, vous acceptez les conditions d'utilisation et 
 		la Politique de confidentialité de RCTT Tilly APP.
 		</p>
+
+
+	</div>
+
+	  <div  class="infoRegister">
+		  <h3>Règles de complétion du formulaire d'enregistrement:</h3>
+		<ul>
+			<li>
+				Nom et prénom <ion-icon name="arrow-forward-circle-outline"></ion-icon> 
+				les caractères acceptés: "a-z", "A-Z", ' - ' (tiret) et " "(espace);
+			</li>
+			<li>
+			Matricule <ion-icon name="arrow-forward-circle-outline"></ion-icon> doit comprendre 6 chiffres;
+			</li>
+			<li>
+				Mail <ion-icon name="arrow-forward-circle-outline"></ion-icon> doit être de la forme suivante "____ @ ____ . ____";
+			</li>
+			<li>
+				Mot de passe <ion-icon name="arrow-forward-circle-outline"></ion-icon> doit être composé d'au moins: 8 caractères, de majuscule, de minuscule (sans accent ni cédille) et de chiffre;
+			</li>
+		</ul>
+
+
+
 	</div>
 	
 </ion-content>
