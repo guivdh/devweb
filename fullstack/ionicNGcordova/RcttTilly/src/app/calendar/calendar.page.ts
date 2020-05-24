@@ -123,7 +123,7 @@ export class calendarPage implements OnInit {
 
     let eventObjToString = JSON.stringify(eventObj);
 
-    console.log('Event: ' + eventObjToString);
+  //  console.log('Event: ' + eventObjToString);
 
     this.router.navigate([
     'event-detail',eventObjToString
@@ -153,13 +153,17 @@ export class calendarPage implements OnInit {
         this.tillyCalendar.loadEvents();
 
       });
-    });
+    })/* .on('value', snapshot => {
+      snapshot.val();
+    }, error => {
+        console.error(error);
+    }) */;
      
     this.spinCal=false;
   }
 
  
-  async getEvents() {
+/*   async getEvents() {
     const loading = await this.loadingController.create({
       message: 'Loading...'
     });
@@ -173,7 +177,7 @@ export class calendarPage implements OnInit {
         console.log(err);
         loading.dismiss();
       });
-  }
+  } */
 
   showHideForm() {
   this.router.navigate(['/event-add']);

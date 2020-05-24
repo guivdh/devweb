@@ -3,36 +3,13 @@
 
     <img  slot="start" src="../../../assets/img/rcttTilly.png" id="logoTilly">
     
-    <!-- <ion-buttons slot="end">
-      <ion-button>
-        <ion-icon slot="icon-only" ios="ellipsis-vertical" md="ellipsis-vertical"></ion-icon>
-      </ion-button>
-    </ion-buttons> -->
+      <button ion-button slot="end" (click)="logout()" class="btnLogout"> 
+        Déconnexion
+      </button>
 
 
 
 <title ion-title>RCTT TILLY</title>
  
-
-
-
-  <!-- <ul class="header-navigation">
-    <li class="header-navigation-item" *ngIf="part === 1 || (part >= 3 && isAuth)">
-      <a class="header-link" routerLink="/{{ partString }}/all-stuff" routerLinkActive="active">OBJETS A VENDRE</a>
-    </li>
-    <li class="header-navigation-item" *ngIf="part === 1 || (part >= 3 && isAuth)">
-      <a class="header-link" routerLink="/{{ partString }}/new-thing" routerLinkActive="active">VENDRE UN OBJET</a>
-    </li>
-    <li class="header-navigation-item" *ngIf="(part >= 3 && isAuth)">
-      <a class="header-link" style="cursor: pointer" (click)="onLogout()">DECONNEXION</a>
-    </li>
-    <li class="header-navigation-item" *ngIf="(part >= 3 && !isAuth)">
-      <a class="header-link" routerLink="/{{ partString }}/auth/login" routerLinkActive="active">CONNEXION</a>
-    </li>
-    <li class="header-navigation-item" *ngIf="(part >= 3 && !isAuth)">
-      <a class="header-link" routerLink="/{{ partString }}/auth/signup" routerLinkActive="active">INSCRIPTION</a>
-    </li>
-  </ul>
-   -->
   </ion-toolbar>
 </ion-header>
