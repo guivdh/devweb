@@ -1,0 +1,55 @@
+
+<ion-header>
+  <ion-toolbar class="toolbar">
+    <ion-buttons slot="start">
+      <ion-button ng-controller="BackButton as back" (click)="backClicked()">
+        Retour
+      </ion-button>
+    </ion-buttons>
+    
+
+    <ion-title>Profil</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  <div class="ion-padding divDetails label">
+ 
+    <p *ngIf="!responsibleProfil" class="text-center h1"><ion-icon name="wifi"></ion-icon> En attente de connexion internet!</p>
+    <ion-list lines="full" *ngIf="responsibleProfil">
+
+      <ion-item >
+        <ion-label class="ion-text-wrap"><b>Nom:</b> {{responsibleProfil.Name}}</ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label class="ion-text-wrap"><b>Prénom:</b> {{responsibleProfil.Firstname}}</ion-label>
+      </ion-item>
+           
+      <ion-item>
+        <ion-label class="labelEv" text-wrap><b>Rôle:</b></ion-label>
+        <ion-input class="inputEv" type="text" placeholder="{{ responsibleProfil?.Role }}" [(ngModel)]="responsibleProfil.Role"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label class="labelEv" text-wrap><b>Numéro de téléphone:</b></ion-label>
+        <ion-input class="inputEv" type="text" placeholder="{{ responsibleProfil?.Num }}" [(ngModel)]="responsibleProfil.Num"></ion-input>
+      </ion-item>
+
+      
+      <ion-buttons>
+        <ion-button class="modifyDetails" expand="block" (click)="updateDetails()">Modifier</ion-button>  
+        </ion-buttons>
+    </ion-list>
+      
+  </div>
+
+  
+<ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="backClicked()" color="success">
+      <ion-icon name="close" color="light"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+</ion-content>
+  
