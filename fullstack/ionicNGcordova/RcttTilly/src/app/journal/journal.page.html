@@ -3,7 +3,7 @@
 <ion-content>
   <section class="MatchNotes">
     <div id="Match">
-      <ion-button class="btn btn-default btn-sm btn-block responsive-width" id="taille" color="#ffffff">
+      <ion-button (click)="goToMatch()" class="btn btn-default btn-sm btn-block responsive-width" id="taille" color="#ffffff">
         <div id="txt_button">
           <img src="../../assets/img/logoFPPlittle.png">
           <br>
@@ -13,7 +13,7 @@
       </ion-button>
     </div>
     <div id="Note">
-      <ion-button class="btn btn-default btn-sm btn-block responsive-width" id="taille" color="#ffffff">
+      <ion-button (click)="catchNote()" class="btn btn-default btn-sm btn-block responsive-width" id="taille" color="#ffffff">
         <div id="txt_button">
           <img src="../../assets/img/rcttTilly.png">
           <br>
@@ -25,32 +25,49 @@
   </section>
 
   <section class="MatchEntr">
-    <div class="proEntr">
+    <div class="proEntr" >
       <span id="txt">Prochain entraînement</span>
       <p>Serez-vous présent?</p>
       <p>Date : </p>
-      <ion-button id="EntOui" color="success" (click)="SendRepPos()">
+
+
+
+      <div *ngIf="hiddenTraining" >
+
+        <p color="warning">Réponse bien envoyée!</p>
+  
+      </div>
+<div *ngIf="!hiddenTraining" (click)='goToHours("Training")'>
+
+      <ion-button id="EntOui" color="success" (click)="SendRepPos()" [disabled]=true>
         oui
       </ion-button>
-      <ion-button id="EntNon" color="danger" (click)="SendRepNeg()">
+      <ion-button id="EntNon" color="danger" (click)="SendRepNeg()" [disabled]=true>
         non
       </ion-button>
-      <ion-button color="warning">
+
+    </div>
+
+      <ion-button (click)='goToHours("Training")' color="warning">
         horaire
       </ion-button>
     </div>
-    <div class="proMatch">
+    <div class="proMatch" >
       <span id="txt">Prochain Match</span>
       <p>Serez-vous présent?</p>
       <p>Date : </p>
+      <div *ngIf="!hiddenMatch" (click)='goToHours("MatchInfo")'>
 
-      <ion-button color="success">
+      <ion-button color="success" [disabled]=true>
         oui
       </ion-button>
-      <ion-button color="danger">
+      <ion-button color="danger" [disabled]=true>
         non
       </ion-button>
-      <ion-button color="warning">
+
+    </div>
+
+      <ion-button (click)='goToHours("Match")' color="warning">
         horaire
       </ion-button>
     </div>
