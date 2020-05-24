@@ -1,6 +1,39 @@
+
+
 <app-header></app-header>
+ 
 
-<ion-content [fullscreen]="true">
 
 
+<ion-content>
+  
+    <ion-content [fullscreen]="true">
+      <ion-refresher slot="fixed" (ionRefresh)="refresh($event)">
+        <ion-refresher-content></ion-refresher-content>
+      </ion-refresher>
+      
+      <ion-list class="listOfResponsibles">
+        
+      <ion-item [detail]="false" class="headerDirectory">
+        <ion-label class="ion-text-wrap">
+          <h2 class="headerResponsible">
+            Type de responsable
+            <span class="date">
+              <ion-note>Numéro de Téléphone</ion-note>
+              <ion-icon name="chevron-forward" size="small" *ngIf="isIos()" ></ion-icon>
+            </span>
+          </h2>
+          <p class="first_Name">
+            Nom du responsable
+          </p>
+        </ion-label>
+      </ion-item>
+
+
+        <app-responsible *ngFor="let responsible of responsibles" [responsible]="responsible"></app-responsible>
+      </ion-list>
+
+
+  
+  
 </ion-content>
