@@ -15,6 +15,11 @@ export class Responsible {
   Role:string;
 }
 
+export class MailType {
+  First:string;
+  Second:string;
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -23,7 +28,6 @@ export class ApiService {
   private dbPath = 'users';
 
   responsiblesRef: AngularFirestoreCollection<Responsible> = null;
-
   public responsibles: Responsible[];
 
 
@@ -33,6 +37,7 @@ export class ApiService {
     private router: Router
      ) { 
       this.responsiblesRef = afStr.collection(this.dbPath);
+
 
      }
 
