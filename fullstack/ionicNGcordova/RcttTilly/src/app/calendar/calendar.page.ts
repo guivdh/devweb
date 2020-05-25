@@ -88,6 +88,7 @@ export class calendarPage implements OnInit {
 
   
   currentMonth: string;
+  currentMonthLength: number;
 
 
   calendar={
@@ -103,6 +104,7 @@ export class calendarPage implements OnInit {
 
   onViewTitleChanged(title: string) {
     this.currentMonth = title;
+    this.currentMonthLength=this.currentMonth.length
   }
   onTimeSelected(ev: any) {
     const selected = new Date(ev.selectedTime);
