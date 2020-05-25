@@ -183,4 +183,21 @@ export class calendarPage implements OnInit {
   this.router.navigate(['/event-add']);
   }
 
+
+
+
+  next() {
+    var swiper = document.querySelector('.swiper-container')['swiper'];
+    swiper.slideNext();
+  }
+   
+  back() {
+    var swiper = document.querySelector('.swiper-container')['swiper'];
+    swiper.slidePrev();
+  }
+   
+
+    today() {
+    this.calendar.currentDate = new Date();
+  }
 }

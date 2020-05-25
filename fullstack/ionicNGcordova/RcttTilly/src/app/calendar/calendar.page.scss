@@ -68,9 +68,13 @@ font-size: xx-large;
 
   border-radius: 0.5rem;
 
-  cursor: none;
+  cursor:help;
+
  }
 
+ .currDay{
+ cursor: pointer !important;
+ }
 
  .match{
   background-color: $tillyGold !important;
