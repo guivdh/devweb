@@ -1,5 +1,9 @@
 
-<ion-item *ngIf="responsible" [detail]="false">
+<ion-item *ngIf="responsible" [detail]="false" 
+
+
+
+(click)="onEventSelected(responsible)">
   <div slot="start" ></div>
   <ion-label class="ion-text-wrap">
     <h2 class="roleName">
