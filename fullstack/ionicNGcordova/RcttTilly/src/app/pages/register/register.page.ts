@@ -56,11 +56,11 @@ export class RegisterPage implements OnInit {
         Validators.required,
         Validators.pattern('^[a-zA-Z- ]+$')
       ])),
-      MatriculeFc: new FormControl('', Validators.compose([
+      NumFc: new FormControl('', Validators.compose([
         Validators.required,
         Validators.pattern('^[0-9]+$'),
-        Validators.maxLength(6),
-        Validators.minLength(6)
+        Validators.maxLength(10),
+        Validators.minLength(10)
       ])),
       passwordFc: new FormControl('', Validators.compose([
         Validators.required,
@@ -86,6 +86,8 @@ export class RegisterPage implements OnInit {
 
 
   ngOnInit(): void {
+    this.noWayToConnect=false;
+
   }
 
   passwordFc(formGroup: FormGroup) {
@@ -134,8 +136,9 @@ export class RegisterPage implements OnInit {
 
    var mail = this.registerForm.value.mailFc;
     var firstname = this.registerForm.value.PrenomFc;
-    var estResponsable = false;
-    var matricule = this.registerForm.value.MatriculeFc;
+    var role = '';
+    var num =  this.registerForm.value.NumFc;
+
     var name = this.registerForm.value.NomFc;
     var password = this.registerForm.value.passwordFc;
   
@@ -162,7 +165,8 @@ export class RegisterPage implements OnInit {
         AdresseMail: mail,
         Firstname: firstname,
         Name: name,
-        Matricule: matricule,
+        Num: num,
+        Role: role,
       }).catch( (error) =>  {
 
         console.log(error.code);
@@ -245,7 +249,7 @@ export class RegisterPage implements OnInit {
       if(this.noWayToConnect){
 
         this.router.navigate(['/error-member']);
-
+        this.noWayToConnect=false;
 
       }
 
