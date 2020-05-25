@@ -5,12 +5,15 @@ import {AngularFireAuth} from '@angular/fire/auth'
 import {auth} from 'firebase/app'
 
 import { Router } from '@angular/router'
+import { map } from 'rxjs/operators';
 
 import { UserService } from '../../services/user/user.service'
 import { AngularFirestore } from '@angular/fire/firestore'
 import { AlertController } from '@ionic/angular';
 
 import {Location} from '@angular/common';
+import { ApiService } from 'src/app/services/api/api.service';
+import { MailRecoService } from 'src/app/services/mail-reco.service';
 
 @Component({
   selector: 'app-register',
@@ -30,6 +33,7 @@ export class RegisterPage implements OnInit {
   errorToggle=false;
 
   public registerForm: FormGroup;
+  noWayToConnect: boolean=false;
 
   constructor(
     public formBuilder: FormBuilder,
@@ -39,6 +43,7 @@ export class RegisterPage implements OnInit {
     public user: UserService,
     public alertController: AlertController,
     private _location: Location,
+    private reco: MailRecoService
 
     ) 
     { 
@@ -75,6 +80,8 @@ export class RegisterPage implements OnInit {
     {
       validators: this.passwordFc.bind(this)
     });
+
+
   }
 
 
@@ -102,6 +109,7 @@ export class RegisterPage implements OnInit {
   };
 
   }
+
 
 
   async presentAlert(title: string, content:string){
@@ -141,6 +149,11 @@ export class RegisterPage implements OnInit {
 
     }=this */
     try{
+      
+      if(mail.includes(this.reco.getMailReco()[0].type)){
+
+     
+
       const res = await this.afAuth.auth.createUserWithEmailAndPassword(mail, password);
       //console.log(res);
 
@@ -162,6 +175,9 @@ export class RegisterPage implements OnInit {
 
         if(error.code=="permission-denied"){
 
+          alert("Vous n'êtes pas membre du club !")
+
+          this.router.navigate(['/home']);
 
           this.errorToggle=true;
           console.log(this.errorToggle);
@@ -169,14 +185,7 @@ export class RegisterPage implements OnInit {
         }        
       });
 
-      if (this.errorToggle===true){
-        
-        alert("Vous n'êtes pas membre du club !")
-
-        this.router.navigate(['/home']);
-
-      }
-      else if(this.errorToggle === false) {
+      if(this.errorToggle === false) {
         console.log(this.errorToggle);
 
         this.user.setUser({
@@ -184,12 +193,21 @@ export class RegisterPage implements OnInit {
           uid: res.user.uid
         })
   
-        this.presentAlert("Succès","Vous êtes enregistré");
+        this.presentAlert("Succès","Vous êtes enregistré!<br>Votre rôle dans le club ainsi que votre numéro de téléphone sont à compléter dans votre profil.");
         this.router.navigate(['/connection']);
   
       }
       
-    } catch(err){
+    }  
+  
+  else{
+    this.noWayToConnect=true;
+
+}
+  
+  }
+    
+    catch(err){
       console.dir(err);
 
       if(err.code === "auth/email-already-in-use"){
@@ -218,9 +236,19 @@ export class RegisterPage implements OnInit {
     }
     
     }
-    else{
-  alert("Vérifiez la validité des données insérées!" )
-  }
+        else{
+      alert("Vérifiez la validité des données insérées!" );
+
+      }
+
+
+      if(this.noWayToConnect){
+
+        this.router.navigate(['/error-member']);
+
+
+      }
+
     }
 
 

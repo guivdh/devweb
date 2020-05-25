@@ -17,6 +17,8 @@ import { UserService } from '../../services/user/user.service'
 
 
 import config  from '../../fb'
+import { ApiService } from 'src/app/services/api/api.service';
+import { MailRecoService } from 'src/app/services/mail-reco.service';
 
 
 
@@ -35,7 +37,8 @@ import config  from '../../fb'
   declarations: [RegisterPage],
   providers: [
     AngularFirestore,
-    UserService
+    UserService,
+    MailRecoService
   ]
 })
 export class RegisterPageModule {}
