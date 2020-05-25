@@ -40,8 +40,12 @@ const routes: Routes = [
     loadChildren: () => import('./pages/event-edit/event-edit.module').then( m => m.EventEditPageModule)
   },
   {
-    path: 'user-profil',
+    path: 'user-profil/:userObj',
     loadChildren: () => import('./pages/user-profil/user-profil.module').then( m => m.UserProfilPageModule)
+  },
+  {
+    path: 'error-member',
+    loadChildren: () => import('./pages/error-member/error-member.module').then( m => m.ErrorMemberPageModule)
   },
   /* {
     path: 'event-detail/:id',
