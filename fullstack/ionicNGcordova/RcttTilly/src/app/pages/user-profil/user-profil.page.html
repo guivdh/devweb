@@ -16,29 +16,67 @@
 
   <div class="ion-padding divDetails label">
  
-    <p *ngIf="!responsibleProfil" class="text-center h1"><ion-icon name="wifi"></ion-icon> En attente de connexion internet!</p>
-    <ion-list lines="full" *ngIf="responsibleProfil">
 
-      <ion-item >
+
+    
+    <ion-list lines="full" >
+
+      <form  class="form-horizontal" [formGroup]="modifyProfilForm">
+
+
+        <ion-label class="labelEv" text-wrap><b>Rôle (sélectionnez un des choix dans la liste) :</b></ion-label>
+
+        <div class="ng-autocomplete inputEv">
+          <ng-autocomplete
+            [initialValue]="this.responsibleProfil.Role"
+            [data]="rolesName"
+            [searchKeyword]="keyword"
+            (selected)='selectEvent($event)'
+            (inputChanged)='onChangeSearch($event)'
+            (inputFocused)='onFocused($event)'
+            historyIdentifier="roles"
+            [itemTemplate]="itemTemplate"
+            [notFoundTemplate]="notFoundTemplate"
+            formControlName="roleFc"
+            placeHolder="{{ responsibleProfil.Role }}"
+            >
+          </ng-autocomplete>
+    
+          
+      <ng-template #itemTemplate let-item>
+        <a [innerHTML]="item.name"></a>
+      </ng-template>
+  
+      <ng-template #notFoundTemplate let-notFound>
+        <div [innerHTML]="notFound" class="notFound"></div>
+      </ng-template>
+    </div>
+
+
+    <ion-item >
+      <ion-label class="ion-text-wrap"><b>Numéro de téléphone:</b> {{responsibleProfil.Num}}</ion-label>
+    </ion-item>
+      
+       
+        <ion-item >
         <ion-label class="ion-text-wrap"><b>Nom:</b> {{responsibleProfil.Name}}</ion-label>
       </ion-item>
       <ion-item>
         <ion-label class="ion-text-wrap"><b>Prénom:</b> {{responsibleProfil.Firstname}}</ion-label>
       </ion-item>
            
-      <ion-item>
+     <!--  <ion-item>
         <ion-label class="labelEv" text-wrap><b>Rôle:</b></ion-label>
         <ion-input class="inputEv" type="text" placeholder="{{ responsibleProfil?.Role }}" [(ngModel)]="responsibleProfil.Role"></ion-input>
-      </ion-item>
+      </ion-item> -->
 
-      <ion-item>
-        <ion-label class="labelEv" text-wrap><b>Numéro de téléphone:</b></ion-label>
-        <ion-input class="inputEv" type="text" placeholder="{{ responsibleProfil?.Num }}" [(ngModel)]="responsibleProfil.Num"></ion-input>
-      </ion-item>
+      
+
+		</form>
 
       
       <ion-buttons>
-        <ion-button class="modifyDetails" expand="block" (click)="updateDetails()">Modifier</ion-button>  
+        <ion-button [disabled]="!modifyProfilForm.valid" class="modifyDetails" expand="block" (click)="updateDetails()">Modifier</ion-button>  
         </ion-buttons>
     </ion-list>
       

@@ -17,6 +17,8 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { ApiService } from 'src/app/services/api/api.service';
+import { AutocompleteLibModule } from 'angular-ng-autocomplete';
+import { EventAutoCompletionService } from 'src/app/services/autoCompletion/event-auto-completion.service';
 
 @NgModule({
   imports: [
@@ -33,12 +35,14 @@ import { ApiService } from 'src/app/services/api/api.service';
     AngularFireAuthModule,
     AngularFireStorageModule,
     AngularFirestoreModule.enablePersistence(),
+    AutocompleteLibModule
   ],
   declarations: [UserProfilPage],
   providers: [
     UserService,
     { provide: LOCALE_ID, useValue: "fr-FR" },
-    ApiService
+    ApiService,
+    EventAutoCompletionService
  ],
  exports:[
   UserProfilPage

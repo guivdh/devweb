@@ -14,7 +14,6 @@
 
 
 
-
 .label{
     color: $tillyLight !important;
 }
@@ -54,4 +53,12 @@ $animate: all 0.2s ease-in-out;
     border-radius: 25px;
 
 
+}
+
+
+button:disabled,
+button[disabled]{
+  
+    background-color:$tillyGold ;
+    color: $tillyRed;
 }
