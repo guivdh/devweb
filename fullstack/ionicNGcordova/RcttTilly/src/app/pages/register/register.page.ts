@@ -136,7 +136,7 @@ export class RegisterPage implements OnInit {
 
    var mail = this.registerForm.value.mailFc;
     var firstname = this.registerForm.value.PrenomFc;
-    var role = '';
+    var role = 'Joueur';
     var num =  this.registerForm.value.NumFc;
 
     var name = this.registerForm.value.NomFc;
@@ -197,7 +197,7 @@ export class RegisterPage implements OnInit {
           uid: res.user.uid
         })
   
-        this.presentAlert("Succès","Vous êtes enregistré!<br>Votre rôle dans le club ainsi que votre numéro de téléphone sont à compléter dans votre profil.");
+        this.presentAlert("Succès","Vous êtes enregistré!<br>Votre numéro de téléphone est à compléter dans votre profil utilisateur.");
         this.router.navigate(['/connection']);
   
       }
