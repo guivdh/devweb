@@ -19,15 +19,15 @@ ion-content ion-toolbar {
   
   .headerDirectory{
     background-color: $tillyGold;
-
+    font-size: large;
     .first_Name{
       color: $tillyDark;
     }
     
     .headerResponsible{
 
-      color:$tillySkyBlue;
-      
+      color: $tillyDark;
+
       ion-note{
           background-color: $tillyDark;
           color:$tillyGold;

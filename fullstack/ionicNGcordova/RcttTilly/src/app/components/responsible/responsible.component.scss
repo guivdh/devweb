@@ -31,3 +31,26 @@ color: $tillyGreen;
     color: $tillyLight;
 
 }
+
+.userItem{
+
+cursor: pointer;
+
+margin: 5px;
+
+background-color: #000000;
+
+}
+
+
+$animate: all 0.2s ease-in-out;
+
+.userItem:hover{
+    border-color: $tillyGold;
+    border: groove;
+    transition: $animate;
+    transition-duration: 0.4s;
+    border-radius: 35px;
+
+
+}
