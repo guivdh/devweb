@@ -1,17 +1,13 @@
-@import url('https://fonts.googleapis.com/css?family=Press+Start+2P');
-
+@import url(https://fonts.googleapis.com/css?family=Anonymous+Pro);
 @import '../../app.component.scss';
+@import '../home/home.page.scss';
+
 
 $glowSize: 10px;
 
-html,body{
-   width: 100%;
-   height: 100%;
-   margin: 0;
-}
 
 *{
-   font-family: 'Press Start 2P', cursive;
+   font-family: 'Anonymous Pro', monospace;  
    box-sizing: border-box;
 }
 #app{
@@ -41,3 +37,18 @@ html,body{
     animation-duration: 1s;
    animation-iteration-count: infinite;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
