@@ -8,9 +8,14 @@
   <ion-label class="ion-text-wrap">
     <h2 class="roleName">
 
-      <section *ngIf='responsible.Role!==undefined'>{{ responsible.Role }}</section>
+<!--       <section *ngIf='responsible.Role!==undefined'>{{ responsible.Role }}</section>
+ -->
+      <section *ngIf='responsible.Role.includes("Responsable")' class="responsable">{{ responsible.Role }}</section>
+      <section *ngIf='responsible.Role.includes("Entraineur")' class="trainer">{{ responsible.Role }}</section>
+      <section *ngIf='responsible.Role.includes("Capitaine")' class="capi">{{ responsible.Role }}</section>
 
-      <section *ngIf='responsible.Role==undefined'>Joueur</section>
+      <section *ngIf='responsible.Role.includes("Joueur")' class="player">{{ responsible.Role }}</section>
+      <section *ngIf='responsible.Role.includes("Président")' class="president">{{ responsible.Role }}</section>
 
       <span class="date">
 
