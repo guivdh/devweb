@@ -6,7 +6,8 @@
 
 <h2>Technologies</h2>
 
-<ul> 
+<ul>
+ <li>Node.js</li>
  <li>Ionic 4 (cli: 6.1.0)</li>
  <li>Angular 8 (cli: 8.3.23)</li>
  <li>Cordova (cli: 9.0.0)</li>
